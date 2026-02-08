@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Red Flags That Your Marketing Agency Is Wasting Your Budget - JRNY Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-divider {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-links > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .nav-links > a.active {
+            color: #F5A623;
+        }
+
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > a:hover,
+        .nav-dropdown > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown > a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            border-top-color: #F5A623;
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(245, 166, 35, 0.1);
+            color: #F5A623;
+        }
+
+        .dropdown-menu a.active {
+            color: #F5A623;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .nav-phone { display: inline-flex; align-items: center; color: #FFFFFF; text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 8px 15px; border-radius: 6px; transition: all 0.3s ease; margin-right: 10px; white-space: nowrap; }
+        .nav-phone:hover { color: #F5A623; }
+
+        .nav-cta {
+            background-color: #F5A623;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+        /* Mobile Menu Hamburger Button */
+        .mobile-nav-right { display: none; align-items: center; gap: 15px; }
+        .mobile-nav-phone { display: flex; align-items: center; justify-content: center; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .mobile-nav-phone:hover { background: rgba(245, 166, 35, 0.2); color: #F5A623; }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-toggle span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links > a,
+        .mobile-menu-links > .mobile-dropdown > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-menu-links > a:hover,
+        .mobile-menu-links > .mobile-dropdown > a:hover {
+            color: #F5A623;
+            padding-left: 10px;
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown > a {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none !important;
+        }
+
+        .mobile-dropdown > a::after {
+            content: '+';
+            font-size: 20px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active > a::after {
+            content: '−';
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 0 -30px;
+            padding: 0 30px;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-menu a {
+            display: block;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 14px 0 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            color: #F5A623;
+            padding-left: 30px;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+            background-color: #F5A623;
+            color: #000000;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+
+        /* Hero Section with Image Background */
+        .article-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        /* Image Background */
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url('https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20Digital%20-%20Team%20Image%2014.jpg?updatedAt=1769195648359');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Dark Overlay */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.7) 50%,
+                rgba(0, 0, 0, 0.5) 100%
+            );
+            z-index: 2;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            max-width: 900px;
+            padding: 160px 60px 80px 60px;
+        }
+
+        .article-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            color: #F5A623;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+
+        /* Article Layout */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px 100px;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 100%;
+        }
+
+        .article-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .article-content h2 {
+            font-size: 38px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .article-content h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .article-content ul {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        .article-content ul li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .article-content a {
+            color: #F5A623;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-content a:hover {
+            color: #FFBD00;
+        }
+
+        /* Red Flag Sections */
+        .red-flag-section {
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .red-flag-section h2 {
+            color: #F5A623;
+            margin-top: 0;
+        }
+
+        /* What To Do Box */
+        .what-to-do-box {
+            background: rgba(245, 166, 35, 0.08);
+            border-left: 3px solid #F5A623;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .what-to-do-box h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #F5A623;
+            margin-bottom: 15px;
+        }
+
+        .what-to-do-box ul {
+            margin-bottom: 0;
+        }
+
+        .what-to-do-box p {
+            margin-bottom: 0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 60px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 500;
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-top: 15px;
+        }
+
+        .faq-answer p {
+            margin-bottom: 0;
+        }
+
+        /* Also Read Box */
+        .also-read-box {
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 50%, rgba(245, 166, 35, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            max-width: 550px;
+        }
+
+        .also-read-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .also-read-link {
+            font-size: 16px;
+            color: #F5A623;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .also-read-link:hover {
+            color: #FFBD00;
+        }
+
+        .also-read-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .also-read-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .also-read-btn:hover {
+            background: #F5A623;
+            color: #000000;
+            border-color: #F5A623;
+        }
+
+        /* Sidebar */
+        .article-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            height: fit-content;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Popular Tags */
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tag-item {
+            display: block;
+            padding: 18px 25px;
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #F5A623;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag-item:hover {
+            background: #1a1a1a;
+            padding-left: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 60px 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 320px;
+        }
+
+        .footer-subscribe input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .footer-subscribe input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-subscribe button {
+            background: #ffc500;
+            color: #000000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .footer-subscribe button:hover {
+            background: #e6b100;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc500;
+        }
+
+        .footer-column ul li a.highlight {
+            color: #ffc500;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .article-layout {
+                grid-template-columns: 1fr 320px;
+                gap: 50px;
+            }
+
+            .article-title {
+                font-size: 48px;
+            }
+
+            .hero-content {
+                padding: 140px 60px 70px 60px;
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            .hero-content {
+                padding: 140px 40px 60px 40px;
+                max-width: 650px;
+            }
+
+            .article-title {
+                font-size: 42px;
+            }
+
+            .article-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 60px 40px 80px;
+            }
+
+            .article-sidebar {
+                position: relative;
+                top: 0;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-divider {
+                display: none;
+            }
+
+            .nav-links {
+            display: none;
+        }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-nav-right {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay,
+            .mobile-menu {
+                display: block;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .article-hero {
+                min-height: 50vh;
+            }
+
+            .hero-content {
+                padding: 120px 20px 40px;
+                max-width: 100%;
+            }
+
+            .article-title {
+                font-size: 32px;
+            }
+
+            .hero-overlay {
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.7) 100%
+                );
+            }
+
+            .article-layout {
+                padding: 40px 20px 60px;
+            }
+
+            .article-content h2 {
+                font-size: 28px;
+            }
+
+            .article-content h3 {
+                font-size: 22px;
+            }
+
+            .article-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .also-read-box {
+                max-width: 100%;
+            }
+
+            .what-to-do-box {
+                padding: 20px;
+            }
+
+            footer {
+                padding: 60px 20px 0;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            .footer-subscribe {
+                max-width: 100%;
+            }
+
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+            </a>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-links">
+            <a href="about-us.html">About Us</a>
+            <div class="nav-dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="nav-dropdown">
+                <a href="#">Results</a>
+                <div class="dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="tel:0412345678" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                (04) 1234 5678
+            </a>
+        </div>
+        <a href="contact-us.html" class="nav-cta">Get Free Strategy Session</a>
+        <!-- Mobile Nav Right (Phone + Hamburger) -->
+        <div class="mobile-nav-right">
+            <a href="tel:0412345678" class="mobile-nav-phone" aria-label="Call us">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="about-us.html">About Us</a>
+            <div class="mobile-dropdown">
+                <a href="#">Services</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="mobile-dropdown">
+                <a href="#">Results</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+        </div>
+        <a href="contact-us.html" class="mobile-menu-cta">Get Free Strategy Session</a>
+    </nav>
+
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="hero-image-container"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="article-eyebrow">Blog</p>
+            <h1 class="article-title">4 Red Flags That Your Marketing Agency Is Wasting Your Budget</h1>
+        </div>
+    </section>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+        <!-- Article Content -->
+        <article class="article-content">
+            <p>At some point, every founder asks the question: 'Are we actually getting what we're paying this agency for?'</p>
+            <p>Not likes. Not impressions. Actual results.</p>
+            <p>It's a question most business owners ask too late. After the leads stop, the numbers drop and the agency starts avoiding calls.</p>
+            <p>We've worked with businesses across Australia who've been burned.</p>
+            <p>Locked into long contracts.</p>
+            <p>Locked out of their own ad accounts.</p>
+            <p>Given reports that say a lot but explain nothing.</p>
+            <p>And often, they didn't realise the problem until leads had dried up or budgets had been blown.</p>
+            <p>If something feels off, pay attention to that. Here are four signs your agency might be wasting your budget and what you can do to stay in control.</p>
+
+            <div class="red-flag-section">
+                <h2>Red Flag #1: You Don't Own Your Accounts</h2>
+                <p>You paid for the ads. You funded the campaigns. But your agency created the ad account under their own name.</p>
+                <p>You ask for access and hear excuses: 'Don't worry, we manage it all for you' or 'It's just easier this way'.</p>
+                <p>Then one day, the contract ends. And so does your access. Years of campaign history, audience data and performance insights? Gone.</p>
+                <p>According to Meta, your business should own the assets. That means pages, ad accounts, and tracking setups.</p>
+                <p>Agencies should be added as partners. Not owners.</p>
+                <p>But it's not just about convenience. It's also about control.</p>
+                <p>The ACCC has called this out. Businesses need control over their own data. Doesn't matter if it's ad spend or sales metrics. Either way, you should have it. You paid for it.</p>
+                <p>If the agency keeps everything inside their own setup, you're flying blind. No visibility. No control. No way to scale.</p>
+
+                <div class="what-to-do-box">
+                    <h4>What to do:</h4>
+                    <ul>
+                        <li>Set up your own Meta Business Manager</li>
+                        <li>Add the agency as a partner</li>
+                        <li>Get full admin access to all assets—ad accounts, pixels, audiences, analytics</li>
+                        <li>Double check who the account owner is on Meta and Google platforms</li>
+                    </ul>
+                    <p>If your agency controls the access keys to your data, you don't own your results. And that means you can't scale them.</p>
+                </div>
+            </div>
+
+            <div class="red-flag-section">
+                <h2>Red Flag #2: You Can't See the Real Numbers</h2>
+                <p>You're told your campaigns are 'doing great' but the reports are vague. A few screenshots. Some high-level stats.</p>
+                <p>But where's the actual breakdown?</p>
+                <p>You still don't know what you're spending… or what it's bringing in.</p>
+                <p>This kind of selective reporting creates a power imbalance. You're left with just enough data to feel reassured but not enough to make decisions.</p>
+
+                <div class="what-to-do-box">
+                    <h4>What to ask for:</h4>
+                    <ul>
+                        <li>Live dashboards</li>
+                        <li>Full access to the ad account</li>
+                        <li>Weekly exports with real data</li>
+                    </ul>
+                    <p>Still getting vague answers from the agency? Ask why.</p>
+                </div>
+            </div>
+
+            <div class="red-flag-section">
+                <h2>Red Flag #3: The Reports Look Good… But The Sales Don't</h2>
+                <p>Click-through rate is up. Impressions are massive. Reach looks phenomenal.</p>
+                <p>So why is your sales team empty-handed?</p>
+                <p>It's simple: surface stats aren't performance. They're a distraction.</p>
+                <p>Some agencies pad reports with vanity metrics and skip the numbers that actually count: cost per sale, return on ad spend, revenue earned.</p>
+                <p>If they're still running Traffic campaigns, hiding the account and avoiding tough questions… you've got a problem.</p>
+
+                <div class="what-to-do-box">
+                    <h4>What to ask for:</h4>
+                    <ul>
+                        <li>Leads generated (not clicks)</li>
+                        <li>Revenue tied to ad spend</li>
+                        <li>Cost per acquisition (CPA)</li>
+                    </ul>
+                    <p>Ask for the numbers that reflect sales, not just activity.</p>
+                </div>
+            </div>
+
+            <div class="red-flag-section">
+                <h2>Red Flag #4: You're Locked Into a 12-Month Contract</h2>
+                <p>Twelve months. No exit clause. No performance review.</p>
+                <p>The retainer stays the same whether you're growing or struggling. No adjustments. No exit.</p>
+                <p>We've seen businesses spend months trying to escape these agreements. Others give up and bleed cash until the term runs out.</p>
+                <p>But here's the thing: good agencies don't need contracts to retain clients. Results do that.</p>
+
+                <div class="what-to-do-box">
+                    <h4>What smart businesses expect:</h4>
+                    <ul>
+                        <li>Month-to-month billing</li>
+                        <li>Regular performance reviews</li>
+                        <li>Simple, flexible terms</li>
+                    </ul>
+                    <p>If it works, great. If it doesn't, you can walk away. No strings.</p>
+                </div>
+            </div>
+
+            <h2>What Smart Businesses Are Doing Instead</h2>
+            <p>We work with Australian businesses who've outgrown the fluff. They want clarity, control and campaigns that convert.</p>
+            <p>Here's how they work:</p>
+            <ul>
+                <li><strong>Full account ownership.</strong> If you're paying, it's yours. No debate.</li>
+                <li><strong>Real reporting.</strong> Live dashboards, not PDFs. Raw data, not summaries.</li>
+                <li><strong>No long lock-ins.</strong> Month-to-month. If it's not working, you walk out.</li>
+                <li><strong>Every campaign tied to sales.</strong> No vanity metrics. No wasted spend.</li>
+            </ul>
+
+            <h2>Don't Wait Until It's a Mess</h2>
+            <p>If something feels off, it's worth investigating. You don't have to wait for your contract to expire… or for another quarter of disappointing results.</p>
+            <p>Sometimes, all it takes is a second set of eyes.</p>
+            <p>Want an honest audit of your current setup? <a href="contact-us.html">Let us take a look</a>. No pressure. Just honest feedback on what's working, what's wasting your budget and what to do next.</p>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">Should I have access to my ad accounts and data?</div>
+                    <div class="faq-answer">
+                        <p>Yes. If you're paying for the ads, you should own and control the data. Your agency should be a partner, not the owner.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I know if my agency is showing me the full picture?</div>
+                    <div class="faq-answer">
+                        <p>Ask for live dashboards, full ad account access and raw weekly data exports. If you're only seeing PDFs or cherry-picked screenshots, question it.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Is it normal to be stuck in a 12-month contract?</div>
+                    <div class="faq-answer">
+                        <p>Not anymore. Top-performing agencies work on performance and flexibility. Month-to-month terms are the new standard.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What metrics should I be looking at?</div>
+                    <div class="faq-answer">
+                        <p>Prioritise cost per lead, return on ad spend (ROAS) and revenue — not just impressions, clicks or reach.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can I get help reviewing my current marketing setup?</div>
+                    <div class="faq-answer">
+                        <p>Yes. JRNY Digital offers free audits to help you see what's working, what's wasting your budget and where to improve. No obligation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Also Read Box -->
+            <div class="also-read-box">
+                <h3 class="also-read-title">Also Read:</h3>
+                <a href="facebook-ads-not-converting.html" class="also-read-link">Facebook Ads Not Converting? Discover the #1 Mistake Costing You Thousands</a>
+                <p class="also-read-description">Clicks but no sales? Learn why most Facebook ads fail — and how one simple switch can turn things around fast. Backed by real results.</p>
+                <a href="facebook-ads-not-converting.html" class="also-read-btn">Read More</a>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Logo_colour.jpg" alt="Author">
+                </div>
+                <div class="author-info">
+                    Written by: <span class="author-name">Jane Doe</span>
+                </div>
+            </div>
+
+            <!-- Popular Tags -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Popular Tags</h3>
+                <div class="tags-list">
+                    <a href="#" class="tag-item">Sales</a>
+                    <a href="#" class="tag-item">Ads</a>
+                    <a href="#" class="tag-item">Digital Marketing</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+                    </div>
+                    <p>We're human, we're real we care about our clients. Honesty, Transparency and Results - that's our motto.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button type="submit">Subscribe Us</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="social-media-ads.html">Social Media Ads</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="email-marketing.html">Email Marketing</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="cro.html">Conversion Rate Optimisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Portfolio</h4>
+                    <ul>
+                        <li><a href="blog.html" class="highlight">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © All Rights Reserved. JRNY DIGITAL Australia Pty Ltd. ABN 82 642 424 904</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Mobile dropdown toggles
+            mobileDropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking a link (except dropdown toggles)
+            mobileMenu.querySelectorAll('a:not(.mobile-dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

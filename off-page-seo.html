@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Off-Page SEO: What It Is and What Tactics To Try - JRNY Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-divider {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-links > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .nav-links > a.active {
+            color: #F5A623;
+        }
+
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > a:hover,
+        .nav-dropdown > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown > a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            border-top-color: #F5A623;
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(245, 166, 35, 0.1);
+            color: #F5A623;
+        }
+
+        .dropdown-menu a.active {
+            color: #F5A623;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .nav-phone { display: inline-flex; align-items: center; color: #FFFFFF; text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 8px 15px; border-radius: 6px; transition: all 0.3s ease; margin-right: 10px; white-space: nowrap; }
+        .nav-phone:hover { color: #F5A623; }
+
+        .nav-cta {
+            background-color: #F5A623;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+        /* Mobile Menu Hamburger Button */
+        .mobile-nav-right { display: none; align-items: center; gap: 15px; }
+        .mobile-nav-phone { display: flex; align-items: center; justify-content: center; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .mobile-nav-phone:hover { background: rgba(245, 166, 35, 0.2); color: #F5A623; }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-toggle span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links > a,
+        .mobile-menu-links > .mobile-dropdown > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-menu-links > a:hover,
+        .mobile-menu-links > .mobile-dropdown > a:hover {
+            color: #F5A623;
+            padding-left: 10px;
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown > a {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none !important;
+        }
+
+        .mobile-dropdown > a::after {
+            content: '+';
+            font-size: 20px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active > a::after {
+            content: '−';
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 0 -30px;
+            padding: 0 30px;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-menu a {
+            display: block;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 14px 0 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            color: #F5A623;
+            padding-left: 30px;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+            background-color: #F5A623;
+            color: #000000;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+
+        /* Hero Section with Image Background */
+        .article-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        /* Image Background */
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url('https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20Digital%20-%20Team%20Image%2014.jpg?updatedAt=1769195648359');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Dark Overlay */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.7) 50%,
+                rgba(0, 0, 0, 0.5) 100%
+            );
+            z-index: 2;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            max-width: 900px;
+            padding: 160px 60px 80px 60px;
+        }
+
+        .article-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            color: #F5A623;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+
+        /* Article Layout */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px 100px;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 100%;
+        }
+
+        .article-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .article-content h2 {
+            font-size: 38px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .article-content h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .article-content h4 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-content ul {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        .article-content ul li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .article-content a {
+            color: #F5A623;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-content a:hover {
+            color: #FFBD00;
+        }
+
+        /* Signal List */
+        .signal-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .signal-item {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 15px;
+            color: #ffffff;
+            font-style: italic;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            margin: 40px 0;
+            background: #0a0a0a;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            background: rgba(245, 166, 35, 0.1);
+        }
+
+        .comparison-header-item {
+            padding: 20px 25px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #F5A623;
+            text-align: center;
+        }
+
+        .comparison-header-item:first-child {
+            text-align: left;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-cell {
+            padding: 18px 25px;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.85);
+            font-style: italic;
+            text-align: center;
+        }
+
+        .comparison-cell:first-child {
+            text-align: left;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        /* Component Box */
+        .component-box {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #F5A623;
+            border-radius: 0 12px 12px 0;
+            padding: 25px 30px;
+            margin: 25px 0;
+        }
+
+        .component-box h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .component-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        /* Tactic Section */
+        .tactic-section {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 40px 0;
+        }
+
+        .tactic-section h3 {
+            font-size: 26px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .tactic-section h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .tactic-section ul {
+            margin-bottom: 0;
+        }
+
+        /* Step Box */
+        .step-box {
+            display: flex;
+            gap: 20px;
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: #F5A623;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 600;
+            color: #000000;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        .step-content ul {
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .cta-box .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #F5A623;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-box .btn:hover {
+            background: #FFBD00;
+            transform: translateY(-2px);
+        }
+
+        /* Also Read Box */
+        .also-read-box {
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 50%, rgba(245, 166, 35, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            max-width: 550px;
+        }
+
+        .also-read-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .also-read-link {
+            font-size: 16px;
+            color: #F5A623;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .also-read-link:hover {
+            color: #FFBD00;
+        }
+
+        .also-read-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .also-read-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .also-read-btn:hover {
+            background: #F5A623;
+            color: #000000;
+            border-color: #F5A623;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 60px;
+        }
+
+        .faq-section h2 {
+            margin-top: 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #F5A623;
+        }
+
+        .faq-question h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0;
+            padding-right: 20px;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon::before {
+            width: 24px;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .faq-icon::after {
+            width: 2px;
+            height: 24px;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .faq-item.active .faq-icon::after {
+            transform: translateX(-50%) rotate(90deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 25px;
+        }
+
+        .faq-answer p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        /* Sidebar */
+        .article-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            height: fit-content;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Popular Tags */
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tag-item {
+            display: block;
+            padding: 18px 25px;
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #F5A623;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag-item:hover {
+            background: #1a1a1a;
+            padding-left: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 60px 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 320px;
+        }
+
+        .footer-subscribe input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .footer-subscribe input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-subscribe button {
+            background: #ffc500;
+            color: #000000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .footer-subscribe button:hover {
+            background: #e6b100;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc500;
+        }
+
+        .footer-column ul li a.highlight {
+            color: #ffc500;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .article-layout {
+                grid-template-columns: 1fr 320px;
+                gap: 50px;
+            }
+
+            .article-title {
+                font-size: 48px;
+            }
+
+            .hero-content {
+                padding: 140px 60px 70px 60px;
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            .hero-content {
+                padding: 140px 40px 60px 40px;
+                max-width: 650px;
+            }
+
+            .article-title {
+                font-size: 42px;
+            }
+
+            .article-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 60px 40px 80px;
+            }
+
+            .article-sidebar {
+                position: relative;
+                top: 0;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .comparison-header,
+            .comparison-row {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-divider {
+                display: none;
+            }
+
+            .nav-links {
+            display: none;
+        }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-nav-right {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay,
+            .mobile-menu {
+                display: block;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .article-hero {
+                min-height: 50vh;
+            }
+
+            .hero-content {
+                padding: 120px 20px 40px;
+                max-width: 100%;
+            }
+
+            .article-title {
+                font-size: 32px;
+            }
+
+            .hero-overlay {
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.7) 100%
+                );
+            }
+
+            .article-layout {
+                padding: 40px 20px 60px;
+            }
+
+            .article-content h2 {
+                font-size: 28px;
+            }
+
+            .article-content h3 {
+                font-size: 22px;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+            .comparison-header,
+            .comparison-row {
+                min-width: 500px;
+            }
+
+            .step-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .article-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .also-read-box {
+                max-width: 100%;
+            }
+
+            .faq-question h3 {
+                font-size: 18px;
+            }
+
+            footer {
+                padding: 60px 20px 0;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            .footer-subscribe {
+                max-width: 100%;
+            }
+
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+            </a>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-links">
+            <a href="about-us.html">About Us</a>
+            <div class="nav-dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="nav-dropdown">
+                <a href="#">Results</a>
+                <div class="dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="tel:0412345678" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                (04) 1234 5678
+            </a>
+        </div>
+        <a href="contact-us.html" class="nav-cta">Get Free Strategy Session</a>
+        <!-- Mobile Nav Right (Phone + Hamburger) -->
+        <div class="mobile-nav-right">
+            <a href="tel:0412345678" class="mobile-nav-phone" aria-label="Call us">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="about-us.html">About Us</a>
+            <div class="mobile-dropdown">
+                <a href="#">Services</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="mobile-dropdown">
+                <a href="#">Results</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+        </div>
+        <a href="contact-us.html" class="mobile-menu-cta">Get Free Strategy Session</a>
+    </nav>
+
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="hero-image-container"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="article-eyebrow">SEO</p>
+            <h1 class="article-title">Off-Page SEO: What It Is and What Tactics To Try</h1>
+        </div>
+    </section>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+        <!-- Article Content -->
+        <article class="article-content">
+            <p>You've optimised your website, crafted compelling content, and chosen the perfect keywords – all to ensure search engines understand what you offer. What's next?</p>
+            <p>Off-page SEO plays a big role, too. Imagine it as having an enthusiastic squad of brand cheerleaders, all working tirelessly to boost your digital footprint!</p>
+            <p>In this article, we'll show you how off-page SEO tactics can boost your website's visibility and attract more visitors.</p>
+
+            <h2>What Is Off-Page SEO?</h2>
+            <p>Off-page SEO is the art of winning the search engine popularity contest without even touching your website. It's all about making your site appear as the go-to destination for expertise, trustworthiness, and sheer value – all from the outside in.</p>
+            <p>Through the lens of backlinks, social media buzz, and brand mentions, search engines get to see just how much of a big deal your website is. These signals tell a story of your website's:</p>
+
+            <div class="signal-list">
+                <span class="signal-item">Expertise</span>
+                <span class="signal-item">Experience</span>
+                <span class="signal-item">Authoritativeness</span>
+                <span class="signal-item">Trustworthiness</span>
+                <span class="signal-item">Relevance</span>
+                <span class="signal-item">Popularity</span>
+            </div>
+
+            <h2>Why Is Off-Page SEO Important?</h2>
+            <p>The internet is competitive. To be chosen by searchers, you need to be found, either directly in search results or through links and mentions on other sites. Search engines and users discover your content via these pathways.</p>
+            <p>For instance, when someone searches for "best law firm near me," search engines determine which results best match the intent. One factor they consider is how many relevant and authoritative sources link to or cite each piece of content.</p>
+
+            <h2>Difference Between Off-Page and On-Page SEO</h2>
+            <p>Ever heard the terms "on-page SEO" and "off-page SEO" thrown around, but are unsure what they actually mean? Understanding the difference between these two crucial SEO elements is vital for optimising your website and attracting organic traffic.</p>
+
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div class="comparison-header-item">Feature</div>
+                    <div class="comparison-header-item">Off-Page SEO</div>
+                    <div class="comparison-header-item">On-Page SEO</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Location</div>
+                    <div class="comparison-cell">Outside your website</div>
+                    <div class="comparison-cell">Within your website</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Focus</div>
+                    <div class="comparison-cell">Building authority</div>
+                    <div class="comparison-cell">Content optimisation</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Examples</div>
+                    <div class="comparison-cell">Backlinks, social shares</div>
+                    <div class="comparison-cell">Keyword research, meta descriptions</div>
+                </div>
+            </div>
+
+            <p>On-page SEO acts as the foundation of your website's search engine visibility. It's about ensuring your content is well-structured, informative, and optimised for relevant keywords. Think of it as making your website search engine-friendly and easy to understand.</p>
+            <p>Off-page SEO, on the other hand, focuses on building your website's reputation and authority in the online world. This involves strategies like acquiring backlinks from high-quality websites, generating positive online reviews, and engaging with your audience on social media.</p>
+            <p>By implementing both on-page and off-page SEO strategies effectively, you can create a powerful synergy that propels your website to the top of search engine results pages (SERPs). For a deeper dive into SEO terminology, be sure to check out our comprehensive <a href="#">SEO glossary</a>.</p>
+
+            <h2>5 Key Components of Off-Page SEO</h2>
+
+            <div class="component-box">
+                <h4>Backlinks</h4>
+                <p>Links from other websites pointing to yours are like votes of confidence. The quality and relevance of these backlinks significantly impact your ranking.</p>
+            </div>
+
+            <div class="component-box">
+                <h4>Social Signals</h4>
+                <p>Shares, likes, and mentions on social media platforms indicate user engagement and brand awareness, which search engines take into account.</p>
+            </div>
+
+            <div class="component-box">
+                <h4>E-A-T (Expertise, Authoritativeness, Trustworthiness)</h4>
+                <p>Google prioritises websites that demonstrate expertise in their field and are perceived as trustworthy sources. Off-page SEO plays a vital role in building your E-A-T.</p>
+            </div>
+
+            <div class="component-box">
+                <h4>Branded Searches</h4>
+                <p>The number of times users search for your brand name reflects brand recognition and consumer trust.</p>
+            </div>
+
+            <div class="component-box">
+                <h4>Online Reputation</h4>
+                <p>Positive online reviews and mentions build trust and influence search rankings.</p>
+            </div>
+
+            <h2>Off-Page SEO Tactics and Techniques</h2>
+
+            <div class="tactic-section">
+                <h3>1. Backlink Building</h3>
+                <p>Not all backlinks are created equal. Focus on acquiring backlinks from high-quality, relevant websites in your niche. Earning a single backlink from a respected industry publication is far more valuable than hundreds of low-quality links.</p>
+
+                <h4>Strategies for Backlink Acquisition</h4>
+                <ul>
+                    <li><strong>Data Source for Backlink Acquisition:</strong> Research competitor websites and identify the backlinks they've earned. This can be a great starting point to find relevant websites that might be interested in linking to yours.</li>
+                    <li><strong>Broken Content Building:</strong> Find outdated or broken content on relevant websites and create a valuable piece that fills that gap. Then, reach out to the website owner and suggest your content as a replacement, with a natural backlink included.</li>
+                    <li><strong>Long-Form Content:</strong> Create in-depth, informative content that establishes you as an authority in your field. This type of content is more likely to attract backlinks from other websites.</li>
+                    <li><strong>Strategic Guest Posting:</strong> Write high-quality guest posts for reputable websites within your industry. Include a backlink to your website within your author bio or the content itself.</li>
+                </ul>
+            </div>
+
+            <div class="tactic-section">
+                <h3>2. Generating Brand Signals</h3>
+                <p>The more people talk about your brand online, the more search engines recognise its value and authority.</p>
+
+                <h4>Tactics to Enhance Brand Signals</h4>
+                <ul>
+                    <li><strong>Audit Your Branded Searches:</strong> Track how often users search for your brand name. This indicates brand awareness and can be improved through marketing efforts.</li>
+                    <li><strong>Invest in YouTube for Increased Visibility:</strong> Create valuable video content relevant to your niche. YouTube is a powerful search engine and can drive significant traffic to your website.</li>
+                    <li><strong>Set Up Brand Tracking:</strong> Use tools to monitor online mentions of your brand across social media and other platforms. Respond to positive mentions and address any negative feedback promptly.</li>
+                    <li><strong>Publish Research-Backed Content:</strong> Conduct original research and publish well-structured content based on your findings. This type of content is highly shareable and can attract valuable backlinks.</li>
+                </ul>
+            </div>
+
+            <div class="tactic-section">
+                <h3>3. Improving E-A-T</h3>
+                <p>Off-page SEO tactics significantly contribute to establishing your E-A-T:</p>
+                <ul>
+                    <li><strong>Get Brand Mentions on Authority Sites:</strong> Secure mentions of your brand or experts on trusted websites in your niche.</li>
+                    <li><strong>Secure Links From Trusted "Seed Sites":</strong> Focus on acquiring backlinks from highly respected websites within your industry. These "seed sites" pass on their authority to your website.</li>
+                    <li><strong>Acquire Positive Online Reviews:</strong> Encourage satisfied customers to leave positive reviews on platforms like Google My Business and industry-specific review sites.</li>
+                </ul>
+            </div>
+
+            <div class="tactic-section">
+                <h3>4. Content Marketing</h3>
+                <p>Content marketing plays a vital role. Consistently publish valuable content to attract visitors and establish yourself as an expert. Here's how to amplify your content's reach:</p>
+                <ul>
+                    <li><strong>Digital PR:</strong> Leverage PR techniques to secure backlinks and media attention.</li>
+                    <li><strong>Social Media Power:</strong> Utilise social media platforms for wider content exposure.</li>
+                    <li><strong>Influencer Marketing:</strong> Partner with influencers to expand brand reach and amplify content exposure.</li>
+                    <li><strong>Guest Blogging Opportunities:</strong> Showcase your expertise and reach a new audience on relevant websites.</li>
+                    <li><strong>Podcast Powerhouse:</strong> Offer your expertise as a guest on relevant podcasts.</li>
+                    <li><strong>Content Syndication:</strong> Republish your content on other websites while ensuring proper linking back to your original content to avoid Google prioritising the syndicated version.</li>
+                </ul>
+            </div>
+
+            <div class="tactic-section">
+                <h3>5. Local SEO</h3>
+                <p>For local businesses, local SEO is essential:</p>
+                <ul>
+                    <li><strong>Optimise Your Google Business Profile:</strong> Regularly update your profile with accurate information, respond to reviews, and publish informative posts.</li>
+                    <li><strong>NAP Consistency:</strong> Ensure your accurate NAP (Name, Address, and Phone Number) information is listed across online directories, social media profiles, and review sites.</li>
+                </ul>
+            </div>
+
+            <div class="tactic-section">
+                <h3>6. Reviews</h3>
+                <p>Encourage satisfied customers to leave positive reviews on platforms like Google My Business and industry-specific review sites. Respond to all reviews to demonstrate your commitment to customer feedback and build trust.</p>
+            </div>
+
+            <div class="tactic-section">
+                <h3>7. Events</h3>
+                <p>Events can generate excitement and brand awareness. Event promotion generates social media mentions. Attendees might even write articles with links to your website!</p>
+            </div>
+
+            <h2>How to Do Off-Page SEO: A Step-by-Step Guide</h2>
+            <p>Effective off-page SEO strategies can significantly enhance your website's authority and organic traffic. This guide will show you a clear, step-by-step process to unlock the power of off-page SEO and finally get your website seen by the right audience.</p>
+
+            <div class="step-box">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Define Your Objectives</h4>
+                    <p>The first step is establishing your desired outcomes. Are you aiming to increase brand awareness, drive website traffic, or improve search engine rankings? Clearly defined objectives will serve as benchmarks to measure the success of your off-page SEO efforts.</p>
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Identify Your Assets</h4>
+                    <p>Assess your website's strengths. What valuable content or expertise do you possess that merits attention? This could be informative blog posts, industry-leading knowledge, or unique products or services. Recognising these assets will inform your off-page SEO approach.</p>
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Implement Your Strategy</h4>
+                    <p>Now, it's time to translate your plan into action. Depending on your goals, this may involve:</p>
+                    <ul>
+                        <li><strong>Content Creation:</strong> Publish high-quality content that addresses gaps within your niche. Valuable resources naturally attract backlinks from other websites.</li>
+                        <li><strong>Guest Blogging:</strong> Secure guest posting opportunities on reputable websites within your industry. Include a backlink to your website within your author bio or the content itself.</li>
+                        <li><strong>Social Media Engagement:</strong> Leverage social media platforms to amplify your content's reach and brand visibility.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Track and Analyse Results</h4>
+                    <p>Monitoring progress is essential for success. Utilise website analytics to track key metrics aligned with your defined objectives.</p>
+                    <p>Remember, off-page SEO is a long-term endeavour. Stay patient, analyse your efforts, learn from successes and setbacks and refine your approach for continuous improvement.</p>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h3>Considering Professional Help?</h3>
+                <p>Off-page SEO can be a complex and time-consuming process. Want faster results? Partner with JRNY Digital. Our experts can help you develop a customised strategy, execute effective tactics, and track your progress.</p>
+                <p>Now, shifting gears to consider the financial aspect, it's important to note that SEO costs vary in Australia. Agency experience, project scope, and target location impact pricing.</p>
+                <a href="pricing.html" class="btn">Check Our Pricing</a>
+            </div>
+
+            <p>Diving deeper, if your goal is to cover all bases with comprehensive SEO services, we also have the expertise and resources to help your website thrive. <a href="contact-us.html">Visit us today!</a></p>
+
+            <h2>Focus on Your Business, We'll Focus on Your Website's Success</h2>
+            <p>Free up your valuable time and resources to focus on what you do best – running your business. Let <a href="index.html">JRNY Digital</a> handle the complexities of off-page SEO and watch your website climb the search engine rankings and attract more qualified leads.</p>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is the difference between on-page and off-page SEO?</h3>
+                        <div class="faq-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>On-page SEO involves optimising elements within your website (content, keywords, meta tags, site structure), while off-page SEO focuses on external factors that influence your rankings (backlinks, social signals, brand mentions, online reputation).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How long does it take for off-page SEO to show results?</h3>
+                        <div class="faq-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Off-page SEO is a long-term strategy. While some improvements may be visible within a few months, significant results typically take 6-12 months of consistent effort. The timeline depends on your industry competition, current authority, and the quality of your backlink building efforts.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are all backlinks equally valuable?</h3>
+                        <div class="faq-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, backlink quality matters more than quantity. A single backlink from a high-authority, relevant website in your industry is worth more than hundreds of low-quality links. Focus on earning backlinks from reputable sources that are relevant to your niche.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can social media activity improve my SEO rankings?</h3>
+                        <div class="faq-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While social signals aren't a direct ranking factor, active social media presence can indirectly boost SEO. Social media increases brand visibility, drives traffic to your website, and can lead to more backlinks as your content gets shared and discovered by more people.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is E-A-T and why does it matter for off-page SEO?</h3>
+                        <div class="faq-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>E-A-T stands for Expertise, Authoritativeness, and Trustworthiness. Google uses these factors to evaluate content quality. Off-page SEO helps build E-A-T through backlinks from authoritative sites, positive reviews, brand mentions, and establishing your reputation as an industry expert.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Also Read Box -->
+            <div class="also-read-box">
+                <h3 class="also-read-title">Also Read:</h3>
+                <a href="high-quality-leads-2025.html" class="also-read-link">How to Get High-Quality Leads Online in 2025 (and Why Most Ads Still Fail)</a>
+                <p class="also-read-description">Tired of leads that never convert? Learn the strategies that attract high-quality prospects ready to buy — not just tyre kickers.</p>
+                <a href="high-quality-leads-2025.html" class="also-read-btn">Read More</a>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Logo_colour.jpg" alt="Author">
+                </div>
+                <div class="author-info">
+                    Written by: <span class="author-name">JRNY Digital</span>
+                </div>
+            </div>
+
+            <!-- Popular Tags -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Popular Tags</h3>
+                <div class="tags-list">
+                    <a href="#" class="tag-item">SEO</a>
+                    <a href="#" class="tag-item">Backlinks</a>
+                    <a href="#" class="tag-item">Digital Marketing</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+                    </div>
+                    <p>We're human, we're real we care about our clients. Honesty, Transparency and Results - that's our motto.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button type="submit">Subscribe Us</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="social-media-ads.html">Social Media Ads</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="email-marketing.html">Email Marketing</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="cro.html">Conversion Rate Optimisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Portfolio</h4>
+                    <ul>
+                        <li><a href="blog.html" class="highlight">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © All Rights Reserved. JRNY DIGITAL Australia Pty Ltd. ABN 82 642 424 904</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Mobile dropdown toggles
+            mobileDropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking a link (except dropdown toggles)
+            mobileMenu.querySelectorAll('a:not(.mobile-dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

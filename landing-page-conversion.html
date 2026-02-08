@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Using A Landing Page Will Skyrocket Your Lead Conversion Rate - JRNY Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-divider {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-links > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .nav-links > a.active {
+            color: #F5A623;
+        }
+
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > a:hover,
+        .nav-dropdown > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown > a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            border-top-color: #F5A623;
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(245, 166, 35, 0.1);
+            color: #F5A623;
+        }
+
+        .dropdown-menu a.active {
+            color: #F5A623;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .nav-phone {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .nav-phone:hover {
+            color: #F5A623;
+        }
+
+        .nav-cta {
+            background-color: #F5A623;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+        /* Mobile Menu Hamburger Button */
+        .mobile-nav-right {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-nav-phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-phone:hover {
+            background: rgba(245, 166, 35, 0.2);
+            color: #F5A623;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-toggle span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links > a,
+        .mobile-menu-links > .mobile-dropdown > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-menu-links > a:hover,
+        .mobile-menu-links > .mobile-dropdown > a:hover {
+            color: #F5A623;
+            padding-left: 10px;
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown > a {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none !important;
+        }
+
+        .mobile-dropdown > a::after {
+            content: '+';
+            font-size: 20px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active > a::after {
+            content: '−';
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 0 -30px;
+            padding: 0 30px;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-menu a {
+            display: block;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 14px 0 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            color: #F5A623;
+            padding-left: 30px;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+            background-color: #F5A623;
+            color: #000000;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+
+        /* Hero Section with Image Background */
+        .article-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        /* Image Background */
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url('https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20Digital%20-%20Team%20Image%2014.jpg?updatedAt=1769195648359');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Dark Overlay */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.7) 50%,
+                rgba(0, 0, 0, 0.5) 100%
+            );
+            z-index: 2;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            max-width: 900px;
+            padding: 160px 60px 80px 60px;
+        }
+
+        .article-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            color: #F5A623;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+
+        /* Article Layout */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px 100px;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 100%;
+        }
+
+        .article-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .article-content h2 {
+            font-size: 38px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .article-content h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .article-content h4 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-content ul {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        .article-content ul li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .article-content a {
+            color: #F5A623;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-content a:hover {
+            color: #FFBD00;
+        }
+
+        /* Content Image */
+        .content-image {
+            margin: 30px 0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Definition Box */
+        .definition-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .definition-box h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .definition-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        .definition-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Secret Box */
+        .secret-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .secret-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .secret-number {
+            width: 50px;
+            height: 50px;
+            background: #F5A623;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #000000;
+            flex-shrink: 0;
+        }
+
+        .secret-title {
+            font-size: 22px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .secret-box > p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        .secret-box > p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Element Card */
+        .element-card {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .element-card h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .element-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        .element-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Elements List Box */
+        .elements-list-box {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .elements-list-box h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .elements-list-box ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .elements-list-box ul li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .elements-list-box ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #F5A623;
+            font-weight: 600;
+        }
+
+        .elements-list-box ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .cta-box .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #F5A623;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-box .btn:hover {
+            background: #FFBD00;
+            transform: translateY(-2px);
+        }
+
+        /* Also Read Box */
+        .also-read-box {
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 50%, rgba(245, 166, 35, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            max-width: 550px;
+        }
+
+        .also-read-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .also-read-link {
+            font-size: 16px;
+            color: #F5A623;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .also-read-link:hover {
+            color: #FFBD00;
+        }
+
+        .also-read-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .also-read-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .also-read-btn:hover {
+            background: #F5A623;
+            color: #000000;
+            border-color: #F5A623;
+        }
+
+        /* Sidebar */
+        .article-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            height: fit-content;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Popular Tags */
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tag-item {
+            display: block;
+            padding: 18px 25px;
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #F5A623;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag-item:hover {
+            background: #1a1a1a;
+            padding-left: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 60px 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 320px;
+        }
+
+        .footer-subscribe input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .footer-subscribe input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-subscribe button {
+            background: #ffc500;
+            color: #000000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .footer-subscribe button:hover {
+            background: #e6b100;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc500;
+        }
+
+        .footer-column ul li a.highlight {
+            color: #ffc500;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .article-layout {
+                grid-template-columns: 1fr 320px;
+                gap: 50px;
+            }
+
+            .article-title {
+                font-size: 48px;
+            }
+
+            .hero-content {
+                padding: 140px 60px 70px 60px;
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            .hero-content {
+                padding: 140px 40px 60px 40px;
+                max-width: 650px;
+            }
+
+            .article-title {
+                font-size: 42px;
+            }
+
+            .article-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 60px 40px 80px;
+            }
+
+            .article-sidebar {
+                position: relative;
+                top: 0;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-divider {
+                display: none;
+            }
+
+            .nav-links {
+            display: none;
+        }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-nav-right {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay,
+            .mobile-menu {
+                display: block;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .article-hero {
+                min-height: 50vh;
+            }
+
+            .hero-content {
+                padding: 120px 20px 40px;
+                max-width: 100%;
+            }
+
+            .article-title {
+                font-size: 32px;
+            }
+
+            .hero-overlay {
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.7) 100%
+                );
+            }
+
+            .article-layout {
+                padding: 40px 20px 60px;
+            }
+
+            .article-content h2 {
+                font-size: 28px;
+            }
+
+            .article-content h3 {
+                font-size: 22px;
+            }
+
+            .article-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .also-read-box {
+                max-width: 100%;
+            }
+
+            footer {
+                padding: 60px 20px 0;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            .footer-subscribe {
+                max-width: 100%;
+            }
+
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+            </a>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-links">
+            <a href="about-us.html">About Us</a>
+            <div class="nav-dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="nav-dropdown">
+                <a href="#">Results</a>
+                <div class="dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="tel:0412345678" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                (04) 1234 5678
+            </a>
+        </div>
+        <a href="contact-us.html" class="nav-cta">Get Free Strategy Session</a>
+        <!-- Mobile Nav Right (Phone + Hamburger) -->
+        <div class="mobile-nav-right">
+            <a href="tel:0412345678" class="mobile-nav-phone" aria-label="Call us">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="about-us.html">About Us</a>
+            <div class="mobile-dropdown">
+                <a href="#">Services</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="mobile-dropdown">
+                <a href="#">Results</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+        </div>
+        <a href="contact-us.html" class="mobile-menu-cta">Get Free Strategy Session</a>
+    </nav>
+
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="hero-image-container"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="article-eyebrow">Sales</p>
+            <h1 class="article-title">Why Using A Landing Page Will Skyrocket Your Lead Conversion Rate</h1>
+        </div>
+    </section>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+        <!-- Article Content -->
+        <article class="article-content">
+            <h2>What is a Landing Page?</h2>
+
+            <div class="definition-box">
+                <h4>Landing Page Defined</h4>
+                <p>So what exactly is a landing page? To keep it simple, a landing page is a standalone page that someone lands on after clicking on an ad. Landing pages are commonly used for marketing campaigns and have one purpose: to take your desired action.</p>
+                <p>For example, to get visitors to 'sign up for a quote', 'download a free course' or 'buy a product'.</p>
+            </div>
+
+            <h2>What is the Difference Between a Landing Page and a Website?</h2>
+
+            <p>A landing page is a single page with one goal for a marketing campaign. A website however is typically a collection of pages commonly used for organic visitors. It gives visitors the opportunity to explore other pages on your site.</p>
+
+            <p>The most distinctive difference between a landing page and a website is a landing page should have one main call to action (CTA) such as 'get a free 7-day trial' as seen in the image below.</p>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/Why%20Using%20A%20Landing%20Page%20Will%20Skyrocket%20Your%20Lead%20Conversion%20Rate%201.avif" alt="Landing Page vs Website Example">
+            </div>
+
+            <h2>The Two Secrets to an Effective Landing Page</h2>
+
+            <p>If you want to nail your landing pages, there are two fundamental principles you need to follow.</p>
+
+            <div class="secret-box">
+                <div class="secret-header">
+                    <div class="secret-number">1</div>
+                    <div class="secret-title">Attention Ratio</div>
+                </div>
+                <p>Attention ratio refers to all the things someone can do on a landing page compared to the action you actually want your visitor to do.</p>
+                <p>For example, if there are 50 different buttons and links on your landing page that your visitor can click and you only want your visitor to 'download a free PDF', the attention ratio is 50:1. Ideally, the attention ratio should be 1:1.</p>
+                <p>Often marketers overcomplicate landing pages and include too many links and buttons. The secret to an effective landing is keeping it simple and making it as easy as possible for the visitor to take your desired action.</p>
+            </div>
+
+            <div class="secret-box">
+                <div class="secret-header">
+                    <div class="secret-number">2</div>
+                    <div class="secret-title">Message Match</div>
+                </div>
+                <p>Message Match refers to the consistency between your ad message and landing page message. Does the message on your ad match the headline of your landing page?</p>
+                <p>For example, if you click on an ad that says 'click here for a free PDF', does your landing page headline say 'Download a PDF'? Making sure your messages match tells visitors they are on the right page to increase the likelihood of them taking action.</p>
+                <p>Additionally, it is important to use the same colour scheme, logos, buttons and photos to create a consistent user experience. A strong message match can result in low bounce rates and higher conversion rates.</p>
+            </div>
+
+            <h2>The 5 Elements That All Landing Pages Must Have</h2>
+
+            <div class="elements-list-box">
+                <h4>Essential Landing Page Elements</h4>
+                <ul>
+                    <li>A Unique Value Proposition</li>
+                    <li>Hero Shot</li>
+                    <li>Benefits</li>
+                    <li>Social Proof</li>
+                    <li>Call To Action</li>
+                </ul>
+            </div>
+
+            <div class="element-card">
+                <h4>1. Unique Value Proposition</h4>
+                <p>What makes your product or service unique? It is important to clearly communicate to your landing page visitors. Why should they pick you?</p>
+                <p>For example, a cleaning service business, a headline such as 'Get highly-experienced and reliable cleaners to your house within 3 hours' communicates to visitors that the business is qualified and efficient.</p>
+            </div>
+
+            <div class="element-card">
+                <h4>2. Hero Shot</h4>
+                <p>Let's talk about the importance of imagery. Naturally, people are visual creatures so using a hero shot that captures your visitor's attention is crucial.</p>
+                <p>The best hero shots are photos or videos that clearly depict your product or service. For example, a business selling headphones should use a visually appealing image of someone using their headphones as it clearly highlights the product and its intended use.</p>
+            </div>
+
+            <div class="element-card">
+                <h4>3. Benefits</h4>
+                <p>Now that you have captured the visitor's attention using a catchy headline and amazing image/video, you should communicate the benefits of your service or product.</p>
+                <p>The best way to do this is using bullet points to make it easy for people to quickly scan the information. Your benefits should address pain points that typically have and highlight how your product or service can help alleviate that pain.</p>
+                <p>Let's go back to the headphone example. Instead of stating a feature such as 'active noise cancellation', stating a benefit such as 'enjoy an immersive listening experience even in noisy environments' is more impactful.</p>
+            </div>
+
+            <div class="element-card">
+                <h4>4. Social Proof</h4>
+                <p>Social proof is very powerful and can turn skeptical prospects into high-paying customers. It's extremely important to establish authority in the minds of your customers as fast as possible. And through the use of reviews, testimonials and user-generated content from your previous customers, you can achieve this.</p>
+                <p>Who do you think people are going to trust? You? The company selling the product or service? Or real people who have actually used your product or service are raving about how great it is?</p>
+                <p>There are numerous ways to use social proof but here are a few ideas: The first thing is to highlight how popular your product or service is by including numbers such as "Over 200 pair of earphones sold in the last month' or '30 homes cleaned this week!'. The second thing is to use testimonials from your real customers and user-generated content to reinforce credibility and authenticity. Get your customers recommending your business.</p>
+            </div>
+
+            <div class="element-card">
+                <h4>5. Call To Action</h4>
+                <p>Last but not least, the call to action! The purpose of a landing page is to get visitors to take your desired action. There are two things you need to consider for your call to action - design and copy.</p>
+                <p>The best call to action is easily noticeable and has a contrasting colour to the page background. Oftentimes, marketers get confused about what colour is the most effective. However, studies have found that it is not the colour that is important, more so the level of contrast between the button colour and the background. Using a tool like the contrast checker will allow you to determine your 'contrast ratio'. The higher the contrast ratio, the better.</p>
+                <p>A great way to craft your call to action is to ask yourself "how do I {insert call to action}". Example: 'How Do I Claim My Free Ebook?' or 'How Do I Get A Quote'? The call-to-action copy should clearly outline what will happen when the button is clicked. These call to action clearly sets the expectation for the visitor.</p>
+            </div>
+
+            <p>When taking all of this into account, an example template may look like this:</p>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/Why%20Using%20A%20Landing%20Page%20Will%20Skyrocket%20Your%20Lead%20Conversion%20Rate%202.avif" alt="Landing Page Template Example">
+            </div>
+
+            <p>Use these tips to build yourself a high-converting landing page that converts cold prospects into customers.</p>
+
+            <p>Let us know if this helped you!</p>
+
+            <div class="cta-box">
+                <h3>Need Help Building Your Landing Page?</h3>
+                <p>If you have any questions or need any assistance with building your landing page, feel free to get in touch with us below!</p>
+                <a href="contact-us.html" class="btn">Get In Touch</a>
+            </div>
+
+            <!-- Also Read Box -->
+            <div class="also-read-box">
+                <h3 class="also-read-title">Also Read:</h3>
+                <a href="aida-formula.html" class="also-read-link">AIDA Formula: What It Is And How To Use It To Drive Insane Results</a>
+                <p class="also-read-description">The AIDA formula has driven billions in sales. Learn how to use Attention, Interest, Desire, and Action to supercharge your marketing.</p>
+                <a href="aida-formula.html" class="also-read-btn">Read More</a>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Logo_colour.jpg" alt="Author">
+                </div>
+                <div class="author-info">
+                    Written by: <span class="author-name">JRNY Digital</span>
+                </div>
+            </div>
+
+            <!-- Popular Tags -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Popular Tags</h3>
+                <div class="tags-list">
+                    <a href="#" class="tag-item">Sales</a>
+                    <a href="#" class="tag-item">Landing Pages</a>
+                    <a href="#" class="tag-item">Conversion Rate</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+                    </div>
+                    <p>We're human, we're real we care about our clients. Honesty, Transparency and Results - that's our motto.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button type="submit">Subscribe Us</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="social-media-ads.html">Social Media Ads</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="email-marketing.html">Email Marketing</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="cro.html">Conversion Rate Optimisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Portfolio</h4>
+                    <ul>
+                        <li><a href="blog.html" class="highlight">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © All Rights Reserved. JRNY DIGITAL Australia Pty Ltd. ABN 82 642 424 904</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Mobile dropdown toggles
+            mobileDropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking a link (except dropdown toggles)
+            mobileMenu.querySelectorAll('a:not(.mobile-dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+    </script>
+</body>
+</html>

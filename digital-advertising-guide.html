@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your In-Depth Guide to Digital Advertising - JRNY Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-divider {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-links > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .nav-links > a.active {
+            color: #F5A623;
+        }
+
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > a:hover,
+        .nav-dropdown > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown > a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            border-top-color: #F5A623;
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(245, 166, 35, 0.1);
+            color: #F5A623;
+        }
+
+        .dropdown-menu a.active {
+            color: #F5A623;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .nav-phone { display: inline-flex; align-items: center; color: #FFFFFF; text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 8px 15px; border-radius: 6px; transition: all 0.3s ease; margin-right: 10px; white-space: nowrap; }
+        .nav-phone:hover { color: #F5A623; }
+
+        .nav-cta {
+            background-color: #F5A623;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+        /* Mobile Menu Hamburger Button */
+        .mobile-nav-right { display: none; align-items: center; gap: 15px; }
+        .mobile-nav-phone { display: flex; align-items: center; justify-content: center; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .mobile-nav-phone:hover { background: rgba(245, 166, 35, 0.2); color: #F5A623; }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-toggle span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links > a,
+        .mobile-menu-links > .mobile-dropdown > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-menu-links > a:hover,
+        .mobile-menu-links > .mobile-dropdown > a:hover {
+            color: #F5A623;
+            padding-left: 10px;
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown > a {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none !important;
+        }
+
+        .mobile-dropdown > a::after {
+            content: '+';
+            font-size: 20px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active > a::after {
+            content: '−';
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 0 -30px;
+            padding: 0 30px;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-menu a {
+            display: block;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 14px 0 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            color: #F5A623;
+            padding-left: 30px;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+            background-color: #F5A623;
+            color: #000000;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+
+        /* Hero Section with Image Background */
+        .article-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        /* Image Background */
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url('https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20Digital%20-%20Team%20Image%2014.jpg?updatedAt=1769195648359');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Dark Overlay */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.7) 50%,
+                rgba(0, 0, 0, 0.5) 100%
+            );
+            z-index: 2;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            max-width: 900px;
+            padding: 160px 60px 80px 60px;
+        }
+
+        .article-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            color: #F5A623;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+
+        /* Article Layout */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px 100px;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 100%;
+        }
+
+        .article-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .article-content h2 {
+            font-size: 38px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .article-content h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .article-content h4 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-content ul {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        .article-content ul li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .article-content a {
+            color: #F5A623;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-content a:hover {
+            color: #FFBD00;
+        }
+
+        /* Stat Highlight */
+        .stat-highlight {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: #F5A623;
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+            font-style: italic;
+        }
+
+        /* Definition Box */
+        .definition-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .definition-box h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .definition-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        .definition-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Comparison Table */
+        .comparison-table-wrapper {
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #0a0a0a;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: #F5A623;
+            color: #000000;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 18px 15px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 16px 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Strategy Cards */
+        .strategy-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .strategy-number {
+            width: 50px;
+            height: 50px;
+            background: #F5A623;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #000000;
+            flex-shrink: 0;
+        }
+
+        .strategy-title {
+            font-size: 22px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .strategy-card > p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 20px;
+        }
+
+        .strategy-card ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .strategy-card ul li {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 12px;
+        }
+
+        .strategy-card ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .strategy-card ul li strong {
+            color: #ffffff;
+        }
+
+        /* Ad Type Box */
+        .ad-type-box {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .ad-type-box h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .ad-type-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0;
+        }
+
+        /* Metrics List */
+        .metrics-list {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .metrics-list h3 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .metric-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .metric-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(245, 166, 35, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .metric-content h4 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .metric-content p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .tips-section h3 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .tip-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tip-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .tip-item h4 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .tip-item p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        /* Challenge Box */
+        .challenge-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .challenge-box h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .challenge-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 12px;
+        }
+
+        .challenge-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .challenge-box .solution {
+            color: #F5A623;
+            font-weight: 500;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .cta-box .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #F5A623;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-box .btn:hover {
+            background: #FFBD00;
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 50px 0;
+        }
+
+        .faq-section h2 {
+            font-size: 38px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .faq-item {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .faq-question h4 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #ffffff;
+            margin: 0;
+            padding-right: 20px;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F5A623;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 25px 22px;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Also Read Box */
+        .also-read-box {
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 50%, rgba(245, 166, 35, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            max-width: 550px;
+        }
+
+        .also-read-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .also-read-link {
+            font-size: 16px;
+            color: #F5A623;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .also-read-link:hover {
+            color: #FFBD00;
+        }
+
+        .also-read-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .also-read-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .also-read-btn:hover {
+            background: #F5A623;
+            color: #000000;
+            border-color: #F5A623;
+        }
+
+        /* Sidebar */
+        .article-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            height: fit-content;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Popular Tags */
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tag-item {
+            display: block;
+            padding: 18px 25px;
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #F5A623;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag-item:hover {
+            background: #1a1a1a;
+            padding-left: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 60px 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 320px;
+        }
+
+        .footer-subscribe input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .footer-subscribe input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-subscribe button {
+            background: #ffc500;
+            color: #000000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .footer-subscribe button:hover {
+            background: #e6b100;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc500;
+        }
+
+        .footer-column ul li a.highlight {
+            color: #ffc500;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .article-layout {
+                grid-template-columns: 1fr 320px;
+                gap: 50px;
+            }
+
+            .article-title {
+                font-size: 48px;
+            }
+
+            .hero-content {
+                padding: 140px 60px 70px 60px;
+                max-width: 800px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 10px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            .hero-content {
+                padding: 140px 40px 60px 40px;
+                max-width: 650px;
+            }
+
+            .article-title {
+                font-size: 42px;
+            }
+
+            .article-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 60px 40px 80px;
+            }
+
+            .article-sidebar {
+                position: relative;
+                top: 0;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-divider {
+                display: none;
+            }
+
+            .nav-links {
+            display: none;
+        }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-nav-right {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay,
+            .mobile-menu {
+                display: block;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .article-hero {
+                min-height: 50vh;
+            }
+
+            .hero-content {
+                padding: 120px 20px 40px;
+                max-width: 100%;
+            }
+
+            .article-title {
+                font-size: 32px;
+            }
+
+            .hero-overlay {
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.7) 100%
+                );
+            }
+
+            .article-layout {
+                padding: 40px 20px 60px;
+            }
+
+            .article-content h2 {
+                font-size: 28px;
+            }
+
+            .article-content h3 {
+                font-size: 22px;
+            }
+
+            .article-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .also-read-box {
+                max-width: 100%;
+            }
+
+            .stat-number {
+                font-size: 42px;
+            }
+
+            .comparison-table-wrapper {
+                margin: 20px -20px;
+                padding: 0 20px;
+            }
+
+            footer {
+                padding: 60px 20px 0;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            .footer-subscribe {
+                max-width: 100%;
+            }
+
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+            </a>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-links">
+            <a href="about-us.html">About Us</a>
+            <div class="nav-dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="nav-dropdown">
+                <a href="#">Results</a>
+                <div class="dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="tel:0412345678" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                (04) 1234 5678
+            </a>
+        </div>
+        <a href="contact-us.html" class="nav-cta">Get Free Strategy Session</a>
+        <!-- Mobile Nav Right (Phone + Hamburger) -->
+        <div class="mobile-nav-right">
+            <a href="tel:0412345678" class="mobile-nav-phone" aria-label="Call us">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="about-us.html">About Us</a>
+            <div class="mobile-dropdown">
+                <a href="#">Services</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="mobile-dropdown">
+                <a href="#">Results</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+        </div>
+        <a href="contact-us.html" class="mobile-menu-cta">Get Free Strategy Session</a>
+    </nav>
+
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="hero-image-container"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="article-eyebrow">Ads</p>
+            <h1 class="article-title">Your In-Depth Guide to Digital Advertising</h1>
+        </div>
+    </section>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+        <!-- Article Content -->
+        <article class="article-content">
+            <p>Not everyone can master digital advertising, especially now that most people are actively avoiding ads. For instance, over 33% of internet users in Australia use ad blockers. The reason? They just want a smooth, ad-free online experience.</p>
+
+            <div class="stat-highlight">
+                <div class="stat-number">33%+</div>
+                <div class="stat-text">of internet users in Australia use ad blockers</div>
+            </div>
+
+            <p>Now, if you want to reach your audience, you need two things: creativity and innovation. Your ads must integrate smoothly into the user's browsing experience - enhancing rather than interrupting it. So, let's dive deeper and make your ads work.</p>
+
+            <h2>What Is Digital Advertising?</h2>
+
+            <div class="definition-box">
+                <h4>Digital Advertising Defined</h4>
+                <p>Digital advertising is a form of marketing that uses the internet to deliver promotional messages to consumers. In other words, it's all about promoting your brand online. Think catchy ads on Google, engaging social media posts, and tailored emails straight to inboxes.</p>
+                <p>But digital ads do more than just showcase your brand. They connect you with the right audience at the perfect moment. Plus, you get real-time feedback on how your ads are doing.</p>
+            </div>
+
+            <p>What's more? Ignoring digital advertising is missing out on a huge Australian online audience - 25.31 million potential customers, to be specific. You just can't afford to overlook its significance.</p>
+
+            <div class="stat-highlight">
+                <div class="stat-number">25.31M</div>
+                <div class="stat-text">potential customers in the Australian online audience</div>
+            </div>
+
+            <h2>Difference Between Digital Advertising and Traditional Advertising</h2>
+
+            <p>Still wondering about the difference between digital and traditional advertising? Digital advertising offers precision and interactivity, using online platforms to target specific demographics. It's cost-effective, measurable, and fast-paced. Traditional advertising, in contrast, uses offline channels with broad targeting and limited interaction. It could be more costlier and more adaptable.</p>
+
+            <p>Here's a table to make the comparison clearer:</p>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Digital Advertising</th>
+                            <th>Traditional Advertising</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Medium</td>
+                            <td>Online platforms (websites, social media, emails, search engines)</td>
+                            <td>Offline channels (telly, radio, print media, billboards)</td>
+                        </tr>
+                        <tr>
+                            <td>Targeting</td>
+                            <td>Highly targeted based on user data (interests, behaviour, demographics)</td>
+                            <td>Broad targeting based on general audience demographics</td>
+                        </tr>
+                        <tr>
+                            <td>Interactivity</td>
+                            <td>Interactive, allowing direct engagement with consumers (clicks, shares, comments)</td>
+                            <td>Typically one-way communication</td>
+                        </tr>
+                        <tr>
+                            <td>Measurability</td>
+                            <td>Highly measurable with detailed analytics (click-through rates, engagement, conversions)</td>
+                            <td>Limited measurability (surveys, estimated viewership/readership)</td>
+                        </tr>
+                        <tr>
+                            <td>Cost</td>
+                            <td>Generally lower cost, scalable to different budgets</td>
+                            <td>Often higher cost, less flexible budgets</td>
+                        </tr>
+                        <tr>
+                            <td>Format and Creativity</td>
+                            <td>Dynamic and versatile (videos, images, interactive content)</td>
+                            <td>Static formats (print ads, telly/radio commercials)</td>
+                        </tr>
+                        <tr>
+                            <td>Customisation</td>
+                            <td>Ads can be easily modified and personalised</td>
+                            <td>Less flexibility in modification after publication</td>
+                        </tr>
+                        <tr>
+                            <td>Reach</td>
+                            <td>Global reach, accessible to a worldwide audience</td>
+                            <td>Often limited to local or regional reach</td>
+                        </tr>
+                        <tr>
+                            <td>Time to Market</td>
+                            <td>Quick deployment and immediate visibility</td>
+                            <td>Longer preparation and lead times</td>
+                        </tr>
+                        <tr>
+                            <td>Sustainability</td>
+                            <td>More environmentally friendly (paperless)</td>
+                            <td>Uses physical materials (paper, billboards), potentially less eco-friendly</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>A Step-by-Step Guide to Digital Advertising</h2>
+
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-number">1</div>
+                    <div class="strategy-title">Set Clear Objectives</div>
+                </div>
+                <p>Digital advertising objectives vary based on the specific goals of a campaign. Each objective requires a different approach and set of strategies in digital advertising to be effective. Here are some examples of objectives you can set:</p>
+                <ul>
+                    <li><strong>Brand Awareness:</strong> To increase the visibility and recognition of a brand. For example, a new startup might use display ads to introduce its brand to a wider audience.</li>
+                    <li><strong>Lead Generation:</strong> Aimed at gathering information from potential customers, like email sign-ups.</li>
+                    <li><strong>Traffic Increase:</strong> To drive more visitors to a website or a specific landing page.</li>
+                    <li><strong>Engagement:</strong> Boosting interactions with the audience through social media campaigns or interactive content.</li>
+                    <li><strong>Sales and Conversions:</strong> Directly focused on increasing sales, often through targeted and retargeted ads.</li>
+                    <li><strong>Customer Loyalty:</strong> To build and maintain long-term customer relationships, using strategies like email marketing campaigns offering exclusive deals.</li>
+                </ul>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-number">2</div>
+                    <div class="strategy-title">Understand Your Audience</div>
+                </div>
+                <p>Understanding your audience is crucial for creating ads that resonate with them and achieving your campaign goals effectively. In digital advertising, this involves:</p>
+                <ul>
+                    <li><strong>Demographic Analysis:</strong> Identify age, gender, location, etc., to understand who your audience is.</li>
+                    <li><strong>Interests and Preferences:</strong> Look at their interests, preferences, and habits.</li>
+                    <li><strong>Online Behaviour:</strong> Track their online activity. Where do they hang out online? Are they scrolling through Instagram, searching on Google, or networking on LinkedIn? When are they active? What is their interaction with similar products or services like? Use market research and analytics to gather this information.</li>
+                    <li><strong>Feedback and Engagement:</strong> Listen to their feedback on social media and other channels.</li>
+                    <li><strong>Persona Creation:</strong> Develop detailed customer personas to guide your ad targeting and content creation.</li>
+                </ul>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-number">3</div>
+                    <div class="strategy-title">Choose the Right Platforms</div>
+                </div>
+                <p>Once you've set your goals and gotten to know your audience, the next step is to choose the best digital advertising platform for your campaign. Then, you will need to do the following:</p>
+                <ul>
+                    <li><strong>Evaluate Platform Strengths:</strong> Different platforms excel in different areas. Check out the table at the end of this article to help you understand each platform.</li>
+                    <li><strong>Consider Your Budget:</strong> Some platforms offer more cost-effective options suitable for your budget. Familiarise yourself with the cost of digital advertising.</li>
+                    <li><strong>Test and Measure:</strong> Start with small campaigns to test the waters. Measure the performance and tweak your strategy accordingly. Learn about the different digital advertising metrics.</li>
+                </ul>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-number">4</div>
+                    <div class="strategy-title">Create Engaging Content</div>
+                </div>
+                <p>Now that you've settled with a digital ad platform, it's time to create engaging content for your target audience. Here are a few ways you can do this.</p>
+                <ul>
+                    <li><strong>Craft Compelling Content:</strong> Use storytelling, humour, or emotional appeal to create a connection. Each ad should resonate with your audience's values or needs.</li>
+                    <li><strong>Stay Brand-Relevant:</strong> Ensure your content aligns with your brand identity and campaign goals. Consistency reinforces brand recognition.</li>
+                    <li><strong>Use High-Quality Visuals:</strong> Incorporate eye-catching images or videos. These should grab attention and be memorable.</li>
+                    <li><strong>Experiment with Formats:</strong> Test various ad formats (e.g., carousel ads, video ads, static images) to see which performs best with your audience.</li>
+                    <li><strong>Calls-to-Action:</strong> Include clear, persuasive CTAs guiding users on what to do next (e.g., 'Shop Now', 'Learn More').</li>
+                </ul>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-number">5</div>
+                    <div class="strategy-title">Launch and Monitor Campaigns</div>
+                </div>
+                <p>Effective monitoring and adjustment are key to a successful digital advertising campaign. Here are some steps you can take:</p>
+                <ul>
+                    <li><strong>Set Up Your Campaign:</strong> Choose the right digital platform based on your audience research. Configure targeting options like demographics, interests, and behaviours.</li>
+                    <li><strong>Implement Tracking:</strong> Set up tracking tools such as Google Analytics to monitor campaign performance.</li>
+                    <li><strong>Launch the Campaign:</strong> Once everything is set, launch your campaign.</li>
+                    <li><strong>Monitor Performance:</strong> Regularly check key metrics like click-through rates, engagement rates, and conversion rates.</li>
+                    <li><strong>Analyse and Adjust:</strong> Based on the performance data, make adjustments to improve your campaign. This could involve tweaking ad copy, visuals, or targeting options.</li>
+                    <li><strong>Report and Evaluate:</strong> Create regular reports to evaluate the campaign's success against your initial objectives.</li>
+                </ul>
+            </div>
+
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <div class="strategy-number">6</div>
+                    <div class="strategy-title">Optimise Continuously</div>
+                </div>
+                <p>Continual optimisation ensures your digital advertising remains effective and relevant, maximising ROI over time. To continuously optimise your digital advertising campaigns, consider the following:</p>
+                <ul>
+                    <li><strong>Analyse Data Regularly:</strong> Regularly review your campaign data to identify what's working and what isn't.</li>
+                    <li><strong>A/B Testing:</strong> Test different elements of your ads, such as headlines, images, and call-to-actions, to see which versions perform better.</li>
+                    <li><strong>Adjust Targeting:</strong> Fine-tune your audience targeting based on performance data and insights.</li>
+                    <li><strong>Refine Content:</strong> Update and improve your ad content based on feedback and performance metrics.</li>
+                    <li><strong>Budget Allocation:</strong> Reallocate your budget to the most effective campaigns and platforms.</li>
+                    <li><strong>Stay Updated:</strong> Keep up with the latest trends and platform updates to maintain campaign effectiveness.</li>
+                </ul>
+            </div>
+
+            <h2>Types of Digital Advertising</h2>
+
+            <p>Digital advertising offers a diverse landscape, from Google ads that appear just as you think of something, to social media ads that grab your attention in your feed. Each type of digital advertising has unique ways to connect and communicate with people online.</p>
+
+            <div class="ad-type-box">
+                <h4>1. Display Ads</h4>
+                <p>These ads are the billboards of the digital world. They're placed on websites, drawing attention with vibrant images and interactive elements. They're great for making a brand noticeable. However, the challenge lies in not becoming just part of the background noise on a webpage. The key is to blend creativity with strategic placement to catch the right eye.</p>
+            </div>
+
+            <div class="ad-type-box">
+                <h4>2. Social Media Ads</h4>
+                <p>Customised for each user's social media habits, these ads pop up in feeds, stories, and as promoted posts. They're all about engaging directly with the audience through familiar social channels. The trick is to balance personalisation and targeting without crossing the line into being intrusive.</p>
+            </div>
+
+            <div class="ad-type-box">
+                <h4>3. Video Ads</h4>
+                <p>Video ads bring stories to life, engaging audiences with dynamic content. They can appear anywhere, from YouTube videos to social media platforms. The challenge is in creating content that captures attention quickly and effectively before viewers can skip it.</p>
+            </div>
+
+            <div class="ad-type-box">
+                <h4>4. Native Advertising</h4>
+                <p>These ads are masters of disguise, blending seamlessly with the platform's content. They offer a less intrusive form of advertising, designed to engage readers with content that doesn't feel like a traditional ad. The art lies in maintaining transparency and trustworthiness.</p>
+            </div>
+
+            <div class="ad-type-box">
+                <h4>5. Email Marketing</h4>
+                <p>Email marketing brings a personal touch, delivering content right to the user's inbox. It's a direct line to your audience, but it requires striking the right balance between informative and promotional content to avoid being marked as spam.</p>
+            </div>
+
+            <div class="ad-type-box">
+                <h4>6. Mobile Advertising</h4>
+                <p>These ads are tailored for the on-the-go audience, making use of mobile-specific features like location services. The challenge is designing for smaller screens and a more distracted audience.</p>
+            </div>
+
+            <div class="ad-type-box">
+                <h4>7. Retargeting/Remarketing</h4>
+                <p>Retargeting brings back users who have shown interest in your brand. It's a powerful tool to remind and re-engage, but it requires a delicate approach to avoid seeming too pushy.</p>
+            </div>
+
+            <div class="ad-type-box">
+                <h4>8. Pay-Per-Click (PPC)</h4>
+                <p>PPC is all about immediate visibility. It's a direct approach to driving traffic, where you pay for actual clicks, making it a measurable and adjustable form of advertising.</p>
+            </div>
+
+            <h2>Choosing the Right Digital Ad Platform</h2>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Best For</th>
+                            <th>Target Audience</th>
+                            <th>Key Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Google Ads</td>
+                            <td>Search-based advertising</td>
+                            <td>Broad, all ages</td>
+                            <td>Keyword targeting, high intent</td>
+                        </tr>
+                        <tr>
+                            <td>Facebook</td>
+                            <td>Demographic targeting</td>
+                            <td>All ages, especially 18-50</td>
+                            <td>Detailed demographics, high engagement</td>
+                        </tr>
+                        <tr>
+                            <td>Instagram</td>
+                            <td>Visual content, younger audience</td>
+                            <td>Mostly under 40</td>
+                            <td>High engagement, story ads, visual appeal</td>
+                        </tr>
+                        <tr>
+                            <td>LinkedIn</td>
+                            <td>B2B, professional services</td>
+                            <td>Professionals, B2B audience</td>
+                            <td>Networking, industry targeting</td>
+                        </tr>
+                        <tr>
+                            <td>X (Twitter)</td>
+                            <td>Trend-based, real-time content</td>
+                            <td>Broad, especially younger adults</td>
+                            <td>Quick engagement, hashtag targeting</td>
+                        </tr>
+                        <tr>
+                            <td>YouTube</td>
+                            <td>Video content, broad reach</td>
+                            <td>All ages</td>
+                            <td>High engagement, video ads, wide reach</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>This table provides a basic guide, but it's important to dive deeper into each platform's specifics to tailor your choice to your specific business needs and campaign goals.</p>
+
+            <h2>Cost of Digital Advertising</h2>
+
+            <p>When planning your budget for digital advertising, it's a good idea to allocate about 7-12% of your total revenue to marketing, focusing mainly on digital channels. Start with a smaller budget to test the waters, then adjust it based on the performance and return on investment (ROI) you're getting.</p>
+
+            <p>Keep in mind who you want to reach, your campaign goals, and which platforms to use for the best results. JRNY Digital offers a clear and comprehensive pricing plan, covering everything from managing your campaigns to developing your website and training your team, all at a fixed monthly rate without any hidden fees. This makes it easier for businesses like you to know exactly what you're paying for.</p>
+
+            <p>Check out <a href="pricing.html">JRNY Digital's Pricing Page</a> for more details on our pricing structure and to see how it fits into your budgeting plans.</p>
+
+            <h2>How to Engage Your Audience Using Digital Advertising</h2>
+
+            <p>If your digital ads aren't hitting the mark, here's a bit of insight based on what's happening in the ad scene:</p>
+
+            <div class="tips-section">
+                <h3>Tips for Engaging Your Audience</h3>
+                <div class="tip-item">
+                    <h4>1. Connect With What Your Audience Cares About</h4>
+                    <p>Your ads need to really speak to what your audience is into. Remember how Telstra's ad connected with our love for sports? That's the kind of relatability you want.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>2. Tone Matters</h4>
+                    <p>Take a cue from the mixed reactions to the Westpac ad. The way you present your ad - whether it's funny, serious, or something else - needs to be spot-on for your audience.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>3. Keep Up with the Times</h4>
+                    <p>The ad world here is always changing. From big company mergers to the rise of cool indie agencies, make sure your ads aren't stuck in the past.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>4. Make it a Good Experience</h4>
+                    <p>Ads today need to be short, sweet, and to the point. If they're too long or miss the mark, people just won't be keen.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>5. Authenticity is Key</h4>
+                    <p>Folks these days value real-deal ads. If your ad comes off as fake or tries too hard, it might turn people off.</p>
+                </div>
+            </div>
+
+            <h2>Digital Advertising Metrics</h2>
+
+            <p>Digital advertising metrics are the tools you use to check how well your ads are doing. They help you figure out what's working and what isn't, so you can make your ads even better.</p>
+
+            <p>Understanding these metrics is vital if you want to get the most out of your digital ads. Let's get into the different types and see how they help measure your ad success.</p>
+
+            <div class="metrics-list">
+                <h3>Key Metrics to Track</h3>
+                <div class="metric-item">
+                    <div class="metric-icon">🖱️</div>
+                    <div class="metric-content">
+                        <h4>Click-Through Rate (CTR)</h4>
+                        <p>Shows how many clicked your ad - a great way to measure appeal.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">💰</div>
+                    <div class="metric-content">
+                        <h4>Cost Per Click (CPC)</h4>
+                        <p>What each click costs you. Crucial for budgeting and understanding the cost-effectiveness of your campaign.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">🎯</div>
+                    <div class="metric-content">
+                        <h4>Conversion Rate</h4>
+                        <p>Tracks who clicked and then acted, like buying or subscribing.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">📊</div>
+                    <div class="metric-content">
+                        <h4>Cost Per Conversion</h4>
+                        <p>Averages out what each conversion costs. Essential for ROI insights.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">👁️</div>
+                    <div class="metric-content">
+                        <h4>Impressions</h4>
+                        <p>Counts how often your ad's seen, click or no click.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">📈</div>
+                    <div class="metric-content">
+                        <h4>Return on Ad Spend (ROAS)</h4>
+                        <p>Calculates earnings per advertising dollar. Measures campaign effectiveness.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">❤️</div>
+                    <div class="metric-content">
+                        <h4>Engagement Rate</h4>
+                        <p>Especially for social media, gauges interaction levels.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">🚪</div>
+                    <div class="metric-content">
+                        <h4>Bounce Rate</h4>
+                        <p>Shows if visitors leave quickly from your landing page.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">🎬</div>
+                    <div class="metric-content">
+                        <h4>View-Through Rate</h4>
+                        <p>For video ads, tracks viewing completion.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">⭐</div>
+                    <div class="metric-content">
+                        <h4>Quality Score</h4>
+                        <p>Google Ads' rating on your keywords and ad quality, impacting cost and placement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Integration with Other Digital Marketing Channels</h2>
+
+            <p>Digital advertising works best when integrated with other marketing channels, including:</p>
+
+            <ul>
+                <li><strong>Email Marketing:</strong> Use insights from your digital ads to segment and personalise email campaigns.</li>
+                <li><strong>Social Media Ads:</strong> Complement organic social media efforts with paid ads for broader reach.</li>
+                <li><strong>SEO and PPC:</strong> Align SEO efforts with PPC campaigns to ensure a cohesive online presence.</li>
+                <li><strong>Content Marketing:</strong> Use insights from content marketing to inform ad content and vice versa.</li>
+            </ul>
+
+            <h2>Optimising Digital Advertising Campaigns</h2>
+
+            <p>Optimising digital advertising campaigns involves refining and improving your online ad strategies for better performance and results. Key steps in this process include:</p>
+
+            <ul>
+                <li><strong>A/B Testing:</strong> Regularly test different versions of your ads to see what works best.</li>
+                <li><strong>Analytics:</strong> Use tools like Google Analytics to track performance and make data-driven decisions.</li>
+                <li><strong>Customer Feedback:</strong> Listen to customer feedback to understand their needs and preferences.</li>
+            </ul>
+
+            <h2>Challenges and Solutions in Digital Advertising</h2>
+
+            <p>From ad fatigue to technical complexities, digital advertising presents various challenges.</p>
+
+            <div class="challenge-box">
+                <h4>1. Ad Fatigue</h4>
+                <p>Consumers often get overwhelmed by the sheer volume of ads, leading to disinterest.</p>
+                <p><span class="solution">Solution:</span> Rotate ads and use fresh, engaging content to maintain interest.</p>
+            </div>
+
+            <div class="challenge-box">
+                <h4>2. Privacy Concerns</h4>
+                <p>Balancing data collection for targeted advertising with privacy concerns is a delicate task.</p>
+                <p><span class="solution">Solution:</span> Be transparent about data usage and prioritise user consent.</p>
+            </div>
+
+            <div class="challenge-box">
+                <h4>3. Rapidly Changing Landscape</h4>
+                <p>Keeping up with evolving technologies and trends requires constant vigilance and adaptability.</p>
+                <p><span class="solution">Solution:</span> Stay informed about industry trends and adapt strategies accordingly.</p>
+            </div>
+
+            <div class="challenge-box">
+                <h4>4. Competition</h4>
+                <p>The digital space is highly competitive, making it hard to stand out.</p>
+                <p><span class="solution">Solution:</span> Differentiate your brand with unique selling points and creative campaigns.</p>
+            </div>
+
+            <div class="challenge-box">
+                <h4>5. Ad Blockers</h4>
+                <p>The widespread use of ad blockers can limit the reach of digital campaigns.</p>
+                <p><span class="solution">Solution:</span> Focus on non-intrusive, valuable ad content to engage users.</p>
+            </div>
+
+            <div class="challenge-box">
+                <h4>6. ROI Measurement</h4>
+                <p>Accurately measuring the return on investment and impact of digital ads can be challenging.</p>
+                <p><span class="solution">Solution:</span> Utilise analytics tools to track performance and adjust strategies.</p>
+            </div>
+
+            <div class="challenge-box">
+                <h4>7. Platform Dependence</h4>
+                <p>Dependence on platforms like Google and Facebook can pose risks if these platforms change their policies or algorithms.</p>
+                <p><span class="solution">Solution:</span> Diversify advertising platforms to reduce risk.</p>
+            </div>
+
+            <div class="challenge-box">
+                <h4>8. Content Saturation</h4>
+                <p>The internet is flooded with content, making it difficult to capture and retain consumer attention.</p>
+                <p><span class="solution">Solution:</span> Develop high-quality, relevant content that stands out.</p>
+            </div>
+
+            <div class="challenge-box">
+                <h4>9. Technical Complexity</h4>
+                <p>The technical aspects of digital advertising, like SEO and SEM, can be complex and time-consuming to manage.</p>
+                <p><span class="solution">Solution:</span> Invest in training or outsource to specialists for complex tasks.</p>
+            </div>
+
+            <div class="challenge-box">
+                <h4>10. Budgeting</h4>
+                <p>Allocating the right budget for effective digital advertising requires strategic planning and insights.</p>
+                <p><span class="solution">Solution:</span> Regularly review ad spending and performance to optimise budget allocation.</p>
+            </div>
+
+            <h2>DIY vs. Outsourcing Digital Advertising</h2>
+
+            <p>Deciding whether to handle digital advertising yourself or get some outside help is a big call. It's like choosing between learning a new skill or getting someone who already knows the ropes.</p>
+
+            <p>If you go DIY, you'll have more control and get to learn heaps. But, getting the pros to do it can save you time and might get you better results, as they know all the tricks.</p>
+
+            <p>Ultimately, it boils down to what you're comfortable with and what you want to achieve with your ads.</p>
+
+            <h3>Why Outsource Digital Advertising Professionals</h3>
+
+            <p>Hiring professionals for digital advertising can be a wise decision. These experts keep up with current trends and have the skills to create campaigns that really hit the mark. They can handle your email marketing and make sure your online content is search-engine friendly, targeting the right audience. This can save you time and make your campaigns more effective and efficient.</p>
+
+            <div class="cta-box">
+                <h3>Ready to Boost Your Digital Advertising Game?</h3>
+                <p>Partner with JRNY Digital for expert solutions tailored to your needs. Remember, digital advertising is a dynamic tool in the online world. It helps you reach a wide audience, customise messages, and get instant feedback. Whether you manage it yourself or outsource, staying current and adaptable is crucial. With the digital landscape constantly evolving, keeping up with the latest strategies is key to success.</p>
+                <a href="contact-us.html" class="btn">Contact Us Today</a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How do I start with digital advertising?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Begin by identifying your target audience and goals. Choose the right platforms that align with your audience's preferences.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What's the difference between SEO and SEM?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            SEO focuses on organic search results, while SEM involves paid advertising on search engines.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can small businesses benefit from digital advertising?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutely. Digital advertising offers cost-effective ways for small businesses to reach a wider audience.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How do I measure the success of my digital ads?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Track metrics like Click-Through Rate (CTR), Conversion Rate, and Return on Ad Spend (ROAS).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What's the best platform for digital advertising?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            It varies based on your business and target audience. Platforms like Google, Facebook, and LinkedIn are popular choices.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Is digital advertising expensive?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Costs can vary. It's scalable and can be tailored to fit different budgets.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How does targeting work in digital advertising?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Targeting uses user data like interests, behaviour, and demographics to reach specific audiences.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What are the latest trends in digital advertising?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Trends include personalised advertising, video content, and mobile-first strategies.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How important is mobile advertising?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Very important, as a growing number of users access the internet via mobile devices.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Also Read Box -->
+            <div class="also-read-box">
+                <h3 class="also-read-title">Also Read:</h3>
+                <a href="digital-marketing-strategies-2024.html" class="also-read-link">The 10 Most Effective Digital Marketing Strategies in 2024</a>
+                <p class="also-read-description">Stay ahead of the competition with these 10 digital marketing strategies that are delivering the best results for businesses in 2024.</p>
+                <a href="digital-marketing-strategies-2024.html" class="also-read-btn">Read More</a>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Logo_colour.jpg" alt="Author">
+                </div>
+                <div class="author-info">
+                    Written by: <span class="author-name">JRNY Digital</span>
+                </div>
+            </div>
+
+            <!-- Popular Tags -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Popular Tags</h3>
+                <div class="tags-list">
+                    <a href="#" class="tag-item">Ads</a>
+                    <a href="#" class="tag-item">Digital Advertising</a>
+                    <a href="#" class="tag-item">PPC</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+                    </div>
+                    <p>We're human, we're real we care about our clients. Honesty, Transparency and Results - that's our motto.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button type="submit">Subscribe Us</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="social-media-ads.html">Social Media Ads</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="email-marketing.html">Email Marketing</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="cro.html">Conversion Rate Optimisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Portfolio</h4>
+                    <ul>
+                        <li><a href="blog.html" class="highlight">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © All Rights Reserved. JRNY DIGITAL Australia Pty Ltd. ABN 82 642 424 904</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Mobile dropdown toggles
+            mobileDropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking a link (except dropdown toggles)
+            mobileMenu.querySelectorAll('a:not(.mobile-dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>

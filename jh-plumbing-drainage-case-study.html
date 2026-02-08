@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JH Plumbing & Drainage Case Study - JRNY Digital | How We Helped JHPD Generate Quality Leads</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-divider {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-links > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .nav-links > a.active {
+            color: #F5A623;
+        }
+
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > a:hover,
+        .nav-dropdown > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown > a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            border-top-color: #F5A623;
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(245, 166, 35, 0.1);
+            color: #F5A623;
+        }
+
+        .dropdown-menu a.active {
+            color: #F5A623;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .nav-phone {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .nav-phone:hover {
+            color: #F5A623;
+        }
+
+        .nav-cta {
+            background-color: #F5A623;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+        /* Mobile Menu Hamburger Button */
+        .mobile-nav-right {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-nav-phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-phone:hover {
+            background: rgba(245, 166, 35, 0.2);
+            color: #F5A623;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-toggle span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links > a,
+        .mobile-menu-links > .mobile-dropdown > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-menu-links > a:hover,
+        .mobile-menu-links > .mobile-dropdown > a:hover {
+            color: #F5A623;
+            padding-left: 10px;
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown > a {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none !important;
+        }
+
+        .mobile-dropdown > a::after {
+            content: '+';
+            font-size: 20px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active > a::after {
+            content: '−';
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 0 -30px;
+            padding: 0 30px;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-menu a {
+            display: block;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 14px 0 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            color: #F5A623;
+            padding-left: 30px;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+            background-color: #F5A623;
+            color: #000000;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url('https://ik.imagekit.io/2z8yysunx/JRNY/JH%20Plumbing%20&%20Drainage%20-%20Case%20Study.avif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.7) 0%,
+                rgba(0, 0, 0, 0.5) 50%,
+                rgba(0, 0, 0, 0.8) 100%
+            );
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1000px;
+            padding: 160px 60px 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            position: relative;
+            background: #1a1a1a;
+            z-index: 1;
+        }
+
+        .hero-badge::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50px;
+            background: conic-gradient(from var(--angle), transparent 60%, #F5A623 80%, #FFBD00 100%, transparent 100%);
+            z-index: -2;
+            animation: rotateBorder 3s linear infinite;
+        }
+
+        .hero-badge::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            background: #1a1a1a;
+            z-index: -1;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+        }
+
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                --angle: 0deg;
+                filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 15px rgba(245, 166, 35, 0.8));
+            }
+            100% {
+                --angle: 360deg;
+                filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.5));
+            }
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Challenge Section */
+        .challenge-section {
+            background: #000000;
+            padding: 100px 60px;
+        }
+
+        .challenge-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .challenge-heading {
+            font-size: 64px;
+            font-weight: 400;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .challenge-card {
+            position: relative;
+            background: #0a0a0a;
+            border-radius: 16px;
+            padding: 50px 60px;
+            border-left: 4px solid #F5A623;
+            overflow: hidden;
+        }
+
+        .challenge-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(
+                600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(255, 189, 0, 0.15) 0%,
+                rgba(245, 166, 35, 0.08) 25%,
+                transparent 50%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            border-radius: 16px;
+        }
+
+        .challenge-card:hover::before {
+            opacity: 1;
+        }
+
+        .challenge-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid rgba(255, 189, 0, 0);
+            border-radius: 16px;
+            transition: border-color 0.4s ease;
+            pointer-events: none;
+        }
+
+        .challenge-card:hover::after {
+            border-color: rgba(255, 189, 0, 0.2);
+        }
+
+        .challenge-card p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .challenge-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Key Problems Section */
+        .key-problems-section {
+            background: #000000;
+            padding: 100px 60px;
+        }
+
+        .key-problems-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .key-problems-left {
+            position: sticky;
+            top: 100px;
+        }
+
+        .key-problems-heading {
+            font-size: 72px;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 50px;
+        }
+
+        .key-problems-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            display: block;
+        }
+
+        .key-problems-right {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .problem-card-wrapper {
+            position: relative;
+            border-radius: 16px;
+            z-index: 1;
+        }
+
+        .problem-card-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 18px;
+            background: conic-gradient(from var(--card-angle, 0deg), transparent 70%, #F5A623 85%, #FFBD00 100%, transparent 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .problem-card-wrapper:hover::before {
+            opacity: 1;
+            animation: rotateCardBorder 4s linear infinite;
+        }
+
+        .problem-card-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 20px;
+            background: conic-gradient(from var(--card-angle, 0deg), transparent 70%, #F5A623 85%, #FFBD00 100%, transparent 100%);
+            z-index: -2;
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .problem-card-wrapper:hover::after {
+            opacity: 0.5;
+            animation: rotateCardBorder 4s linear infinite;
+        }
+
+        @keyframes rotateCardBorder {
+            0% {
+                --card-angle: 0deg;
+            }
+            100% {
+                --card-angle: 360deg;
+            }
+        }
+
+        @property --card-angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        .problem-card {
+            position: relative;
+            background: #0d0d0d;
+            border-radius: 16px;
+            padding: 35px 40px;
+            border-right: 3px solid #F5A623;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(
+                500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(255, 189, 0, 0.12) 0%,
+                rgba(245, 166, 35, 0.06) 25%,
+                transparent 50%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            border-radius: 16px;
+        }
+
+        .problem-card:hover::before {
+            opacity: 1;
+        }
+
+        .problem-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #F5A623;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .problem-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Our Approach Section */
+        .approach-section {
+            background: #000000;
+            padding: 100px 60px;
+        }
+
+        .approach-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .approach-heading {
+            font-size: 72px;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .approach-subtitle {
+            font-size: 28px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
+
+        .approach-description {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 50px;
+            max-width: 100%;
+        }
+
+        .approach-solution-title {
+            font-size: 28px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-bottom: 40px;
+            max-width: 100%;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .approach-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .approach-card {
+            position: relative;
+            background: linear-gradient(145deg, #141414 0%, #0a0a0a 100%);
+            border-radius: 16px;
+            padding: 35px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .approach-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(
+                500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(255, 189, 0, 0.12) 0%,
+                rgba(245, 166, 35, 0.06) 25%,
+                transparent 50%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            border-radius: 16px;
+        }
+
+        .approach-card:hover::before {
+            opacity: 1;
+        }
+
+        .approach-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid rgba(255, 189, 0, 0);
+            border-radius: 16px;
+            transition: border-color 0.4s ease;
+            pointer-events: none;
+        }
+
+        .approach-card:hover::after {
+            border-color: rgba(255, 189, 0, 0.25);
+        }
+
+        .approach-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Results Section */
+        .results-section {
+            background: #000000;
+            padding: 100px 60px;
+        }
+
+        .results-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .results-heading {
+            font-size: 72px;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 50px;
+        }
+
+        .results-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: stretch;
+        }
+
+        .results-left {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .results-right {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .results-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 16px;
+            padding: 25px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .result-card h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+
+        .result-card h3 span {
+            color: #F5A623;
+        }
+
+        .results-image {
+            width: 100%;
+        }
+
+        .results-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .results-images-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+        }
+
+        .results-images-stack img {
+            width: 100%;
+            flex: 1;
+            object-fit: cover;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .results-summary {
+            text-align: left;
+        }
+
+        .results-summary p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .results-summary p:last-child {
+            margin-bottom: 0;
+        }
+
+        .results-summary a {
+            color: #F5A623;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .results-summary a:hover {
+            color: #FFBD00;
+        }
+
+        /* Additional Content Section */
+        .additional-section {
+            background: #000000;
+            padding: 0 60px 100px;
+        }
+
+        .additional-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .additional-text {
+            margin-bottom: 50px;
+        }
+
+        .additional-text p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .additional-image {
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .additional-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .additional-summary p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .additional-summary p:last-child {
+            margin-bottom: 0;
+        }
+
+        .additional-summary a {
+            color: #F5A623;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .additional-summary a:hover {
+            color: #FFBD00;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #000000;
+            padding: 100px 60px;
+        }
+
+        .cta-header {
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .cta-header h2 {
+            font-size: 80px;
+            font-weight: 400;
+            color: #ffc500;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .cta-header p {
+            font-size: 18px;
+            color: #ffffff;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-container-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .cta-container-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 22px;
+            background: conic-gradient(from var(--angle), transparent 92%, #F5A623 96%, #FFBD00 100%, transparent 100%);
+            z-index: 0;
+            animation: rotateBorder 8s linear infinite;
+        }
+
+        .cta-container-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 25px;
+            background: conic-gradient(from var(--angle), transparent 92%, #F5A623 96%, #FFBD00 100%, transparent 100%);
+            z-index: -1;
+            animation: rotateBorder 8s linear infinite;
+            filter: blur(15px);
+            opacity: 0.7;
+        }
+
+        .cta-container {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 80px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            z-index: 1;
+        }
+
+        .cta-video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .cta-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .cta-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 30%) var(--mouse-y, 50%), rgba(255, 189, 0, 0.2) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        .cta-container:hover::before {
+            opacity: 1;
+        }
+
+        .cta-container > *:not(.cta-video-bg):not(.cta-video-overlay) {
+            position: relative;
+            z-index: 3;
+        }
+
+        .cta-content h3 {
+            font-size: 42px;
+            font-weight: 400;
+            font-style: italic;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .cta-container-partners {
+            margin-top: 20px;
+        }
+
+        .cta-container-partners img {
+            height: 80px;
+            width: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: #ffffff;
+            color: #000000;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .cta-button:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 60px 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 320px;
+        }
+
+        .footer-subscribe input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .footer-subscribe input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-subscribe button {
+            background: #ffc500;
+            color: #000000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .footer-subscribe button:hover {
+            background: #e6b100;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc500;
+        }
+
+        .footer-column ul li a.highlight {
+            color: #ffc500;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            .hero-content {
+                padding: 140px 40px 60px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .challenge-section {
+                padding: 80px 40px;
+            }
+
+            .challenge-heading {
+                font-size: 48px;
+                margin-bottom: 40px;
+            }
+
+            .challenge-card {
+                padding: 40px 45px;
+            }
+
+            .challenge-card p {
+                font-size: 16px;
+            }
+
+            .key-problems-section {
+                padding: 80px 40px;
+            }
+
+            .key-problems-container {
+                gap: 50px;
+            }
+
+            .key-problems-heading {
+                font-size: 56px;
+                margin-bottom: 40px;
+            }
+
+            .problem-card {
+                padding: 30px 35px;
+            }
+
+            .problem-card h3 {
+                font-size: 22px;
+            }
+
+            .approach-section {
+                padding: 80px 40px;
+            }
+
+            .approach-heading {
+                font-size: 56px;
+                margin-bottom: 20px;
+            }
+
+            .approach-grid {
+                gap: 20px;
+            }
+
+            .approach-column {
+                gap: 20px;
+            }
+
+            .approach-card {
+                padding: 30px 35px;
+            }
+
+            .results-section {
+                padding: 80px 40px;
+            }
+
+            .results-heading {
+                font-size: 56px;
+            }
+
+            .results-layout {
+                gap: 30px;
+            }
+
+            .additional-section {
+                padding: 0 40px 80px;
+            }
+
+            .cta-section {
+                padding: 100px 40px;
+            }
+
+            .cta-header h2 {
+                font-size: 42px;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 40px;
+            }
+
+            .cta-content h3 {
+                font-size: 32px;
+            }
+
+            .cta-container-partners img {
+                height: 60px;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-divider {
+                display: none;
+            }
+
+            .nav-links {
+            display: none;
+        }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-nav-right {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay,
+            .mobile-menu {
+                display: block;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            .hero-content {
+                padding: 120px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .challenge-section {
+                padding: 60px 20px;
+            }
+
+            .challenge-heading {
+                font-size: 36px;
+                margin-bottom: 30px;
+            }
+
+            .challenge-card {
+                padding: 30px 25px;
+            }
+
+            .challenge-card p {
+                font-size: 15px;
+                line-height: 1.7;
+                margin-bottom: 20px;
+            }
+
+            .key-problems-section {
+                padding: 60px 20px;
+            }
+
+            .key-problems-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .key-problems-left {
+                position: relative;
+                top: 0;
+                text-align: center;
+            }
+
+            .key-problems-heading {
+                font-size: 42px;
+                margin-bottom: 30px;
+            }
+
+            .key-problems-image img {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+
+            .key-problems-right {
+                gap: 20px;
+            }
+
+            .problem-card {
+                padding: 25px 25px;
+            }
+
+            .problem-card h3 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .problem-card p {
+                font-size: 14px;
+            }
+
+            .approach-section {
+                padding: 60px 20px;
+            }
+
+            .approach-heading {
+                font-size: 42px;
+                margin-bottom: 15px;
+            }
+
+            .approach-subtitle {
+                font-size: 22px;
+                margin-bottom: 30px;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .approach-column {
+                gap: 20px;
+            }
+
+            .approach-card {
+                padding: 25px 25px;
+            }
+
+            .results-section {
+                padding: 60px 20px;
+            }
+
+            .results-heading {
+                font-size: 42px;
+                margin-bottom: 30px;
+            }
+
+            .results-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .result-card {
+                padding: 20px 25px;
+            }
+
+            .result-card h3 {
+                font-size: 16px;
+            }
+
+            .results-images-stack img {
+                flex: none;
+                height: auto;
+            }
+
+            .results-summary p {
+                font-size: 16px;
+            }
+
+            .additional-section {
+                padding: 0 20px 60px;
+            }
+
+            .additional-text p {
+                font-size: 16px;
+            }
+
+            .additional-summary p {
+                font-size: 16px;
+            }
+
+            .cta-section {
+                padding: 80px 20px;
+            }
+
+            .cta-header h2 {
+                font-size: 32px;
+            }
+
+            .cta-header p {
+                font-size: 16px;
+            }
+
+            .cta-container {
+                padding: 40px 25px;
+                min-height: auto;
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .cta-content h3 {
+                font-size: 26px;
+                margin-bottom: 10px;
+            }
+
+            .cta-container-partners {
+                margin-top: 5px;
+            }
+
+            .cta-container-partners img {
+                height: 50px;
+            }
+
+            .cta-partners img {
+                height: 40px;
+            }
+
+            .cta-button {
+                width: 100%;
+                text-align: center;
+                margin-top: 5px;
+            }
+
+            footer {
+                padding: 60px 20px 0;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            .footer-subscribe {
+                max-width: 100%;
+            }
+
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+            </a>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-links">
+            <a href="about-us.html">About Us</a>
+            <div class="nav-dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="nav-dropdown">
+                <a href="#" class="active">Results</a>
+                <div class="dropdown-menu">
+                    <a href="case-studies.html" class="active">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+            <a href="tel:0412345678" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                (04) 1234 5678
+            </a>
+        </div>
+        <a href="contact-us.html" class="nav-cta">Get Free Strategy Session</a>
+        <!-- Mobile Nav Right (Phone + Hamburger) -->
+        <div class="mobile-nav-right">
+            <a href="tel:0412345678" class="mobile-nav-phone" aria-label="Call us">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="about-us.html">About Us</a>
+            <div class="mobile-dropdown">
+                <a href="#">Services</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="mobile-dropdown">
+                <a href="#">Results</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+        </div>
+        <a href="contact-us.html" class="mobile-menu-cta">Get Free Strategy Session</a>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image-container"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge"><span class="hero-badge-dot"></span>Case Study</span>
+            <h1>JH Plumbing & Drainage</h1>
+            <p class="hero-subtitle">How we helped a first-time business owner generate quality leads and build a thriving plumbing business from scratch.</p>
+        </div>
+    </section>
+
+    <!-- The Challenge Section -->
+    <section class="challenge-section">
+        <div class="challenge-container">
+            <h2 class="challenge-heading">The Challenge</h2>
+            <div class="challenge-card">
+                <p>JH Plumbing & Drainage is a newly formed business based in the Gold Coast. Jason had been working in the plumbing industry since 2007 and specialises in all aspects of commercial, residential and industrial plumbing. In late 2020, Jason decided it was time to start a brand new adventure and go out on his own. A first time business owner with not much experience with marketing. And to make things more difficult - Jason and his wife, Jenna recently welcomed a new-born into their lives. With not a lot of room for error and no time to waste, that's when he approached JRNY Digital for some help.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Problems Section -->
+    <section class="key-problems-section">
+        <div class="key-problems-container">
+            <div class="key-problems-left">
+                <h2 class="key-problems-heading">Key Problems</h2>
+                <div class="key-problems-image">
+                    <img src="https://ik.imagekit.io/2z8yysunx/JRNY/JH%20Plumbing%20&%20Drainage%20-%20Case%20Study.avif" alt="JH Plumbing & Drainage">
+                </div>
+            </div>
+            <div class="key-problems-right">
+                <div class="problem-card-wrapper">
+                    <div class="problem-card">
+                        <h3>Zero Online Visibility</h3>
+                        <p>Brand new business with ZERO online visibility.</p>
+                    </div>
+                </div>
+                <div class="problem-card-wrapper">
+                    <div class="problem-card">
+                        <h3>No Marketing Experience</h3>
+                        <p>Never run any advertising or marketing in the past.</p>
+                    </div>
+                </div>
+                <div class="problem-card-wrapper">
+                    <div class="problem-card">
+                        <h3>Limited Budget</h3>
+                        <p>Not a lot of budget to work with for marketing activities.</p>
+                    </div>
+                </div>
+                <div class="problem-card-wrapper">
+                    <div class="problem-card">
+                        <h3>Immediate Results Needed</h3>
+                        <p>Needs results immediately to sustain the business.</p>
+                    </div>
+                </div>
+                <div class="problem-card-wrapper">
+                    <div class="problem-card">
+                        <h3>High Stakes</h3>
+                        <p>Recently had a new-born so there is no option but to make it work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Approach Section -->
+    <section class="approach-section">
+        <div class="approach-container">
+            <h2 class="approach-heading">Our Approach</h2>
+            <h3 class="approach-subtitle">The approach was simple:</h3>
+            <p class="approach-description">Generate as many highly qualified leads that are ready to buy as fast as possible whilst maintaining a budget that he could afford.</p>
+            <h3 class="approach-solution-title">The solution consisted of:</h3>
+            <div class="approach-grid">
+                <div class="approach-column">
+                    <div class="approach-card">
+                        <p>Building a dedicated landing page to increase the lead conversion rates</p>
+                    </div>
+                    <div class="approach-card">
+                        <p>Develop a highly optimised Google AdWords campaign targeting only high-intent searches</p>
+                    </div>
+                </div>
+                <div class="approach-column">
+                    <div class="approach-card">
+                        <p>Help Jason develop an offer that will generate as many customers as possible and yield him massive returns</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="results-container">
+            <h2 class="results-heading">The Results</h2>
+            <div class="results-layout">
+                <div class="results-left">
+                    <div class="results-cards">
+                        <div class="result-card">
+                            <h3>Amount spent: <span>$867</span></h3>
+                        </div>
+                        <div class="result-card">
+                            <h3>Clicks: <span>123</span></h3>
+                        </div>
+                        <div class="result-card">
+                            <h3>Leads: <span>28</span></h3>
+                        </div>
+                        <div class="result-card">
+                            <h3>Conversion rate: <span>22.76%</span></h3>
+                        </div>
+                        <div class="result-card">
+                            <h3>Cost per lead: <span>$30.9</span></h3>
+                        </div>
+                        <div class="result-card">
+                            <h3>Revenue: <span>$10,000+</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-right">
+                    <div class="results-images-stack">
+                        <img src="https://ik.imagekit.io/2z8yysunx/JRNY/jh%20testi%201.avif" alt="JH Plumbing & Drainage Results 1">
+                        <img src="https://ik.imagekit.io/2z8yysunx/JRNY/jh%20testi%202.avif" alt="JH Plumbing & Drainage Results 2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Content Section -->
+    <section class="additional-section">
+        <div class="additional-container">
+            <div class="additional-text">
+                <p>The custom built landing page targeted specific keywords with extremely high intent to provide JHPD with the greatest conversion rates as possible. This means minimal ad wastage and more highly qualified leads.</p>
+                <p>For every 100 people that visited this page, approximately 22 people became a lead. Considering the average conversion rates on websites are 1-3%, it's not a bad result for a brand new business within the 1st month of launching!</p>
+            </div>
+            <div class="additional-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/jh%20testi%203.avif" alt="JH Plumbing & Drainage Landing Page">
+            </div>
+            <div class="additional-summary">
+                <p>Since working with JHPD, we've seen Jason's business grow from an idea to a fully fledged business. Jason and his partner, Jenna, are absolutely over the moon with how the campaign has performed and they've already started to think about scaling the business with new employees - something that Jason never would have imagine he'd be in the position to do when he first started the business.</p>
+                <p>That's why we're extremely proud of this campaign. Although it isn't the biggest campaign we've managed, it certainly is one of the most impactful we've had to date and that is our mission at JRNY Digital - to help everyday business owners grow.</p>
+                <p>If you're looking to get results like these, <a href="contact-us.html">schedule in a free strategy consultation with us now</a>!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-header">
+            <h2>Still Doing Your Own Marketing?</h2>
+            <p>Book a free growth audit. In 30 minutes, we'll review your current marketing,<br>show you where you're leaving revenue on the table, and map out what a dedicated team could do for your business.</p>
+        </div>
+        <div class="cta-container-wrapper">
+            <div class="cta-container">
+                <video class="cta-video-bg" autoplay muted loop playsinline>
+                    <source src="https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20Website%20-%20Pics.mp4" type="video/mp4">
+                </video>
+                <div class="cta-video-overlay"></div>
+                <div class="cta-content">
+                    <h3>Get Your Free Growth Audit</h3>
+                    <div class="cta-container-partners">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/Mobile-Mockup-JRNY-3-1.webp" alt="Google Partner, Shopify Partner, Facebook Marketing Partners">
+                    </div>
+                </div>
+                <a href="contact-us.html" class="cta-button">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+                    </div>
+                    <p>We're human, we're real we care about our clients. Honesty, Transparency and Results - that's our motto.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button type="submit">Subscribe Us</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="social-media-ads.html">Social Media Ads</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="email-marketing.html">Email Marketing</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="cro.html">Conversion Rate Optimisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Portfolio</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="case-studies.html" class="highlight">Case Studies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © All Rights Reserved. JRNY DIGITAL Australia Pty Ltd. ABN 82 642 424 904</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Mobile dropdown toggles
+            mobileDropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking a link (except dropdown toggles)
+            mobileMenu.querySelectorAll('a:not(.mobile-dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Mouse tracking for Challenge card glow effect
+        document.querySelectorAll('.challenge-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', x + '%');
+                card.style.setProperty('--mouse-y', y + '%');
+            });
+        });
+
+        // Mouse tracking for Problem cards glow effect
+        document.querySelectorAll('.problem-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', x + '%');
+                card.style.setProperty('--mouse-y', y + '%');
+            });
+        });
+
+        // Mouse tracking for Approach cards glow effect
+        document.querySelectorAll('.approach-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', x + '%');
+                card.style.setProperty('--mouse-y', y + '%');
+            });
+        });
+
+        // Mouse tracking for CTA glow effect
+        document.querySelectorAll('.cta-container').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', x + '%');
+                card.style.setProperty('--mouse-y', y + '%');
+            });
+        });
+    </script>
+</body>
+</html>

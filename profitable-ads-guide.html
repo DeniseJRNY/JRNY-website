@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Guide To Running Profitable Ads: Full In-Depth Guide - JRNY Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-divider {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-links > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .nav-links > a.active {
+            color: #F5A623;
+        }
+
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > a:hover,
+        .nav-dropdown > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown > a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            border-top-color: #F5A623;
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(245, 166, 35, 0.1);
+            color: #F5A623;
+        }
+
+        .dropdown-menu a.active {
+            color: #F5A623;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .nav-phone { display: inline-flex; align-items: center; color: #FFFFFF; text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 8px 15px; border-radius: 6px; transition: all 0.3s ease; margin-right: 10px; white-space: nowrap; }
+        .nav-phone:hover { color: #F5A623; }
+
+        .nav-cta {
+            background-color: #F5A623;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+        /* Mobile Menu Hamburger Button */
+        .mobile-nav-right { display: none; align-items: center; gap: 15px; }
+        .mobile-nav-phone { display: flex; align-items: center; justify-content: center; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .mobile-nav-phone:hover { background: rgba(245, 166, 35, 0.2); color: #F5A623; }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-toggle span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links > a,
+        .mobile-menu-links > .mobile-dropdown > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-menu-links > a:hover,
+        .mobile-menu-links > .mobile-dropdown > a:hover {
+            color: #F5A623;
+            padding-left: 10px;
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown > a {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none !important;
+        }
+
+        .mobile-dropdown > a::after {
+            content: '+';
+            font-size: 20px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active > a::after {
+            content: '−';
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 0 -30px;
+            padding: 0 30px;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-menu a {
+            display: block;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 14px 0 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            color: #F5A623;
+            padding-left: 30px;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+            background-color: #F5A623;
+            color: #000000;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+
+        /* Hero Section with Image Background */
+        .article-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        /* Image Background */
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url('https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20Digital%20-%20Team%20Image%2014.jpg?updatedAt=1769195648359');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Dark Overlay */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.7) 50%,
+                rgba(0, 0, 0, 0.5) 100%
+            );
+            z-index: 2;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            max-width: 900px;
+            padding: 160px 60px 80px 60px;
+        }
+
+        .article-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            color: #F5A623;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+
+        /* Article Layout */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px 100px;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 100%;
+        }
+
+        .article-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .article-content h2 {
+            font-size: 38px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .article-content h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .article-content h4 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-content ul {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        .article-content ul li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .article-content a {
+            color: #F5A623;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-content a:hover {
+            color: #FFBD00;
+        }
+
+        /* Content Image */
+        .content-image {
+            margin: 30px 0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content-image.smaller {
+            max-width: 600px;
+        }
+
+        /* Stat Highlight */
+        .stat-highlight {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: #F5A623;
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+            font-style: italic;
+        }
+
+        /* Definition Box */
+        .definition-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .definition-box h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .definition-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        .definition-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border-left: 4px solid #F5A623;
+            border-radius: 0 16px 16px 0;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .quote-box p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #ffffff;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .quote-box .quote-author {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 15px;
+            font-style: normal;
+        }
+
+        /* Concept Box */
+        .concept-box {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .concept-box h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .concept-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0;
+        }
+
+        /* Comparison Box */
+        .comparison-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .comparison-box h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .comparison-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .comparison-old {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            min-width: 120px;
+        }
+
+        .comparison-arrow {
+            color: #F5A623;
+            font-size: 18px;
+        }
+
+        .comparison-new {
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Takeaway Box */
+        .takeaway-box {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.1) 0%, rgba(245, 166, 35, 0.02) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .takeaway-box h5 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #F5A623;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .takeaway-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .warning-box h5 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #dc3545;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .warning-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        /* List Box */
+        .list-box {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .list-box h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .list-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .list-box ul li {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+        }
+
+        .list-box ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Example Box */
+        .example-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .example-box h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .example-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        .example-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .example-box ul {
+            margin: 15px 0 0 0;
+            padding-left: 20px;
+        }
+
+        .example-box ul li {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 8px;
+        }
+
+        .example-box ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Table of Contents */
+        .toc-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .toc-box h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .toc-box ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .toc-box ul li {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .toc-box ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #F5A623;
+        }
+
+        .toc-box ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .cta-box .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #F5A623;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-box .btn:hover {
+            background: #FFBD00;
+            transform: translateY(-2px);
+        }
+
+        /* Also Read Box */
+        .also-read-box {
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 50%, rgba(245, 166, 35, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            max-width: 550px;
+        }
+
+        .also-read-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .also-read-link {
+            font-size: 16px;
+            color: #F5A623;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .also-read-link:hover {
+            color: #FFBD00;
+        }
+
+        .also-read-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .also-read-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .also-read-btn:hover {
+            background: #F5A623;
+            color: #000000;
+            border-color: #F5A623;
+        }
+
+        /* Sidebar */
+        .article-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            height: fit-content;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Popular Tags */
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tag-item {
+            display: block;
+            padding: 18px 25px;
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #F5A623;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag-item:hover {
+            background: #1a1a1a;
+            padding-left: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 60px 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 320px;
+        }
+
+        .footer-subscribe input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .footer-subscribe input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-subscribe button {
+            background: #ffc500;
+            color: #000000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .footer-subscribe button:hover {
+            background: #e6b100;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc500;
+        }
+
+        .footer-column ul li a.highlight {
+            color: #ffc500;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .article-layout {
+                grid-template-columns: 1fr 320px;
+                gap: 50px;
+            }
+
+            .article-title {
+                font-size: 48px;
+            }
+
+            .hero-content {
+                padding: 140px 60px 70px 60px;
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            .hero-content {
+                padding: 140px 40px 60px 40px;
+                max-width: 650px;
+            }
+
+            .article-title {
+                font-size: 42px;
+            }
+
+            .article-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 60px 40px 80px;
+            }
+
+            .article-sidebar {
+                position: relative;
+                top: 0;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-divider {
+                display: none;
+            }
+
+            .nav-links {
+            display: none;
+        }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-nav-right {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay,
+            .mobile-menu {
+                display: block;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .article-hero {
+                min-height: 50vh;
+            }
+
+            .hero-content {
+                padding: 120px 20px 40px;
+                max-width: 100%;
+            }
+
+            .article-title {
+                font-size: 32px;
+            }
+
+            .hero-overlay {
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.7) 100%
+                );
+            }
+
+            .article-layout {
+                padding: 40px 20px 60px;
+            }
+
+            .article-content h2 {
+                font-size: 28px;
+            }
+
+            .article-content h3 {
+                font-size: 22px;
+            }
+
+            .article-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .also-read-box {
+                max-width: 100%;
+            }
+
+            .stat-number {
+                font-size: 42px;
+            }
+
+            footer {
+                padding: 60px 20px 0;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            .footer-subscribe {
+                max-width: 100%;
+            }
+
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+            </a>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-links">
+            <a href="about-us.html">About Us</a>
+            <div class="nav-dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="nav-dropdown">
+                <a href="#">Results</a>
+                <div class="dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="tel:0412345678" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                (04) 1234 5678
+            </a>
+        </div>
+        <a href="contact-us.html" class="nav-cta">Get Free Strategy Session</a>
+        <!-- Mobile Nav Right (Phone + Hamburger) -->
+        <div class="mobile-nav-right">
+            <a href="tel:0412345678" class="mobile-nav-phone" aria-label="Call us">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="about-us.html">About Us</a>
+            <div class="mobile-dropdown">
+                <a href="#">Services</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="mobile-dropdown">
+                <a href="#">Results</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+        </div>
+        <a href="contact-us.html" class="mobile-menu-cta">Get Free Strategy Session</a>
+    </nav>
+
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="hero-image-container"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="article-eyebrow">Ads</p>
+            <h1 class="article-title">The Ultimate Guide To Running Profitable Ads: Full In-Depth Guide</h1>
+        </div>
+    </section>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+        <!-- Article Content -->
+        <article class="article-content">
+            <p>Ever wondered how to run ads for your online business without needing to go to an agency? Our guide explains in great depth how to maximise your ROI using paid advertising, so if you're interested in learning how you can get started, read on!</p>
+
+            <div class="toc-box">
+                <h4>Table of Contents</h4>
+                <ul>
+                    <li>What Is Digital Marketing?</li>
+                    <li>What Is The Goal Of Marketing?</li>
+                    <li>The Fundamental Rule of Marketing</li>
+                    <li>TOFU, MOFU, BOFU</li>
+                    <li>What Channels Do You Use For Each Business?</li>
+                    <li>Before You Do Anything - Run The Numbers</li>
+                    <li>Market > Offer > Copy & Creative</li>
+                    <li>Turn Your Words Into Your Ultimate Sales Machine</li>
+                    <li>Creatives - The Art Of Thumbstopping</li>
+                    <li>Landing Pages</li>
+                    <li>Maximise Lifetime Value</li>
+                    <li>Troubleshooting - What To Do If You Aren't Getting Results</li>
+                    <li>It's You, Not The Strategy Or Tactics</li>
+                    <li>Over To You</li>
+                </ul>
+            </div>
+
+            <h2>What is Digital Marketing?</h2>
+
+            <div class="definition-box">
+                <h4>Digital Marketing Defined</h4>
+                <p>Digital marketing is the same thing as marketing = help consumers create change that they seek to make and drive a commercial benefit for the business.</p>
+                <p>The strategies and principles of marketing are the same - but the modes and mediums in which we communicate them are not.</p>
+                <p>The whole goal is the same - helping people create change that they seek to make which drives a commercial benefit for the business. However, now we use digital channels instead of offline channels.</p>
+            </div>
+
+            <div class="comparison-box">
+                <h4>Traditional vs Digital Channels</h4>
+                <div class="comparison-item">
+                    <span class="comparison-old">Yellow Pages</span>
+                    <span class="comparison-arrow">→</span>
+                    <span class="comparison-new">Google</span>
+                </div>
+                <div class="comparison-item">
+                    <span class="comparison-old">Billboards</span>
+                    <span class="comparison-arrow">→</span>
+                    <span class="comparison-new">Facebook</span>
+                </div>
+                <div class="comparison-item">
+                    <span class="comparison-old">TV</span>
+                    <span class="comparison-arrow">→</span>
+                    <span class="comparison-new">YouTube</span>
+                </div>
+            </div>
+
+            <p>Consumer behaviour is the same but it has adapted to a different platform.</p>
+
+            <h2>What Is The Goal Of Marketing?</h2>
+
+            <p>The overall goal of marketing is to help consumers create change that they seek to make and drive a commercial benefit for the business.</p>
+
+            <p>All your marketing efforts need to be tailored around "how do I help my consumers get from where they are to where they want to be and make the changes in their lives that they have always wanted to?". Marketing is all about before states and after states.</p>
+
+            <div class="concept-box">
+                <h4>Before State</h4>
+                <p>What their life is like before using your product/service</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>After State</h4>
+                <p>What their life is like after using your product/service</p>
+            </div>
+
+            <p>Our goal as marketers is to add value to people's lives to take them from wherever they are "before state" and take them to where they want to be "after state".</p>
+
+            <p>And since people are at various different stages of their lives, we need to give people the right message, at the right time to take them to the next step of their customer journey.</p>
+
+            <p>At the same time, we need to generate a profit for the business while doing so. Not all marketing can be 100% tracked. But make no mistake - if you are not generating an overall profit from your paid advertising efforts, you will have failed as a marketer.</p>
+
+            <h2>The Fundamental Rule of Marketing</h2>
+
+            <div class="quote-box">
+                <p>"He or she that is able and willing to spend the most to acquire a customer - wins."</p>
+            </div>
+
+            <p>In any given market, regardless of industry, if you can and will spend the most money to get customers, you will out compete any other competitor in the market. E.g. Amazon.</p>
+
+            <p>The trick as a marketer is to either spend more money than your competitors to acquire a customer, decrease the cost to acquire a customer (so you can spend more), or carve out a new segment in the market to compete at a different angle.</p>
+
+            <p>If you are doing the exact same thing as a competitor with no strategic advantage, and you are not willing to spend as much, you will never beat your competitor.</p>
+
+            <h2>What is Top Of Funnel, Middle of Funnel and Bottom of Funnel?</h2>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/The%20Ultimate%20Guide%201.avif" alt="Marketing Funnel - TOFU, MOFU, BOFU">
+            </div>
+
+            <p>These three customer segments refer to how far down the customer journey someone is from "a complete stranger who doesn't know about you" to "someone who is ready to buy".</p>
+
+            <div class="concept-box">
+                <h4>Top of Funnel (TOFU)</h4>
+                <p>Someone who is only in the awareness phase of their journey</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>Middle of Funnel (MOFU)</h4>
+                <p>Someone who is interested but needs more priming to make a decision</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>Bottom of Funnel (BOFU)</h4>
+                <p>Someone who has shown genuine intent to buy and needs a bit of nudging to get over the line</p>
+            </div>
+
+            <p>The idea is that each segment requires different types of messaging and marketing using different channels. I.e. you can't tell someone who is only at the top of funnel stage to buy something if they don't know who you are, why they should listen to you and what problem you solve.</p>
+
+            <p>We need to market to people differently depending on where they sit in the funnel.</p>
+
+            <h2>What Channels Do You Use For Each Business?</h2>
+
+            <p>So, given that people are in different stages of the funnel, what channels and tactics do you actually use to target them?</p>
+
+            <p>To generalise, each channel can be split into two different categories:</p>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/The%20Ultimate%20Guide%202.avif" alt="Active vs Priming Marketing Channels">
+            </div>
+
+            <div class="concept-box">
+                <h4>Active Stage</h4>
+                <p>People have identified a problem and are actively looking for a solution (intent)</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>Priming Stage</h4>
+                <p>People have NOT yet identified a problem and are passively looking for a solution (interruption)</p>
+            </div>
+
+            <p>To understand which channels are best suited to which businesses/strategies, you need to understand the user behaviour of the customers of the target business.</p>
+
+            <p>Are the customers actively researching and looking for your solution?</p>
+
+            <p>Or are your customers not really looking for your solution and are more passive in their user journey?</p>
+
+            <p>Typically speaking, with service-based businesses, people look to google when they have a problem that needs fixing. Whenever someone has a problem, they tend to lean towards Google.</p>
+
+            <div class="example-box">
+                <h4>Service-Based Example</h4>
+                <p>Someone who has a leak in their house and needs to find an emergency plumber. You would never scroll through Facebook to look for an emergency plumber when you need it fixed ASAP.</p>
+            </div>
+
+            <p>As for anything in eCommerce, most of the time social media channels such as Facebook/Instagram/Tik Tok are a better option as people aren't necessarily looking for a solution, but they don't mind being disrupted.</p>
+
+            <div class="example-box">
+                <h4>eCommerce Example</h4>
+                <p>Someone shopping for a dress online.</p>
+            </div>
+
+            <p>Although this is not a hard and fast rule, it allows us to think of which channels will be best suited to our business strategy.</p>
+
+            <div class="list-box">
+                <h4>Channel Selection Guide</h4>
+                <ul>
+                    <li><strong>Active stage:</strong> Anything that captures intent like Google (SEO), Pay-Per-Click Advertising such as Google Ads, Bing etc.</li>
+                    <li><strong>Priming stage:</strong> Anything that is more of an interruption and nurtures people overtime into a customer like Facebook, Instagram, LinkedIn, Snapchat, Pinterest & Tik Tok.</li>
+                    <li><strong>In between stage:</strong> YouTube falls into the interrupted intent stage.</li>
+                </ul>
+            </div>
+
+            <h2>Before You Do Anything - Run The Numbers</h2>
+
+            <p>I cannot stress enough how important this is.</p>
+
+            <p>The number 1 mistake I see with people running ads is they don't understand the economics behind their advertising campaigns.</p>
+
+            <p>Even if you get the best click-through rates, conversion rates and flood your business with 1000's of customers, if the numbers don't stack up on each sale, you will lose money. Period.</p>
+
+            <p>Before you run ads, make sure you factor in all costs associated with acquiring a customer to figure out if you can scale.</p>
+
+            <p>Because let's face it… if you're not profitable on one customer, what makes you think you'll be profitable on 10,000 customers a month?</p>
+
+            <p>Throwing more money into advertising is like putting a band-aid onto a gunshot wound.</p>
+
+            <p>It's not going to fix anything because you're internally bleeding…</p>
+
+            <p>You need to make sure everything stacks up economically and your business model is viable.</p>
+
+            <p>Too often business owners throw more money into advertising without realising they're slowly digging their own graves into debt.</p>
+
+            <h3>Solution: Use a Forecasting Template</h3>
+
+            <p>Use a forecasting template to determine your campaign profitability.</p>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/The%20Ultimate%20Guide%203.avif" alt="Campaign Profitability Forecasting Template">
+            </div>
+
+            <p>Fill in the document to figure out if your campaign will be profitable after all advertising expenses and costs associated with your product/service.</p>
+
+            <div class="list-box">
+                <h4>Insert the Numbers For:</h4>
+                <ul>
+                    <li><strong>Ad Spend:</strong> Your advertising budget for the month</li>
+                    <li><strong>Gross profit margin:</strong> How much money you make after taking into account the money you pay for your product/service</li>
+                    <li><strong>Cost per click:</strong> How much it costs to get a click</li>
+                    <li><strong>Conversion rate:</strong> How many people out of 100 converts into a customer</li>
+                    <li><strong>Average Order Value:</strong> How much the average customer pays you</li>
+                </ul>
+            </div>
+
+            <p>If you don't know specifically the numbers, just add in a ballpark figure. The idea is to just get a forecast for the types of results you will get.</p>
+
+            <p>It's also a great way to benchmark whether your advertising campaigns are performing or not.</p>
+
+            <p>If you run these forecasts and you realise your profit at the bottom is in the negatives, you need to pull a couple of levers to make it work.</p>
+
+            <div class="list-box">
+                <h4>Possible Improvements:</h4>
+                <ul>
+                    <li>Decrease costs associated to fulfill your product/service (improve gross profit margins)</li>
+                    <li>Increase the price of your product/service to generate more per customer (AOV)</li>
+                    <li>Increase stickiness to improve the return customers and generate more per customer (AOV)</li>
+                    <li>Increase your conversion rate by optimising your funnel (conversion rate)</li>
+                    <li>Improve your copy and creative to get cheaper traffic (cost per click)</li>
+                </ul>
+            </div>
+
+            <p>A combination of all the above will improve your bottom line figure.</p>
+
+            <p>Play around with the numbers and if you see you're in the positives after all the costs are factored in, that's the first checkmark to proceed with paid advertising.</p>
+
+            <div class="warning-box">
+                <h5>Important Warning</h5>
+                <p>DO NOT RUN A PAID ADVERTISING CAMPAIGN BEFORE DOING THIS. It's actually crazy the amount of business owners I speak to that don't do this. This exercise alone will save you from losing a lot of money.</p>
+            </div>
+
+            <h2>Market > Offer > Copy & Creative</h2>
+
+            <p>Your advertising campaigns will greatly depend on the 3 factors:</p>
+
+            <ul>
+                <li>The market segment you are targeting.</li>
+                <li>How attractive your offer is.</li>
+                <li>How engaging your advertising copy & creative is (messaging).</li>
+            </ul>
+
+            <p>What people need to realise is there is a bit of a hierarchy in terms of how powerful each one is.</p>
+
+            <div class="quote-box">
+                <p>Market > Offer > Creative + Copy</p>
+            </div>
+
+            <p>A good target market will beat an amazing offer.</p>
+
+            <p>A good offer will beat even the most amazing creative + copy.</p>
+
+            <p>An amazing target market will always beat even the greatest copywriter of all time.</p>
+
+            <p>If you target an amazing market, your offer can be poor and your persuasion skills can be terrible, but you can still succeed.</p>
+
+            <div class="example-box">
+                <h4>Example Scenario</h4>
+                <p><strong>Target market:</strong> Starving crowd</p>
+                <p><strong>Offer:</strong> Plain bread for $1,000</p>
+                <p><strong>Messaging:</strong> "I hate my customers and this bread absolutely sucks"</p>
+                <p>A starving crowd will still probably buy it assuming they could afford it.</p>
+            </div>
+
+            <p>The point being is that if you target a perfect market and they REALLY need your product/service, they would still buy regardless of how weak your offering is and messaging is.</p>
+
+            <p>You need to understand that marketing is about solving problems. And regardless of how good your product/service is, if there is no market to serve or there are no problems to solve, you cannot thrive.</p>
+
+            <p>Many "entrepreneurs" out here today are trying to solve problems that don't exist. And, no ad buying strategy or funnel hack is going to make a product work if there is no market to serve.</p>
+
+            <p>Think about your customers. What problems do they need solving that they would pay for?</p>
+
+            <p>Once you figure that out, you're on your way to building a healthy business. There's no point trying to sell meat to a market full of vegans.</p>
+
+            <div class="takeaway-box">
+                <h5>Takeaway</h5>
+                <p>No market to serve - don't run ads.</p>
+            </div>
+
+            <h3>Niche, Niche, Niche</h3>
+
+            <div class="quote-box">
+                <p>"Build something 100 people love, not something 1 million people kind of like."</p>
+                <p class="quote-author">— Brian Chesky, Co-Founder & CEO of Airbnb</p>
+            </div>
+
+            <p>It's not about blind faith, but it's about if you've solved a problem or seen people love your product.</p>
+
+            <p>As long as there are more people like those 100 - then you have an idea that will spread around the world.</p>
+
+            <p>I get asked this question all the time: "How do I get EVERYONE to buy my product/service?"</p>
+
+            <p>The trick is -- you don't.</p>
+
+            <p>You find a small group of people that would absolutely love your product and ONLY target them.</p>
+
+            <p>When you talk to everyone, you talk to no one.</p>
+
+            <p>So find your niche. Focus on it. And ignore anyone that sits outside of that. Carve out a segment in the market and be the best in it.</p>
+
+            <div class="list-box">
+                <h4>Niche Positioning Examples</h4>
+                <ul>
+                    <li>If you run an activewear brand - position your business as the activewear brand for pregnant mums.</li>
+                    <li>If you run a mobile mechanic service - position your business as the go-to-solution for Tesla cars.</li>
+                    <li>If you run a fit out company - position your business as go-to for hospitality businesses.</li>
+                </ul>
+            </div>
+
+            <div class="takeaway-box">
+                <h5>Takeaway</h5>
+                <p>Before you run ads online - figure out the specific target person you want to go after and position your product/service to serve only those people.</p>
+            </div>
+
+            <h3>How to Create an Amazing Offer</h3>
+
+            <p>Once you've figured out your target market, now it's time to make an amazing offer.</p>
+
+            <p>A great exercise to do when creating an amazing offer is to do some research into your competitors and identify everything they are doing.</p>
+
+            <p>Write down everything about them: the price, the features, benefits, how they deliver their product/service, how long it lasts etc.</p>
+
+            <p>Then, find out what their customers are saying about their products. Look at their reviews on Google, Facebook, Amazon etc. Try to identify common themes on why customers love them and hate them.</p>
+
+            <p>Create 2 lists - 1 for 5-star reviews and 1 for 1-star reviews.</p>
+
+            <p>Take everything from the 5-star reviews in terms of what customers love and make sure you offer the same. Now, take everything from the 1-star reviews in terms of what customers hate and turn it into a solution you provide.</p>
+
+            <div class="example-box">
+                <h4>Example Scenario: Hat Business</h4>
+                <p>You run an ecommerce store selling hats and you see a competitor who is doing really well. Your competitor has 200 5-star reviews and 50 1-star reviews. Looking at their 1-star reviews, you notice the following:</p>
+                <p><strong>Competitor's 1-star reviews:</strong></p>
+                <ul>
+                    <li>Ordered it, didn't fit and couldn't return</li>
+                    <li>Too expensive</li>
+                    <li>Waited too long to receive the package</li>
+                    <li>Hat is already deteriorating fabric after a few months</li>
+                </ul>
+            </div>
+
+            <div class="list-box">
+                <h4>Your Solution With Amazing Offer:</h4>
+                <ul>
+                    <li>Try our hats before you buy (90 day trial and free return if you're not happy after 90 days)</li>
+                    <li>Lower price for same quality hat OR 2 hats for same price</li>
+                    <li>Same day delivery guaranteed or receive a full refund</li>
+                    <li>Money back guarantee if the hat deteriorates within a year</li>
+                </ul>
+            </div>
+
+            <p>And, just like that we've already differentiated our business from our competitor and made our offering more compelling.</p>
+
+            <p><strong>Important:</strong> It's great to offer something that you are somewhat scared to do, but make sure it's something you can actually deliver.</p>
+
+            <p>The key is to establish long term relationships with your customers.</p>
+
+            <p>Overpromising and under-delivering is a great way to go out of business.</p>
+
+            <h2>Turn Your Words Into Your Ultimate Sales Machine</h2>
+
+            <p>By using just the right words, we can turn people who don't know anything about you and turn them into high paying customers that absolutely love your product/service.</p>
+
+            <p>One well-written message can achieve exponential growth in your business. To craft the perfect message, we need to understand a few things about human psychology.</p>
+
+            <div class="definition-box">
+                <h4>What People Are Actually Buying</h4>
+                <p>There are only two things people are ever buying: <strong>transformation</strong> or <strong>identity reinforcement</strong>.</p>
+                <p>People either want to solve a problem, or reinforce to the world the image they want to portray.</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>Transformation Example</h4>
+                <p>Someone trying to lose weight</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>Identity Reinforcement Example</h4>
+                <p>Teenagers wearing Supreme to try and fit in with the cool kids</p>
+            </div>
+
+            <p>When looking at your product or service, understand what it is you are actually selling.</p>
+
+            <p>Is it a transformation or is it identity reinforcement?</p>
+
+            <p>Our goal as marketers is to understand our customers so intimately that we know exactly what it is they are buying, then craft the messaging and the resources to help get them there.</p>
+
+            <p>Every single word must help them get to where they want to be. Picture what their life is like before and after.</p>
+
+            <p>Then, articulate it in such a way that they move closer to their goal. Lead in with the problem and agitate the problem and then provide a solution.</p>
+
+            <div class="takeaway-box">
+                <h5>Takeaway</h5>
+                <p>Identify what your product/service actually solves and then figure out what your target customer's life looks like before and after. You can then articulate the transformation that people will go through after they use your product/service.</p>
+            </div>
+
+            <h3>Right Message to the Right Person at the Right Time</h3>
+
+            <p>Whenever you communicate with your target audience, there will always be people at different stages in their user journey.</p>
+
+            <p>Everyone you are targeting is at different stages in their customer journey. Some are more ready-to-buy than others.</p>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/The%20Ultimate%20Guide%204.avif" alt="Customer Journey Stages">
+            </div>
+
+            <div class="stat-highlight">
+                <div class="stat-number">3%</div>
+                <div class="stat-text">of people are ready-to-buy at any given time. The remaining 97% aren't.</div>
+            </div>
+
+            <p>This means different messages are required to really resonate with people at different stages of the funnel.</p>
+
+            <p>So, we need to alter the way we speak to people depending on where they are in the customer journey.</p>
+
+            <p>Here's an awesome framework to know how to get people to actually engage with your messaging...</p>
+
+            <h3>Use "Eugene Schwartz's Five Levels Of Awareness"</h3>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/The%20Ultimate%20Guide%205.avif" alt="Eugene Schwartz's Five Levels of Awareness">
+            </div>
+
+            <p>This allows you to come up with messaging based on what people will resonate with in their current situation.</p>
+
+            <p>Targeting someone who is completely unaware of your product/service?</p>
+
+            <p>Hit them with some stories and secrets about yourself.</p>
+
+            <p>Targeting someone who knows about your type of product/service but isn't completely convinced of your brand?</p>
+
+            <p>Hit them with some claims and social proof.</p>
+
+            <p>Remember - not everyone is ready to buy right now, so you need to segment your target audience into different stages and nurture them personally through your messaging to get them to that point.</p>
+
+            <p>No point in trying to tell people to buy if they aren't ready yet.</p>
+
+            <div class="takeaway-box">
+                <h5>Takeaway</h5>
+                <p>When you advertise, segment your audiences into different buckets based on where you think they are in the customer journey and craft different messages for each of them. Use channels like Facebook/Instagram ads to remarket to people overtime using different messaging based on where they sit in the customer journey.</p>
+            </div>
+
+            <h3>The Slippery Slope of Copywriting</h3>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/The%20Ultimate%20Guide%206.avif" alt="The Slippery Slope of Copywriting">
+            </div>
+
+            <p>Joseph Sugarman (a famous copywriter) always said the job of a headline was to act like "A slippery slope" in which the person would be:</p>
+
+            <p>1st sucked in by the headline</p>
+            <p>…. then sucked in by the 2nd line</p>
+            <p>…….. then sucked in by the 3rd line</p>
+            <p>………… and so forth.</p>
+
+            <p>Every single word in your copy has its purpose...</p>
+
+            <p>Our job as marketers is to communicate in a way that leads people down a slippery slope of copy to then take action.</p>
+
+            <p>So, a litmus test when you write your copy is read your copy out loud.</p>
+
+            <p>If at any point, you get bored or you stop reading, re-write that line so it draws you to the next one.</p>
+
+            <p>Keep doing it until your copy is so intriguing and every single word entices you to read the whole text.</p>
+
+            <div class="takeaway-box">
+                <h5>Takeaway</h5>
+                <p>Use short sentences. Make it intriguing. Don't just fill your ad copy with words for the sake of it. Every word must get you drawn into reading the next.</p>
+            </div>
+
+            <h3>Bonus Tip to Writing High Converting Ad Copy</h3>
+
+            <p>Here's the process I personally use to craft high-converting ad copy for my clients:</p>
+
+            <div class="list-box">
+                <h4>High-Converting Ad Copy Process</h4>
+                <ul>
+                    <li>Look up the business and its competitors on google and read all their reviews to find out what customers hate/love about the product/service</li>
+                    <li>Copy and paste common phrases used by customers into a document to understand what is most important to them</li>
+                    <li>Look at competitor's ads to get an idea of what others are doing in the marketplace</li>
+                    <li>Go to the Facebook Ads Library and look up your competitor's ads to get the creative juices flowing</li>
+                    <li>Word vomit everything onto a spreadsheet containing 10-20 different ads</li>
+                    <li>Take a break and come back a few hours later with a fresh mind to edit the ad copy</li>
+                    <li>Send the ad copy to someone else in your team / a friend for review</li>
+                    <li>Cull the ads to about 5-10 winners</li>
+                    <li>Test the ads and rinse and repeat</li>
+                </ul>
+            </div>
+
+            <p>In my experience, the best (and most profitable) ads I've ever written have never come out of thin air. They're always a by-product of research, looking for inspiration or literally using sentences said by customers.</p>
+
+            <p>Remember — if you're stuck writing ad copy, you just need to do more research.</p>
+
+            <p>If you would like to see a tried and true formula for copy we have written an article about the <a href="aida-formula.html">AIDA formula</a>.</p>
+
+            <h2>Creatives - The Art Of Thumbstopping</h2>
+
+            <p>What's the point of having a high converting ad copy if no one reads it?</p>
+
+            <p>Crafting a "thumb-stopping" or engaging ad is crucial to the success of your advertising campaigns.</p>
+
+            <p>Think about how much noise is out there and how busy people are.</p>
+
+            <p>Most people are on their phones on the way to work.</p>
+
+            <p>They're on a train.</p>
+
+            <p>They're listening to music and watching cat videos.</p>
+
+            <p>Then, they scroll on their news feed and see your ad.</p>
+
+            <p>Is your content good enough to stop them in their tracks and pay attention?</p>
+
+            <div class="stat-highlight">
+                <div class="stat-number">&lt;3 sec</div>
+                <div class="stat-text">You have less than 3 seconds to capture someone's attention</div>
+            </div>
+
+            <p>Before you can sell your product/service, you need to get people to engage.</p>
+
+            <p>It doesn't matter how great your copy or your offering is if you can't grab somebody's attention.</p>
+
+            <p>Before you launch an ad, ask yourself "If I saw this on my news feed, would I stop and pay attention to it?"</p>
+
+            <h3>Get The Click Using Thumbnails</h3>
+
+            <p>Thumbnails have the power to stop people in their tracks if you use them correctly.</p>
+
+            <p>Just have a look at these thumbnails from Mr Beast who has over 77.9M subscribers on YouTube (as of Nov 2021).</p>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/The%20Ultimate%20Guide%207.avif" alt="Mr Beast YouTube Thumbnails">
+            </div>
+
+            <p>Some of his thumbnails are pretty outlandish and absurd. No wonder that he has so many subscribers!</p>
+
+            <p>The thumbnail is so undervalued.</p>
+
+            <p>If you can get someone excited to stop and pay attention to your content without even saying a word, you've got them.</p>
+
+            <div class="takeaway-box">
+                <h5>Takeaway</h5>
+                <p>After you create your ads, think carefully about the thumbnail creative people see. Ask yourself, would you click on this if you saw it on your news feed?</p>
+            </div>
+
+            <h3>User Generated Content</h3>
+
+            <div class="stat-highlight">
+                <div class="stat-number">92%</div>
+                <div class="stat-text">of consumers trust organic, user-generated content more than they trust traditional advertising (Nielsen Consumer Trust Index)</div>
+            </div>
+
+            <p>What does this tell us?</p>
+
+            <p>Basically, people are sick of seeing traditional ads. If it looks like an ad, smells like an ad, sounds like an ad - it's probably an ad.</p>
+
+            <p>And people HATE ads.</p>
+
+            <p>So much so that if you run a really bad looking ad, they'll probably comment just to tell you how much they hate your ad.</p>
+
+            <p>Congratulations, you've just wasted time and money on an ad that didn't even get noticed.</p>
+
+            <p>Why?</p>
+
+            <p>Because people are extremely skeptical. They don't like being sold to. They want to feel like they're in control of their decisions and not being scammed into buying something they don't want. They especially don't feel comfortable when unknown businesses try to sell them random shit online.</p>
+
+            <p>Ultimately, they don't trust you.</p>
+
+            <p>So, how do you get people to trust you?</p>
+
+            <p>Get other people to talk about how good you are on video. It's very hard to fake another person on video talking about how awesome your product/service is.</p>
+
+            <p>Because authenticity is key.</p>
+
+            <p>And people buy from people.</p>
+
+            <p>If you see something online and there's an actor or model talking about a product, you assume it's a paid ad. You don't think they actually believe in the product because they're probably being paid to be in the ad.</p>
+
+            <p>But, if you see a regular person online talking about a really cool product or service in one video, you assume it's just a regular person raving about the product on video.</p>
+
+            <p>It's amazing because it allows you to stop the scroll, get the click, get your information consumed, then actioned upon.</p>
+
+            <p>Nothing more powerful than short and sharp video testimonials from your customers like a tik tok video.</p>
+
+            <div class="takeaway-box">
+                <h5>Takeaway</h5>
+                <p>If you are advertising and not leveraging user generated content, you will be wasting so much money on advertising.</p>
+            </div>
+
+            <h3>Bonus: High Converting Video Ad Formula</h3>
+
+            <p>Here's a quick framework you can use to structure your video ads if you're stuck:</p>
+
+            <div class="list-box">
+                <h4>Video Ad Structure</h4>
+                <ul>
+                    <li>Hook</li>
+                    <li>Identify the problem</li>
+                    <li>Agitate the problem</li>
+                    <li>Propose the solution</li>
+                    <li>Propose your solution</li>
+                    <li>Benefits & features</li>
+                    <li>Social proof</li>
+                    <li>Call to action</li>
+                </ul>
+            </div>
+
+            <p>A really great example of this put into action is the video ad from Squatty Potty.</p>
+
+            <p>The ad is probably one of my all-time favourite examples of this framework in action.</p>
+
+            <p>Whether it's a video or text ad, this formula helps structure your message in a way that is engaging, yet overcoming objections as they come up.</p>
+
+            <p>It allows you to get attention. Introduce a problem and a solution. Build trust with your audience. And get them to take action.</p>
+
+            <p>It's a foolproof formula.</p>
+
+            <div class="takeaway-box">
+                <h5>Takeaway</h5>
+                <p>If you're stuck with coming up with a thumb-stopping video ad, just follow this framework.</p>
+            </div>
+
+            <h2>Increase Your Conversion Rate Using Landing Pages</h2>
+
+            <p>One of the biggest hacks to generating a significant return from your paid advertising campaigns is using a landing page. Although this is probably more suited to lead generation campaigns, using a landing page does also work for e-commerce businesses if executed correctly.</p>
+
+            <p>The main reason why is landing pages are generally more likely to convert people than traditional websites.</p>
+
+            <p>Why is that important?</p>
+
+            <div class="stat-highlight">
+                <div class="stat-number">2-3%</div>
+                <div class="stat-text">Average website conversion rate - meaning at least 97 out of 100 people won't buy</div>
+            </div>
+
+            <p>Why?</p>
+
+            <p>Because websites provide too many paths and too many distractions.</p>
+
+            <p>It's like the saying goes: a confused buyer doesn't buy.</p>
+
+            <p>The reason why businesses don't succeed with their ads is because their solution to getting more customers is the same...</p>
+
+            <p>Buy more traffic.</p>
+
+            <p>But here's the thing...</p>
+
+            <p>It doesn't matter how many people you send to your website if only 2-3 people will convert out of every 100.</p>
+
+            <p>If you do the math, it's much more cost-efficient to increase your conversion rate.</p>
+
+            <p>When we buy traffic from any channel, the 1 outcome we want to achieve is to generate a lead or sale.</p>
+
+            <div class="definition-box">
+                <h4>The Power of Landing Pages</h4>
+                <p>By using intent-specific landing pages for our ads, we can see conversion rates go from 2-5% up to 10-30%.</p>
+                <p>If you improve your conversion rate from 2% to 10%, you will get five times more leads and conversions every single month – without spending a single cent more on your Ads campaign.</p>
+                <p>If you want the silver bullet to your advertising campaigns, this is one of the closest things you'll get.</p>
+            </div>
+
+            <h3>What is a Landing Page?</h3>
+
+            <p>So what exactly is a landing page? To keep it simple, a landing page is a standalone page that someone lands on after clicking on an ad. Landing pages are commonly used for marketing campaigns and have one purpose: to take your desired action. For example, to get visitors to 'sign up for a quote', 'download a free course' or 'buy a product'.</p>
+
+            <h3>What is the Difference Between a Landing Page and a Website?</h3>
+
+            <p>A landing page is a single page with one goal for a marketing campaign. A website however is typically a collection of pages commonly used for organic visitors. It gives visitors the opportunity to explore other pages on your site. The most distinctive difference between a landing page and a website is a landing page should have one main call to action (CTA) such as 'get a free 7-day trial'.</p>
+
+            <h3>The Two Secrets to an Effective Landing Page</h3>
+
+            <p>If you want to nail your landing pages, there are two fundamental principles you need to follow.</p>
+
+            <div class="concept-box">
+                <h4>1. Attention Ratio</h4>
+                <p>Attention ratio refers to all the things someone can do on a landing page compared to the action you actually want your visitor to do. For example, if there are 50 different buttons and links on your landing page that your visitor can click and you only want your visitor to 'download a free PDF', the attention ratio is 50:1. Ideally, the attention ratio should be 1:1. Often marketers overcomplicate landing pages and include too many links and buttons. The secret to an effective landing is keeping it simple and making it as easy as possible for the visitor to take your desired action.</p>
+            </div>
+
+            <div class="concept-box">
+                <h4>2. Message Match</h4>
+                <p>Message Match refers to the consistency between your ad message and landing page message. Does the message on your ad match the headline of your landing page? For example, if you click on an ad that says 'click here for a free PDF', does your landing page headline say 'Download a PDF'? Making sure your messages match tells visitors they are on the right page to increase the likelihood of them taking action. Additionally, it is important to use the same colour scheme, logos, buttons and photos to create a consistent user experience. A strong message match can result in low bounce rates and higher conversion rates.</p>
+            </div>
+
+            <h3>The 5 Elements That All Landing Pages Must Have</h3>
+
+            <p>There are five essential elements that all landing pages must-have. These are:</p>
+
+            <div class="example-box">
+                <h4>1. Unique Value Proposition</h4>
+                <p>What makes your product or service unique? It is important to clearly communicate to your landing page visitors. Why should they pick you? For example, a cleaning service business, a headline such as 'Get highly-experienced and reliable cleaners to your house within 3 hours' communicates to visitors that the business is qualified and efficient.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>2. Hero Shot</h4>
+                <p>Let's talk about the importance of imagery. Naturally, people are visual creatures so using a hero shot that captures your visitor's attention is crucial. The best hero shots are photos or videos that clearly depict your product or service. For example, a business selling headphones should use a visually appealing image of someone using their headphones as it clearly highlights the product and its intended use.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>3. Benefits</h4>
+                <p>Now that you have captured the visitor's attention using a catchy headline and amazing image/video, you should communicate the benefits of your service or product. The best way to do this is using bullet points to make it easy for people to quickly scan the information. Your benefits should address pain points that typically have and highlight how your product or service can help alleviate that pain. Let's go back to the headphone example. Instead of stating a feature such as 'active noise cancellation', stating a benefit such as 'enjoy an immersive listening experience even in noisy environments' is more impactful.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>4. Social Proof</h4>
+                <p>Social proof is very powerful and can turn skeptical prospects into high-paying customers. It's extremely important to establish authority in the minds of your customers as fast as possible. And through the use of reviews, testimonials and user-generated content from your previous customers, you can achieve this. Who do you think people are going to trust? You? The company selling the product or service? Or real people who have actually used your product or service are raving about how great it is?</p>
+                <p>There are numerous ways to use social proof but here are a few ideas: The first thing is to highlight how popular your product or service is by including numbers such as "Over 200 pair of earphones sold in the last month' or '30 homes cleaned this week!'. The second thing is to use testimonials from your real customers and user-generated content to reinforce credibility and authenticity. Get your customers recommending your business.</p>
+            </div>
+
+            <div class="example-box">
+                <h4>5. Call To Action</h4>
+                <p>Last but not least, the call to action! The purpose of a landing page is to get visitors to take your desired action. There are two things you need to consider for your call to action - design and copy.</p>
+                <p>The best call to action is easily noticeable and has a contrasting colour to the page background. Oftentimes, marketers get confused about what colour is the most effective. However, studies have found that it is not the colour that is important, more so the level of contrast between the button colour and the background. Using a tool like the contrast checker will allow you to determine your 'contrast ratio'. The higher the contrast ratio, the better.</p>
+                <p>A great way to craft your call to action is to ask yourself "how do I {insert call to action}". Example: 'How Do I Claim My Free Ebook?' or 'How Do I Get A Quote'? The call-to-action copy should clearly outline what will happen when the button is clicked. These call to action clearly sets the expectation for the visitor.</p>
+            </div>
+
+            <p>When taking all of this into account, an example template may look like this:</p>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/The%20Ultimate%20Guide%208.avif" alt="Landing Page Template Example">
+            </div>
+
+            <p>Use these tips to build yourself a high-converting landing page that converts cold prospects into customers.</p>
+
+            <h2>Maximise Lifetime Value</h2>
+
+            <h3>Acquiring Customers Isn't the Only Way to Make Money</h3>
+
+            <p>Selling new products to a new customer base is by far the most difficult and costly way to generate more revenue for the business. However, it is also mistakenly one of the most common strategies used by business owners.</p>
+
+            <div class="stat-highlight">
+                <div class="stat-number">5x</div>
+                <div class="stat-text">Acquiring a new customer can cost up to five times more than retaining an existing customer</div>
+            </div>
+
+            <p>What people don't realise is that the profit is made through maximising the lifetime value of your customer (LTV). That's why you need to set up systems in place to get more sales from your customers after the first transaction. When you acquire a customer, they're now yours. The cost you've spent is now fixed. Any additional revenue made from your existing customers can go straight to your bottom line.</p>
+
+            <p>In other words, get your customers to spend more money with you over time.</p>
+
+            <p>If you have their contact details, you can market to them for free through email or social media to get additional revenue to your business without any extra expenses.</p>
+
+            <div class="example-box">
+                <h4>The Power of Lifetime Value</h4>
+                <p>You may make $20 from 1 customer purchase. But let's say we have the systems setup so we get our customers to come back and buy every month for 2 years.</p>
+                <p>$20 * 24 months = $480.</p>
+                <p>You've just turned a $20 customer into a $480 customer.</p>
+                <p>Multiply that by 100 customers and you have $48,000.</p>
+                <p>Way easier to turn 100 customers into $48,000 than it is to get 2400 new customers paying $20 each.</p>
+            </div>
+
+            <p>If you are a business owner and aren't leveraging your existing customers, you are missing out on a substantial opportunity.</p>
+
+            <p>You need to build out your full funnel to generate as many customers for as little as possible on the front end, but maximise the lifetime value of each customer on the backend.</p>
+
+            <div class="takeaway-box">
+                <h5>Takeaway</h5>
+                <p>Utilise email marketing + closed social media groups + events + referrals to maximise the lifetime value of each customer. Create stickiness for your product/service and get your existing customers coming back for more.</p>
+            </div>
+
+            <h2>Troubleshooting - What To Do If You Aren't Getting Results</h2>
+
+            <p>When you advertise, you will inevitably come into issues with not being able to get results.</p>
+
+            <p>Don't panic.</p>
+
+            <p>Even the most lucrative campaigns have ads and parts of their marketing funnel that aren't doing well.</p>
+
+            <p>Marketing is a process and it will take time to optimise and continuously gain momentum. 99% of the time, you won't be an overnight success.</p>
+
+            <p>All issues in marketing basically can be categorised in 3 different sections:</p>
+
+            <ul>
+                <li>Traffic</li>
+                <li>Conversion (leads and sales)</li>
+                <li>Post-Purchase (customer retention and maximising lifetime value)</li>
+            </ul>
+
+            <p>Using the framework below, you can basically identify what you need to do if your issue is categorised into any of these categories.</p>
+
+            <div class="content-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/The%20Ultimate%20Guide%209.avif" alt="Marketing Troubleshooting Framework">
+            </div>
+
+            <h2>It's You, Not The Strategy Or Tactics</h2>
+
+            <p>Here's the harsh reality about all the information above...</p>
+
+            <p>If it doesn't work, it's probably you - not the strategy or tactics.</p>
+
+            <p>I hear business owners saying things like this all the time:</p>
+
+            <ul>
+                <li>Email marketing is dead - Gmail sends everything to spam and people don't read emails anymore.</li>
+                <li>Facebook is dead - ios14 killed ads performance and people don't buy from ads anymore...</li>
+                <li>SEO is dead - Google invests too much in making ads better and people don't even reach the first organic searches.</li>
+                <li>Google Ads is dead - The Cost per click is too high and people just click on organic listings anyway.</li>
+            </ul>
+
+            <p>Welcome to marketing, where everything is declared dead all the time and everything is pretty much the same.</p>
+
+            <p>All of these methods work great for years and will probably go strong for many more. It all depends on the business itself and how well you execute these strategies.</p>
+
+            <p>If you look at your competitors, at least one of them would be succeeding using the exact strategies that I have mentioned above. A lot of times, the strategies are correct, but the execution from the business itself is lacking.</p>
+
+            <p>If you implement these strategies and it doesn't work, don't blame the strategy. Ask yourself why it didn't work. Then keep improving and iterating until it does work.</p>
+
+            <p>Pick your channel.</p>
+
+            <p>Keep at it.</p>
+
+            <p>And get better at it.</p>
+
+            <p>Things will work out eventually...</p>
+
+            <h2>Over To You</h2>
+
+            <p>There was a lot of information to cover but by now, you should have a great understanding of the fundamentals and concepts of how to run ads profitably. I hope this was valuable to you.</p>
+
+            <p>If you still need assistance with your business and want a better ROI from your marketing dollars, <a href="contact-us.html">get in touch with us here</a> to organise a free discovery call.</p>
+
+            <p>As well as using our proven methods to run ads (see <a href="case-studies.html">case studies</a>), we provide our clients with bespoke marketing strategies that speaks to your intended audience wherever they are in the customer journey.</p>
+
+            <p>If you're looking for a long-term marketing partner that generates you a return on investment - you've come to the right place.</p>
+
+            <div class="cta-box">
+                <h3>Ready to Run Profitable Ads?</h3>
+                <p>Let JRNY Digital help you create and manage advertising campaigns that deliver real results. Our team of experts will work with you to develop strategies tailored to your business goals.</p>
+                <a href="contact-us.html" class="btn">Get Started Today</a>
+            </div>
+
+            <!-- Also Read Box -->
+            <div class="also-read-box">
+                <h3 class="also-read-title">Also Read:</h3>
+                <a href="digital-advertising-guide.html" class="also-read-link">Your In-Depth Guide to Digital Advertising</a>
+                <p class="also-read-description">Learn everything you need to know about digital advertising, from choosing the right platforms to measuring your campaign success.</p>
+                <a href="digital-advertising-guide.html" class="also-read-btn">Read More</a>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Logo_colour.jpg" alt="Author">
+                </div>
+                <div class="author-info">
+                    Written by: <span class="author-name">JRNY Digital</span>
+                </div>
+            </div>
+
+            <!-- Popular Tags -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Popular Tags</h3>
+                <div class="tags-list">
+                    <a href="category-ads.html" class="tag-item">Ads</a>
+                    <a href="#" class="tag-item">PPC</a>
+                    <a href="#" class="tag-item">Marketing Strategy</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+                    </div>
+                    <p>We're human, we're real we care about our clients. Honesty, Transparency and Results - that's our motto.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button type="submit">Subscribe Us</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="social-media-ads.html">Social Media Ads</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="email-marketing.html">Email Marketing</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="cro.html">Conversion Rate Optimisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Portfolio</h4>
+                    <ul>
+                        <li><a href="blog.html" class="highlight">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © All Rights Reserved. JRNY DIGITAL Australia Pty Ltd. ABN 82 642 424 904</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Mobile dropdown toggles
+            mobileDropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking a link (except dropdown toggles)
+            mobileMenu.querySelectorAll('a:not(.mobile-dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+    </script>
+</body>

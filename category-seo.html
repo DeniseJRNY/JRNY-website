@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Articles - JRNY Digital | Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-divider {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-links > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .nav-links > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > a:hover,
+        .nav-dropdown > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown > a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            border-top-color: #F5A623;
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(245, 166, 35, 0.1);
+            color: #F5A623;
+        }
+
+        .nav-phone { display: inline-flex; align-items: center; color: #FFFFFF; text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 8px 15px; border-radius: 6px; transition: all 0.3s ease; margin-right: 10px; white-space: nowrap; }
+        .nav-phone:hover { color: #F5A623; }
+
+        .nav-cta {
+            background-color: #F5A623;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+        .mobile-nav-right { display: none; align-items: center; gap: 4px; }
+        .mobile-nav-phone { display: flex; align-items: center; justify-content: center; color: #F5A623; text-decoration: none; padding: 8px; border-radius: 50%; transition: all 0.3s ease; }
+        .mobile-nav-phone:hover { color: #ffffff; background-color: rgba(245, 166, 35, 0.1); }
+        /* Mobile Menu Hamburger Button */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-toggle span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links > a,
+        .mobile-menu-links > .mobile-dropdown > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-menu-links > a:hover,
+        .mobile-menu-links > .mobile-dropdown > a:hover {
+            color: #F5A623;
+            padding-left: 10px;
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown > a {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none !important;
+        }
+
+        .mobile-dropdown > a::after {
+            content: '+';
+            font-size: 20px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active > a::after {
+            content: '−';
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 0 -30px;
+            padding: 0 30px;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-menu a {
+            display: block;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 14px 0 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            color: #F5A623;
+            padding-left: 30px;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+            background-color: #F5A623;
+            color: #000000;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+
+        /* Blog Section */
+        .blog-section {
+            padding: 140px 60px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .blog-heading {
+            font-size: 64px;
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 50px;
+            color: #ffffff;
+        }
+
+        .blog-heading span {
+            color: #F5A623;
+        }
+
+        .blog-card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .blog-card-image {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+        }
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .blog-card-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #F5A623;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card-title:hover {
+            color: #FFBD00;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 14px;
+        }
+
+        .blog-card-category {
+            color: #ffffff;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .blog-card-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+
+        .blog-card-excerpt {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .blog-card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .blog-card-cta::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #F5A623;
+            border-radius: 50%;
+        }
+
+        .blog-card-cta:hover {
+            color: #F5A623;
+        }
+
+        /* Sidebar */
+        .blog-sidebar {
+            position: sticky;
+            top: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .category-item {
+            padding: 18px 20px;
+            background: #111111;
+            border-left: 3px solid #F5A623;
+            color: #ffffff;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .category-item:hover,
+        .category-item.active {
+            background: #1a1a1a;
+            padding-left: 25px;
+        }
+
+        .category-item.active {
+            background: #F5A623;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        /* Recent Posts */
+        .recent-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .recent-post-item {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 15px;
+            text-decoration: none;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+
+        .recent-post-item:first-child {
+            padding-top: 0;
+        }
+
+        .recent-post-item:last-child {
+            border-bottom: none;
+        }
+
+        .recent-post-item:hover {
+            color: #F5A623;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #F5A623;
+            text-decoration: none;
+            font-size: 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 60px 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 320px;
+        }
+
+        .footer-subscribe input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .footer-subscribe input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-subscribe button {
+            background: #ffc500;
+            color: #000000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .footer-subscribe button:hover {
+            background: #e6b100;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc500;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .blog-layout {
+                grid-template-columns: 1fr 320px;
+                gap: 40px;
+            }
+            .blog-heading {
+                font-size: 52px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+            .blog-section {
+                padding: 140px 40px 80px;
+            }
+            .blog-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            .blog-sidebar {
+                position: relative;
+                top: 0;
+            }
+            .footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+            .nav-divider {
+                display: none;
+            }
+            .nav-links {
+            display: none;
+        }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-nav-right { display: flex; }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay,
+            .mobile-menu {
+                display: block;
+            }
+            .logo img {
+                height: 38px;
+            }
+            .blog-section {
+                padding: 120px 20px 60px;
+            }
+            .blog-heading {
+                font-size: 40px;
+                margin-bottom: 40px;
+            }
+            .blog-card-title {
+                font-size: 20px;
+            }
+            footer {
+                padding: 60px 20px 0;
+            }
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .footer-brand {
+                grid-column: span 2;
+            }
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+            </a>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-links">
+            <a href="about-us.html">About Us</a>
+            <div class="nav-dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="nav-dropdown">
+                <a href="#">Results</a>
+                <div class="dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="tel:0412345678" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                (04) 1234 5678
+            </a>
+        </div>
+        <a href="contact-us.html" class="nav-cta">Get Free Strategy Session</a>
+        <!-- Mobile Nav Right (Phone + Hamburger) -->
+        <div class="mobile-nav-right">
+            <a href="tel:0412345678" class="mobile-nav-phone" aria-label="Call us">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="about-us.html">About Us</a>
+            <div class="mobile-dropdown">
+                <a href="#">Services</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="mobile-dropdown">
+                <a href="#">Results</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+        </div>
+        <a href="contact-us.html" class="mobile-menu-cta">Get Free Strategy Session</a>
+    </nav>
+
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="blog-layout">
+            <!-- Left Column - Blog Posts -->
+            <div class="blog-posts">
+                <a href="blog.html" class="back-link">&larr; Back to All Resources</a>
+                <h1 class="blog-heading"><span>SEO</span> Articles</h1>
+
+                <!-- Blog 1 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Off-Page%20SEO-%20What%20It%20Is%20and%20What%20Tactics%20To%20Try.avif" alt="Off-Page SEO">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">Off-Page SEO: What It Is and What Tactics To Try</h2>
+                        <div class="blog-card-meta">
+                            <a href="category-seo.html" class="blog-card-category">SEO</a>
+                            <span class="blog-card-date">10 May 2025</span>
+                        </div>
+                        <p class="blog-card-excerpt">Off-page SEO is crucial for building authority and improving rankings. Discover proven tactics to boost your website's credibility.</p>
+                        <a href="#" class="blog-card-cta">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Blog 2 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="https://ik.imagekit.io/2z8yysunx/JRNY/10%20Best%20SEO%20Tools%20Every%20Beginner%20Should%20Use%20in%202024.avif" alt="Best SEO Tools">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">10 Best SEO Tools Every Beginner Should Use in 2024</h2>
+                        <div class="blog-card-meta">
+                            <a href="category-seo.html" class="blog-card-category">SEO</a>
+                            <span class="blog-card-date">5 May 2025</span>
+                        </div>
+                        <p class="blog-card-excerpt">New to SEO? These 10 essential tools will help you analyse, optimise, and track your website's search performance like a pro.</p>
+                        <a href="#" class="blog-card-cta">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Blog 3 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="https://ik.imagekit.io/2z8yysunx/JRNY/What%20Is%20the%20Difference%20Between%20'.com'%20and%20'.com.au'%20Domains_.avif" alt="Domain Difference">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">What Is the Difference Between '.com' and '.com.au' Domains?</h2>
+                        <div class="blog-card-meta">
+                            <a href="category-seo.html" class="blog-card-category">SEO</a>
+                            <span class="blog-card-date">2 May 2025</span>
+                        </div>
+                        <p class="blog-card-excerpt">Choosing between .com and .com.au? Learn how your domain choice affects SEO, trust, and your ability to rank in Australian searches.</p>
+                        <a href="#" class="blog-card-cta">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Blog 4 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="https://ik.imagekit.io/2z8yysunx/JRNY/How%20Much%20Does%20SEO%20Cost%20in%20Australia_.avif" alt="SEO Cost Australia">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">How Much Does SEO Cost in Australia?</h2>
+                        <div class="blog-card-meta">
+                            <a href="category-seo.html" class="blog-card-category">SEO</a>
+                            <span class="blog-card-date">28 Apr 2025</span>
+                        </div>
+                        <p class="blog-card-excerpt">Wondering what SEO services cost in Australia? We break down pricing, what affects costs, and how to get the best value for your investment.</p>
+                        <a href="#" class="blog-card-cta">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Blog 5 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="https://ik.imagekit.io/2z8yysunx/JRNY/How%20to%20Use%20SEO%20For%20Lead%20Generation-%2010%20Effective%20Strategies.avif" alt="SEO Lead Generation">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">How to Use SEO For Lead Generation: 10 Effective Strategies</h2>
+                        <div class="blog-card-meta">
+                            <a href="category-seo.html" class="blog-card-category">SEO</a>
+                            <span class="blog-card-date">25 Apr 2025</span>
+                        </div>
+                        <p class="blog-card-excerpt">SEO isn't just about traffic — it's about generating quality leads. Discover 10 proven strategies to turn organic visitors into customers.</p>
+                        <a href="#" class="blog-card-cta">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Blog 6 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="https://ik.imagekit.io/2z8yysunx/JRNY/What%20is%20Local%20SEO_.avif" alt="What is Local SEO">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">What is Local SEO?</h2>
+                        <div class="blog-card-meta">
+                            <a href="category-seo.html" class="blog-card-category">SEO</a>
+                            <span class="blog-card-date">20 Apr 2025</span>
+                        </div>
+                        <p class="blog-card-excerpt">Local SEO helps businesses get found by nearby customers. Learn what it is, why it matters, and how to dominate local search results.</p>
+                        <a href="#" class="blog-card-cta">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Blog 7 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="https://ik.imagekit.io/2z8yysunx/JRNY/What%20is%20SEO_%20Common%20&%20Uncommon%20Terms%20Explained.avif" alt="SEO Glossary">
+                    </div>
+                    <div class="blog-card-content">
+                        <h2 class="blog-card-title">What is SEO? Common & Uncommon Terms Explained</h2>
+                        <div class="blog-card-meta">
+                            <a href="category-seo.html" class="blog-card-category">SEO</a>
+                            <span class="blog-card-date">15 Apr 2025</span>
+                        </div>
+                        <p class="blog-card-excerpt">Confused by SEO jargon? This comprehensive glossary explains all the common and uncommon terms you need to know to master search optimisation.</p>
+                        <a href="#" class="blog-card-cta">Read More</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Right Column - Sticky Sidebar -->
+            <aside class="blog-sidebar">
+                <!-- Category -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Category</h3>
+                    <div class="category-list">
+                        <a href="category-seo.html" class="category-item active">SEO</a>
+                        <a href="category-sales.html" class="category-item">Sales</a>
+                        <a href="category-digital-marketing.html" class="category-item">Digital Marketing</a>
+                        <a href="category-ads.html" class="category-item">Ads</a>
+                        <a href="category-jrny.html" class="category-item">JRNY</a>
+                    </div>
+                </div>
+
+                <!-- Recent Posts -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Recent Post</h3>
+                    <div class="recent-posts">
+                        <a href="facebook-ads-not-converting.html" class="recent-post-item">Facebook Ads Not Converting? Discover the #1 Mistake Costing You Thousands</a>
+                        <a href="ugc-vs-influencers.html" class="recent-post-item">UGC vs Influencers: What's Actually Driving Sales in 2025?</a>
+                        <a href="4-red-flags-marketing-agency.html" class="recent-post-item">4 Red Flags That Your Marketing Agency Is Wasting Your Budget</a>
+                        <a href="simple-website-fix-conversions.html" class="recent-post-item">The Simple Website Fix That Could 2x Your Conversions (Most Businesses Miss This)</a>
+                        <a href="broad-targeting-killing-conversions.html" class="recent-post-item">Running Paid Ads? Here's Why Broad Targeting Might Be Killing Your Conversions</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+                    </div>
+                    <p>We're human, we're real we care about our clients. Honesty, Transparency and Results - that's our motto.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button type="submit">Subscribe Us</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="social-media-ads.html">Social Media Ads</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="email-marketing.html">Email Marketing</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="cro.html">Conversion Rate Optimisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Portfolio</h4>
+                    <ul>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © All Rights Reserved. JRNY DIGITAL Australia Pty Ltd. ABN 82 642 424 904</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Mobile dropdown toggles
+            mobileDropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking a link (except dropdown toggles)
+            mobileMenu.querySelectorAll('a:not(.mobile-dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+    </script>
+</body>

@@ -1,0 +1,2517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO - JRNY Digital | Search Engine Optimization Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-divider {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-links > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .nav-links > a.active {
+            color: #F5A623;
+        }
+
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > a:hover,
+        .nav-dropdown > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown > a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            border-top-color: #F5A623;
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(245, 166, 35, 0.1);
+            color: #F5A623;
+        }
+
+        .dropdown-menu a.active {
+            color: #F5A623;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .nav-phone {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .nav-phone:hover {
+            color: #F5A623;
+        }
+
+        .nav-cta {
+            background-color: #F5A623;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+        /* Mobile Menu Hamburger Button */
+        .mobile-nav-right {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-nav-phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-phone:hover {
+            background: rgba(245, 166, 35, 0.2);
+            color: #F5A623;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-toggle span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links > a,
+        .mobile-menu-links > .mobile-dropdown > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-menu-links > a:hover,
+        .mobile-menu-links > .mobile-dropdown > a:hover {
+            color: #F5A623;
+            padding-left: 10px;
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown > a {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none !important;
+        }
+
+        .mobile-dropdown > a::after {
+            content: '+';
+            font-size: 20px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active > a::after {
+            content: '−';
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 0 -30px;
+            padding: 0 30px;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-menu a {
+            display: block;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 14px 0 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            color: #F5A623;
+            padding-left: 30px;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+            background-color: #F5A623;
+            color: #000000;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url('https://ik.imagekit.io/2z8yysunx/JRNY/SEO%20%20Brisbane.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.6) 50%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            max-width: 700px;
+            padding: 160px 60px 80px 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            position: relative;
+            background: #1a1a1a;
+            z-index: 1;
+        }
+
+        .hero-badge::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50px;
+            background: conic-gradient(from var(--angle), transparent 60%, #F5A623 80%, #FFBD00 100%, transparent 100%);
+            z-index: -2;
+            animation: rotateBorder 3s linear infinite;
+        }
+
+        .hero-badge::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            background: #1a1a1a;
+            z-index: -1;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: #FFBD00;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #ffffff;
+            max-width: 550px;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* Grow Business Section */
+        .grow-section {
+            background: #000000;
+            padding: 120px 60px;
+        }
+
+        .grow-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .grow-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .grow-header h2 {
+            font-size: 56px;
+            font-weight: 400;
+            line-height: 1.1;
+            color: #ffffff;
+        }
+
+        @keyframes rotateBorderNoGlow {
+            0% {
+                --angle: 0deg;
+            }
+            100% {
+                --angle: 360deg;
+            }
+        }
+
+        .grow-card-wrapper {
+            position: relative;
+            border-radius: 22px;
+            padding: 2px;
+            background: conic-gradient(from var(--angle), transparent 92%, #F5A623 96%, #FFBD00 100%, transparent 100%);
+            animation: rotateBorderNoGlow 8s linear infinite;
+        }
+
+        .grow-card {
+            position: relative;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-radius: 20px;
+            padding: 50px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .grow-card-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 189, 0, 0.15) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .grow-card:hover .grow-card-glow {
+            opacity: 1;
+        }
+
+        .grow-card-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .grow-card p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ffffff;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: #000000;
+            padding: 120px 60px;
+        }
+
+        .benefits-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-radius: 20px;
+            padding: 50px 40px;
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .benefit-card:hover {
+            border-color: rgba(255, 189, 0, 0.3);
+        }
+
+        .benefit-card h3 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #FFBD00;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #F5A623 0%, #FFBD00 100%);
+            margin-bottom: 25px;
+        }
+
+        .benefit-card p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #ffffff;
+        }
+
+        .benefits-image {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .benefits-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .benefit-card:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .benefit-card:nth-child(3) {
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .benefit-card:nth-child(4) {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .benefit-card:nth-child(5) {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        /* SEO Services Section */
+        .seo-services-section {
+            background: #000000;
+            padding: 120px 60px;
+        }
+
+        .seo-services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .seo-services-card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 20px;
+            padding: 60px;
+            border: 1px solid #222;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .seo-services-card:hover {
+            border-color: rgba(255, 189, 0, 0.3);
+        }
+
+        .seo-services-card-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 189, 0, 0.15) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .seo-services-card:hover .seo-services-card-glow {
+            opacity: 1;
+        }
+
+        .seo-services-card-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .seo-services-card h2 {
+            font-size: 56px;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 40px;
+            line-height: 1.1;
+        }
+
+        .seo-services-card p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ffffff;
+            max-width: 100%;
+        }
+
+        /* Strategies Slider Section */
+        .strategies-section {
+            background: #000000;
+            padding: 120px 60px;
+        }
+
+        .strategies-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .strategies-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .strategy-tab {
+            padding: 14px 28px;
+            background: transparent;
+            border: none;
+            color: #888;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .strategy-tab:hover {
+            color: #ffffff;
+        }
+
+        .strategy-tab.active {
+            background: #1a1a1a;
+            color: #F5A623;
+        }
+
+        .strategies-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strategies-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .strategy-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-radius: 30px;
+            padding: 80px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .strategy-slide.active {
+            opacity: 1;
+        }
+
+        .strategy-content h3 {
+            font-size: 48px;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .strategy-content h3 span {
+            color: #ffffff;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .strategy-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ffffff;
+        }
+
+        .strategy-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .strategy-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .strategies-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .strategy-nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .strategy-nav-btn:hover {
+            background: #2a2a2a;
+            border-color: #F5A623;
+        }
+
+        .strategy-nav-btn.next {
+            background: #ffffff;
+            border-color: #ffffff;
+            color: #000000;
+        }
+
+        .strategy-nav-btn.next:hover {
+            background: #f0f0f0;
+            border-color: #f0f0f0;
+        }
+
+        /* Why SEO Section */
+        .why-section {
+            background: #000000;
+            padding: 120px 60px;
+        }
+
+        .why-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .why-content h2 {
+            font-size: 56px;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 40px;
+        }
+
+        .why-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .why-content p:last-of-type {
+            margin-bottom: 40px;
+        }
+
+        .why-btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #F5A623;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .why-btn:hover {
+            background: #ffbd00;
+            transform: translateY(-2px);
+        }
+
+        .why-image {
+            position: relative;
+        }
+
+        .why-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Page 1 Section */
+        .page1-section {
+            background: #000000;
+            padding: 120px 60px;
+        }
+
+        .page1-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page1-header {
+            margin-bottom: 60px;
+        }
+
+        .page1-header h2 {
+            font-size: 56px;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1.15;
+            max-width: 100%;
+            white-space: nowrap;
+        }
+
+        .page1-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .page1-cards-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .page1-card-wrapper {
+            position: relative;
+            border-radius: 22px;
+            padding: 2px;
+            background: conic-gradient(from var(--angle), transparent 70%, #F5A623 85%, #FFBD00 100%, transparent 100%);
+            animation: rotateBorderNoGlow 8s linear infinite;
+        }
+
+        .page1-card {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-radius: 20px;
+            padding: 40px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .page1-card-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 189, 0, 0.15) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .page1-card:hover .page1-card-glow {
+            opacity: 1;
+        }
+
+        .page1-card-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page1-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .page1-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #ffffff;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: #000000;
+            padding: 120px 60px;
+        }
+
+        .process-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .process-image {
+            position: sticky;
+            top: 100px;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 600px;
+        }
+
+        .process-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+
+        .process-content-wrapper {
+            display: flex;
+            gap: 40px;
+            position: relative;
+        }
+
+        .process-content {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            flex: 1;
+        }
+
+        .scroll-indicator {
+            position: relative;
+            width: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .scroll-indicator-track {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #333;
+            border-radius: 2px;
+        }
+
+        .scroll-indicator-progress {
+            position: absolute;
+            top: 0;
+            width: 2px;
+            height: 0%;
+            background: linear-gradient(to bottom, #FFBD00, #F5A623);
+            border-radius: 2px;
+            transition: height 0.1s ease;
+        }
+
+        .scroll-indicator-dots {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+        }
+
+        .scroll-indicator-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .scroll-indicator-dot.active {
+            background: #FFBD00;
+            border-color: #FFBD00;
+        }
+
+        .scroll-indicator-dot:hover {
+            border-color: #FFBD00;
+        }
+
+        .process-item {
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .process-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .process-item h3 {
+            font-size: 36px;
+            font-weight: 400;
+            color: #FFBD00;
+            margin-bottom: 20px;
+        }
+
+        .process-item p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #ffffff;
+        }
+
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                --angle: 0deg;
+                filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 15px rgba(245, 166, 35, 0.8));
+            }
+            100% {
+                --angle: 360deg;
+                filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.5));
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #000000;
+            padding: 100px 60px;
+        }
+
+        .cta-header {
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .cta-header h2 {
+            font-size: 80px;
+            font-weight: 400;
+            color: #ffc500;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .cta-header p {
+            font-size: 18px;
+            color: #ffffff;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-container-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+        .cta-container-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 22px;
+            background: conic-gradient(from var(--angle), transparent 92%, #F5A623 96%, #FFBD00 100%, transparent 100%);
+            z-index: 0;
+            animation: rotateBorder 8s linear infinite;
+        }
+
+        .cta-container-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 25px;
+            background: conic-gradient(from var(--angle), transparent 92%, #F5A623 96%, #FFBD00 100%, transparent 100%);
+            z-index: -1;
+            animation: rotateBorder 8s linear infinite;
+            filter: blur(15px);
+            opacity: 0.7;
+        }
+
+        .cta-container {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 80px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            z-index: 1;
+        }
+
+        .cta-video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .cta-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .cta-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 30%) var(--mouse-y, 50%), rgba(255, 189, 0, 0.2) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        .cta-container:hover::before {
+            opacity: 1;
+        }
+
+        .cta-container > *:not(.cta-video-bg):not(.cta-video-overlay) {
+            position: relative;
+            z-index: 3;
+        }
+
+        .cta-content h3 {
+            font-size: 42px;
+            font-weight: 400;
+            font-style: italic;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .cta-container-partners {
+            margin-top: 20px;
+        }
+
+        .cta-container-partners img {
+            height: 80px;
+            width: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: #ffffff;
+            color: #000000;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .cta-button:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 60px 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 320px;
+        }
+
+        .footer-subscribe input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .footer-subscribe input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-subscribe button {
+            background: #ffc500;
+            color: #000000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .footer-subscribe button:hover {
+            background: #e6b100;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc500;
+        }
+
+        .footer-column ul li a.highlight {
+            color: #ffc500;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            .hero-content {
+                padding: 140px 40px 60px;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .grow-section {
+                padding: 100px 40px;
+            }
+
+            .grow-header h2 {
+                font-size: 42px;
+            }
+
+            .grow-card {
+                padding: 40px;
+            }
+
+            .benefits-section {
+                padding: 100px 40px;
+            }
+
+            .benefits-grid {
+                gap: 20px;
+            }
+
+            .benefit-card {
+                padding: 40px 30px;
+            }
+
+            .benefit-card h3 {
+                font-size: 28px;
+            }
+
+            .benefit-card p {
+                font-size: 15px;
+            }
+
+            .seo-services-section {
+                padding: 100px 40px;
+            }
+
+            .seo-services-card {
+                padding: 50px;
+            }
+
+            .seo-services-card h2 {
+                font-size: 42px;
+            }
+
+            .seo-services-card p {
+                font-size: 16px;
+            }
+
+            .strategies-section {
+                padding: 100px 40px;
+            }
+
+            .strategies-tabs {
+                gap: 10px;
+            }
+
+            .strategy-tab {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .strategy-slide {
+                padding: 60px;
+                gap: 40px;
+            }
+
+            .strategy-content h3 {
+                font-size: 36px;
+            }
+
+            .page1-section {
+                padding: 100px 40px;
+            }
+
+            .page1-header h2 {
+                font-size: 42px;
+                white-space: normal;
+            }
+
+            .page1-card {
+                padding: 35px;
+            }
+
+            .page1-card h3 {
+                font-size: 24px;
+            }
+
+            .page1-card p {
+                font-size: 15px;
+            }
+
+            .why-section {
+                padding: 100px 40px;
+            }
+
+            .why-container {
+                gap: 50px;
+            }
+
+            .why-content h2 {
+                font-size: 42px;
+            }
+
+            .process-section {
+                padding: 100px 40px;
+            }
+
+            .process-container {
+                gap: 50px;
+            }
+
+            .process-image {
+                height: 500px;
+            }
+
+            .process-item h3 {
+                font-size: 30px;
+            }
+
+            .process-content-wrapper {
+                gap: 30px;
+            }
+
+            .cta-section {
+                padding: 100px 40px;
+            }
+
+            .cta-header h2 {
+                font-size: 42px;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 40px;
+            }
+
+            .cta-content h3 {
+                font-size: 32px;
+            }
+
+            .cta-container-partners img {
+                height: 60px;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-divider {
+                display: none;
+            }
+
+            .nav-links {
+            display: none;
+        }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-nav-right {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay,
+            .mobile-menu {
+                display: block;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .hero {
+                justify-content: center;
+            }
+
+            .hero-content {
+                padding: 120px 20px 60px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .hero-overlay {
+                background: rgba(0, 0, 0, 0.8);
+            }
+
+            .grow-section {
+                padding: 80px 20px;
+            }
+
+            .grow-header h2 {
+                font-size: 32px;
+            }
+
+            .grow-card {
+                padding: 30px;
+            }
+
+            .grow-card p {
+                font-size: 16px;
+            }
+
+            .benefits-section {
+                padding: 80px 20px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 20px;
+            }
+
+            .benefits-image {
+                grid-column: 1;
+                grid-row: auto;
+                order: -1;
+                height: 300px;
+            }
+
+            .benefit-card:nth-child(1),
+            .benefit-card:nth-child(3),
+            .benefit-card:nth-child(4),
+            .benefit-card:nth-child(5) {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .benefit-card {
+                padding: 30px 25px;
+            }
+
+            .benefit-card h3 {
+                font-size: 26px;
+            }
+
+            .benefit-card p {
+                font-size: 15px;
+            }
+
+            .seo-services-section {
+                padding: 80px 20px;
+            }
+
+            .seo-services-card {
+                padding: 30px;
+            }
+
+            .seo-services-card h2 {
+                font-size: 32px;
+            }
+
+            .seo-services-card p {
+                font-size: 15px;
+            }
+
+            .strategies-section {
+                padding: 80px 20px;
+            }
+
+            .strategies-tabs {
+                gap: 8px;
+                margin-bottom: 40px;
+            }
+
+            .strategy-tab {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .strategy-slide {
+                grid-template-columns: 1fr;
+                padding: 40px 30px;
+                gap: 30px;
+            }
+
+            .strategy-content {
+                order: 1;
+            }
+
+            .strategy-image {
+                order: 2;
+            }
+
+            .strategy-content h3 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .strategy-content p {
+                font-size: 15px;
+            }
+
+            .strategies-nav {
+                margin-top: 30px;
+            }
+
+            .strategy-nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+
+            .page1-section {
+                padding: 80px 20px;
+            }
+
+            .page1-header {
+                margin-bottom: 40px;
+            }
+
+            .page1-header h2 {
+                font-size: 32px;
+                white-space: normal;
+            }
+
+            .page1-cards {
+                gap: 20px;
+            }
+
+            .page1-cards-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .page1-card {
+                padding: 30px;
+            }
+
+            .page1-card h3 {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+
+            .page1-card p {
+                font-size: 15px;
+            }
+
+            .why-section {
+                padding: 80px 20px;
+            }
+
+            .why-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .why-content {
+                order: 1;
+            }
+
+            .why-image {
+                order: 2;
+            }
+
+            .why-content h2 {
+                font-size: 32px;
+                margin-bottom: 30px;
+            }
+
+            .why-content p {
+                font-size: 15px;
+            }
+
+            .process-section {
+                padding: 80px 20px;
+            }
+
+            .process-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .process-image {
+                position: relative;
+                top: 0;
+                height: 350px;
+            }
+
+            .process-content-wrapper {
+                gap: 20px;
+            }
+
+            .process-content {
+                gap: 40px;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+
+            .process-item {
+                padding-bottom: 40px;
+            }
+
+            .process-item h3 {
+                font-size: 26px;
+            }
+
+            .process-item p {
+                font-size: 15px;
+            }
+
+            .cta-section {
+                padding: 80px 20px;
+            }
+
+            .cta-header h2 {
+                font-size: 32px;
+            }
+
+            .cta-header p {
+                font-size: 16px;
+            }
+
+            .cta-container {
+                padding: 40px 25px;
+                min-height: auto;
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .cta-content h3 {
+                font-size: 26px;
+                margin-bottom: 10px;
+            }
+
+            .cta-container-partners {
+                margin-top: 5px;
+            }
+
+            .cta-container-partners img {
+                height: 50px;
+            }
+
+            .cta-partners img {
+                height: 40px;
+            }
+
+            .cta-button {
+                width: 100%;
+                text-align: center;
+                margin-top: 5px;
+            }
+
+            footer {
+                padding: 60px 20px 0;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            .footer-subscribe {
+                max-width: 100%;
+            }
+
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+            </a>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-links">
+            <a href="about-us.html">About Us</a>
+            <div class="nav-dropdown">
+                <a href="#" class="active">Services</a>
+                <div class="dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html" class="active">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="nav-dropdown">
+                <a href="#">Results</a>
+                <div class="dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+            <a href="tel:0412345678" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                (04) 1234 5678
+            </a>
+        </div>
+        <a href="contact-us.html" class="nav-cta">Get Free Strategy Session</a>
+        <!-- Mobile Nav Right (Phone + Hamburger) -->
+        <div class="mobile-nav-right">
+            <a href="tel:0412345678" class="mobile-nav-phone" aria-label="Call us">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="about-us.html">About Us</a>
+            <div class="mobile-dropdown">
+                <a href="#">Services</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="mobile-dropdown">
+                <a href="#">Results</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+        </div>
+        <a href="contact-us.html" class="mobile-menu-cta">Get Free Strategy Session</a>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image-container"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge"><span class="hero-badge-dot"></span>Search Engine Optimisation</span>
+            <h1>Brisbane SEO Agency</h1>
+            <p class="hero-subtitle">Our SEO consultants are here to deliver you a proven organic marketing strategy that gets you results.</p>
+        </div>
+    </section>
+
+    <!-- Grow Your Business Section -->
+    <section class="grow-section">
+        <div class="grow-container">
+            <div class="grow-header">
+                <h2>Grow Your Business With SEO</h2>
+            </div>
+            <div class="grow-card-wrapper">
+                <div class="grow-card">
+                    <div class="grow-card-glow"></div>
+                    <div class="grow-card-inner">
+                        <p>You want to earn more revenue, expand your target audience and reach them, and create brand awareness for the long term. JRNY Digital can help you with search engine optimisation (SEO) and ensure that your customers are finding you online. Here are some of the benefits SEO offers through our delivery:</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Boost Your Credibility</h3>
+                    <div class="benefit-card-divider"></div>
+                    <p>You want your website to appear trustworthy and high-quality, which boosts your brand's credibility. This can be done if you're on the top results page of Google. Customers who see you on the first page immediately see that you have what they're looking for.</p>
+                </div>
+                <div class="benefits-image">
+                    <img src="https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20digital%20-%20team%20image%207.jpg?updatedAt=1769011554811" alt="JRNY Digital Team">
+                </div>
+                <div class="benefit-card">
+                    <h3>Uncapped Free Traffic</h3>
+                    <div class="benefit-card-divider"></div>
+                    <p>Did you know that about 53.3 percent of website traffic comes directly from organic searches? On top of that, the Cost Per Click for many industries are rising every year. SEO gives you more cost effective approach in getting new customers to your website. Best of all, it's free.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>A Competitive Advantage</h3>
+                    <div class="benefit-card-divider"></div>
+                    <p>SEO can help you identify your competitors and determine their weaknesses and strengths. Once we know what they're doing, we ensure that your website has better content, is mobile-friendly, and loads fast. You give clients a better user experience, making them choose you over the competition.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Maximise PPC Campaigns</h3>
+                    <div class="benefit-card-divider"></div>
+                    <p>We've been talking about SEO all this time, but paid marketing strategies can also be part of the content marketing strategy. PPC puts you at the top of the paid results, and SEO does that organically. In fact, we use both to show your potential customers that you're at the top for a reason!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Services Section -->
+    <section class="seo-services-section">
+        <div class="seo-services-container">
+            <div class="seo-services-card">
+                <div class="seo-services-card-glow"></div>
+                <div class="seo-services-card-inner">
+                    <h2>SEO Services</h2>
+                    <p>JRNY Digital's SEO experts provide a full suite of SEO services to businesses in Brisbane, across Australia and overseas. We offer competitively priced SEO packages to suit your business needs, with no lock-in contracts that deliver both flexibility and peace of mind. Honesty and transparency are important to us and we provide ongoing reporting to keep you up-to-date with what we're doing to improve your online search visibility and keyword rankings. Unlike some other SEO agencies in Brisbane, there are no cutting corners and no blackhat SEO techniques with our services — our strategies and techniques are effective and safe. What's more, our clients get peace of mind with our SEO services as we use the same strategies and techniques for ourselves across SEO specialisations such as:</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategies Slider Section -->
+    <section class="strategies-section">
+        <div class="strategies-container">
+            <div class="strategies-tabs">
+                <button class="strategy-tab active" data-slide="0">
+                    Local SEO
+                </button>
+                <button class="strategy-tab" data-slide="1">
+                    eCommerce
+                </button>
+                <button class="strategy-tab" data-slide="2">
+                    Lead Generation SEO
+                </button>
+            </div>
+            <div class="strategies-slider">
+                <div class="strategies-slides">
+                    <div class="strategy-slide active" data-index="0">
+                        <div class="strategy-content">
+                            <h3>Local<br><span>SEO</span></h3>
+                            <p>With more and more people starting their search for local products and services online, boasting a strong local SEO presence is vital for small and medium sized businesses looking to expand their customer base across their local area. JRNY Digital can help your business establish a strong local presence across Google's Search Engine Results Pages (SERPs) with local SEO services including geo-focused SEO and Google Business Profile (GBP) optimisation.</p>
+                        </div>
+                        <div class="strategy-image">
+                            <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/Services%20pages/SEO%20-%2001.png" alt="Local SEO">
+                        </div>
+                    </div>
+                    <div class="strategy-slide" data-index="1">
+                        <div class="strategy-content">
+                            <h3>eCommerce<br><span>SEO</span></h3>
+                            <p>Do you market and sell your products online via an eCommerce store? Whether you leverage the power of Shopify or WooCommerce, our Brisbane-based SEO consultants can help you boost your brand's online presence and drive more organic traffic to your eCommerce site. Our eCommerce SEO campaigns leverage precise targeting and specialist eCommerce search techniques to connect your business with customers searching for your products.</p>
+                        </div>
+                        <div class="strategy-image">
+                            <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/Services%20pages/SEO%20-%2002.png" alt="eCommerce SEO">
+                        </div>
+                    </div>
+                    <div class="strategy-slide" data-index="2">
+                        <div class="strategy-content">
+                            <h3>Lead Generation<br><span>SEO</span></h3>
+                            <p>Businesses invest in SEO because they want to see results that deliver increased revenue and not just incremental results on investment. As business growth-orientated SEO specialists in Brisbane, we create highly-targeted lead generation SEO strategies that initiate consumer interest in your products and services, nurture potential leads and then drive qualified leads through the purchase funnel.</p>
+                        </div>
+                        <div class="strategy-image">
+                            <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Blogs/Services%20pages/SEO%20-%2003.png" alt="Lead Generation SEO">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="strategies-nav">
+                <button class="strategy-nav-btn" data-direction="prev">&#8592;</button>
+                <button class="strategy-nav-btn next" data-direction="next">&#8594;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-container">
+            <div class="process-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20Digital%20-%20Team%20Image%2014.jpg" alt="JRNY Digital Team Working">
+            </div>
+            <div class="process-content-wrapper">
+                <div class="process-content">
+                    <div class="process-item" data-index="0">
+                        <h3>Technical Audit</h3>
+                        <p>Your vehicle requires routine maintenance to ensure that it runs efficiently, and so does your website! We use powerful industry software to uncover the contributing factors that might prevent your site from thriving on search engines. Our SEO audits look at the many technical aspects of your website to ensure everything is compliant with Google's algorithms, which are constantly evolving.</p>
+                    </div>
+                    <div class="process-item" data-index="1">
+                        <h3>Keyword Search</h3>
+                        <p>We take a very close look at the keywords your website is appearing for as well as your competitors. Catering for your customers is important so we analyse every possible search term that they would be using in order to find your brand. Throughout our in-depth research, we'll help you determine what keywords are best to go after based on it's traffic potential.</p>
+                    </div>
+                    <div class="process-item" data-index="2">
+                        <h3>On-Page SEO</h3>
+                        <p>On-page SEO is crucial for your success because it directly impacts a user's experience when they visit your website. Not only that but Google takes this into account as it ranks your page. Our team of experts understands the importance of remaining consistent and technically focused. Therefore, we focus on optimising content for search engines and human readers.</p>
+                    </div>
+                    <div class="process-item" data-index="3">
+                        <h3>Link Building & Citations</h3>
+                        <p>SEO campaign success means building a strong backlink network. It's similar to you nurturing your relationships with friends and family. The quality of links matters more than quantity. In fact, a few higher-quality backlinks are worth so much more than 1,000 low-quality ones. Therefore, we focus on finding authoritative sources to get links from to promote your website's brand authority. We also ensure that you're in appropriate directories so customers have more chances in finding you online.</p>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <div class="scroll-indicator-track"></div>
+                    <div class="scroll-indicator-progress"></div>
+                    <div class="scroll-indicator-dots">
+                        <div class="scroll-indicator-dot active" data-target="0"></div>
+                        <div class="scroll-indicator-dot" data-target="1"></div>
+                        <div class="scroll-indicator-dot" data-target="2"></div>
+                        <div class="scroll-indicator-dot" data-target="3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why SEO Section -->
+    <section class="why-section">
+        <div class="why-container">
+            <div class="why-content">
+                <h2>Why Your Business Needs<br>an SEO Strategy</h2>
+                <p>The most important function of SEO is to increase visibility so that it's easier for potential customers to find you when they research something you provide. When you rank high on the SERPS, more prospects will see you and click on your website.</p>
+                <p>With an effective and thorough SEO strategy, you gain more visibility. This is crucial since roughly a quarter of all users don't click past the first page. Google users want information quickly, and it must be relevant. Since Google focuses on user experience, it puts excellent content at the top. We can help you revamp your website to encourage readers to stay on your pages longer.</p>
+                <a href="contact-us.html" class="why-btn">Learn More</a>
+            </div>
+            <div class="why-image">
+                <img src="https://ik.imagekit.io/2z8yysunx/JRNY/SEO%20STRATEGYYY.png" alt="SEO Strategy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 1 Section -->
+    <section class="page1-section">
+        <div class="page1-container">
+            <div class="page1-header">
+                <h2>We Know What It Takes To Get To Page 1</h2>
+            </div>
+            <div class="page1-cards">
+                <div class="page1-card-wrapper">
+                    <div class="page1-card">
+                        <div class="page1-card-glow"></div>
+                        <div class="page1-card-inner">
+                            <h3>Technical</h3>
+                            <p>Sometimes referred to as user experience or UX, the technical side of SEO is crucial for your business and SEO success. When you have an easy-to-navigate and fast site that can be read on all devices, it boosts those search engine rankings. Our team has expert website designers who utilise the latest technologies to help you in this aspect.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="page1-cards-row">
+                    <div class="page1-card-wrapper">
+                        <div class="page1-card">
+                            <div class="page1-card-glow"></div>
+                            <div class="page1-card-inner">
+                                <h3>Relevance</h3>
+                                <p>Google keeps cranking out algorithms, and the latest one focuses primarily on relevant information. It's all about the user now, not the company. Therefore, your content must be highly relevant to what the people search for if you want a successful SEO performance for your brand.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page1-card-wrapper">
+                        <div class="page1-card">
+                            <div class="page1-card-glow"></div>
+                            <div class="page1-card-inner">
+                                <h3>Authority</h3>
+                                <p>Search engines recognise your company as an authority for a specific topic when other websites of a higher ranking link to content on your site. This can boost your credibility rating and rank you higher in the SERPs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-header">
+            <h2>Still Doing Your Own Marketing?</h2>
+            <p>Book a free growth audit. In 30 minutes, we'll review your current marketing,<br>show you where you're leaving revenue on the table, and map out what a dedicated team could do for your business.</p>
+        </div>
+        <div class="cta-container-wrapper">
+            <div class="cta-container">
+                <video class="cta-video-bg" autoplay muted loop playsinline>
+                    <source src="https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20Website%20-%20Pics.mp4" type="video/mp4">
+                </video>
+                <div class="cta-video-overlay"></div>
+                <div class="cta-content">
+                    <h3>Get Your Free Growth Audit</h3>
+                    <div class="cta-container-partners">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/Mobile-Mockup-JRNY-3-1.webp" alt="Google Partner, Shopify Partner, Facebook Marketing Partners">
+                    </div>
+                </div>
+                <a href="contact-us.html" class="cta-button">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+                    </div>
+                    <p>We're human, we're real we care about our clients. Honesty, Transparency and Results - that's our motto.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button type="submit">Subscribe Us</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="social-media-ads.html">Social Media Ads</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="email-marketing.html">Email Marketing</a></li>
+                        <li><a href="seo.html" class="highlight">SEO</a></li>
+                        <li><a href="cro.html">Conversion Rate Optimisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Portfolio</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © All Rights Reserved. JRNY DIGITAL Australia Pty Ltd. ABN 82 642 424 904</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Mobile dropdown toggles
+            mobileDropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking a link (except dropdown toggles)
+            mobileMenu.querySelectorAll('a:not(.mobile-dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Mouse tracking for cards glow effect
+        document.querySelectorAll('.cta-container, .grow-card, .seo-services-card, .page1-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', x + '%');
+                card.style.setProperty('--mouse-y', y + '%');
+            });
+        });
+
+        // Strategies Slider functionality
+        const strategyTabs = document.querySelectorAll('.strategy-tab');
+        const strategySlides = document.querySelectorAll('.strategy-slide');
+        const strategiesSlides = document.querySelector('.strategies-slides');
+        const prevBtn = document.querySelector('.strategy-nav-btn[data-direction="prev"]');
+        const nextBtn = document.querySelector('.strategy-nav-btn[data-direction="next"]');
+        let currentSlide = 0;
+        const totalSlides = strategySlides.length;
+
+        function goToSlide(index) {
+            // Update current slide index
+            currentSlide = index;
+
+            // Update slides position
+            strategiesSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update active states
+            strategySlides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+
+            // Update tabs
+            strategyTabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        // Tab click handlers
+        strategyTabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Navigation button handlers
+        prevBtn.addEventListener('click', () => {
+            const newIndex = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1;
+            goToSlide(newIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const newIndex = currentSlide === totalSlides - 1 ? 0 : currentSlide + 1;
+            goToSlide(newIndex);
+        });
+
+        // Process Section Scroll Indicator
+        const processItems = document.querySelectorAll('.process-item');
+        const scrollDots = document.querySelectorAll('.scroll-indicator-dot');
+        const scrollProgress = document.querySelector('.scroll-indicator-progress');
+        const processContent = document.querySelector('.process-content');
+
+        function updateScrollIndicator() {
+            if (!processContent || !scrollProgress) return;
+
+            const contentRect = processContent.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const triggerPoint = windowHeight * 0.4;
+
+            // Calculate overall progress through the process content
+            const contentTop = contentRect.top;
+            const contentHeight = contentRect.height;
+            const scrolled = triggerPoint - contentTop;
+            const progress = Math.max(0, Math.min(1, scrolled / contentHeight));
+
+            // Update progress bar height
+            scrollProgress.style.height = (progress * 100) + '%';
+
+            // Update dots based on which items have been scrolled past
+            processItems.forEach((item, index) => {
+                const rect = item.getBoundingClientRect();
+                const itemMiddle = rect.top + (rect.height / 2);
+
+                if (itemMiddle < triggerPoint) {
+                    scrollDots[index].classList.add('active');
+                } else {
+                    scrollDots[index].classList.remove('active');
+                }
+            });
+        }
+
+        // Scroll to item when dot is clicked
+        scrollDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetIndex = parseInt(dot.getAttribute('data-target'));
+                const targetItem = processItems[targetIndex];
+                if (targetItem) {
+                    const offsetTop = targetItem.getBoundingClientRect().top + window.pageYOffset - 150;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', updateScrollIndicator);
+        updateScrollIndicator();
+    </script>
+</body>
+</html>

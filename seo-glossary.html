@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is SEO? Common & Uncommon Terms Explained - JRNY Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 45px;
+        }
+
+        .nav-divider {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-links > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .nav-links > a.active {
+            color: #F5A623;
+        }
+
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > a:hover,
+        .nav-dropdown > a.active {
+            color: #F5A623;
+        }
+
+        .nav-dropdown > a::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid #ffffff;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nav-dropdown:hover > a::after {
+            border-top-color: #F5A623;
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease, margin-top 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 25px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(245, 166, 35, 0.1);
+            color: #F5A623;
+        }
+
+        .dropdown-menu a.active {
+            color: #F5A623;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .nav-phone { display: inline-flex; align-items: center; color: #FFFFFF; text-decoration: none; font-size: 0.9rem; font-weight: 500; padding: 8px 15px; border-radius: 6px; transition: all 0.3s ease; margin-right: 10px; white-space: nowrap; }
+        .nav-phone:hover { color: #F5A623; }
+
+        .nav-cta {
+            background-color: #F5A623;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+        .mobile-nav-right { display: none; align-items: center; gap: 4px; }
+        .mobile-nav-phone { display: flex; align-items: center; justify-content: center; color: #F5A623; text-decoration: none; padding: 8px; border-radius: 50%; transition: all 0.3s ease; }
+        .mobile-nav-phone:hover { color: #ffffff; background-color: rgba(245, 166, 35, 0.1); }
+        /* Mobile Menu Hamburger Button */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            position: absolute;
+        }
+
+        .mobile-menu-toggle span:nth-child(1) {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-toggle span:nth-child(2) {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-toggle span:nth-child(3) {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile Menu Panel */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            transform: translateX(100%);
+            visibility: hidden;
+            transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-menu-links > a,
+        .mobile-menu-links > .mobile-dropdown > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-menu-links > a:hover,
+        .mobile-menu-links > .mobile-dropdown > a:hover {
+            color: #F5A623;
+            padding-left: 10px;
+        }
+
+        .mobile-dropdown {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-dropdown > a {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: none !important;
+        }
+
+        .mobile-dropdown > a::after {
+            content: '+';
+            font-size: 20px;
+            color: #F5A623;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active > a::after {
+            content: '−';
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            margin: 0 -30px;
+            padding: 0 30px;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-menu a {
+            display: block;
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 14px 0 14px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            color: #F5A623;
+            padding-left: 30px;
+        }
+
+        .mobile-menu-cta {
+            display: block;
+            background-color: #F5A623;
+            color: #000000;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .mobile-menu-cta:hover {
+            background-color: #e09515;
+            transform: translateY(-2px);
+        }
+
+
+        /* Hero Section with Image Background */
+        .article-hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        /* Image Background */
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url('https://ik.imagekit.io/2z8yysunx/JRNY/JRNY%20Digital%20-%20Team%20Image%2014.jpg?updatedAt=1769195648359');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Dark Overlay */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.7) 50%,
+                rgba(0, 0, 0, 0.5) 100%
+            );
+            z-index: 2;
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            max-width: 900px;
+            padding: 160px 60px 80px 60px;
+        }
+
+        .article-eyebrow {
+            font-size: 14px;
+            font-weight: 600;
+            color: #F5A623;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .article-title {
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.15;
+            color: #ffffff;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+
+        /* Article Layout */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 60px 100px;
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 100%;
+        }
+
+        .article-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .article-content h2 {
+            font-size: 38px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .article-content h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .article-content h4 {
+            font-size: 22px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .article-content ul {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        .article-content ul li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .article-content a {
+            color: #F5A623;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-content a:hover {
+            color: #FFBD00;
+        }
+
+        /* Stat Highlight */
+        .stat-highlight {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: #F5A623;
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.85);
+            font-style: italic;
+        }
+
+        /* Definition Box */
+        .definition-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .definition-box h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .definition-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0;
+        }
+
+        /* Term Box */
+        .term-box {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .term-box h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .term-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0;
+        }
+
+        /* Section Box */
+        .section-box {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .section-box h3 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .section-box h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .section-box h4:first-of-type {
+            margin-top: 0;
+        }
+
+        .section-box p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        .section-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* SEO Type Card */
+        .seo-type-card {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .seo-type-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .seo-type-number {
+            width: 50px;
+            height: 50px;
+            background: #F5A623;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #000000;
+            flex-shrink: 0;
+        }
+
+        .seo-type-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .seo-type-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .seo-type-card .term-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .seo-type-card .term-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .seo-type-card .term-item h4 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .seo-type-card .term-item p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .tools-section h3 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .tools-section .tool-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tools-section .tool-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .tools-section .tool-item h4 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .tools-section .tool-item p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        /* Metrics Box */
+        .metrics-box {
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .metrics-box h3 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #F5A623;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .metric-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .metric-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .metric-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(245, 166, 35, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .metric-content h4 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .metric-content p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .cta-box .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #F5A623;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-box .btn:hover {
+            background: #FFBD00;
+            transform: translateY(-2px);
+        }
+
+        /* Also Read Box */
+        .also-read-box {
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 50%, rgba(245, 166, 35, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 35px;
+            max-width: 550px;
+        }
+
+        .also-read-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .also-read-link {
+            font-size: 16px;
+            color: #F5A623;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .also-read-link:hover {
+            color: #FFBD00;
+        }
+
+        .also-read-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .also-read-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1a1a1a;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .also-read-btn:hover {
+            background: #F5A623;
+            color: #000000;
+            border-color: #F5A623;
+        }
+
+        /* Sidebar */
+        .article-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            height: fit-content;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .author-name {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Popular Tags */
+        .sidebar-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .tags-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tag-item {
+            display: block;
+            padding: 18px 25px;
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #F5A623;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag-item:hover {
+            background: #1a1a1a;
+            padding-left: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            padding: 80px 60px 0;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
+
+        .footer-subscribe {
+            display: flex;
+            align-items: center;
+            background: #111;
+            border-radius: 50px;
+            padding: 5px;
+            max-width: 320px;
+        }
+
+        .footer-subscribe input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 20px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .footer-subscribe input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-subscribe button {
+            background: #ffc500;
+            color: #000000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .footer-subscribe button:hover {
+            background: #e6b100;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffc500;
+        }
+
+        .footer-column ul li a.highlight {
+            color: #ffc500;
+        }
+
+        .footer-bottom {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .article-layout {
+                grid-template-columns: 1fr 320px;
+                gap: 50px;
+            }
+
+            .article-title {
+                font-size: 48px;
+            }
+
+            .hero-content {
+                padding: 140px 60px 70px 60px;
+                max-width: 800px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            .hero-content {
+                padding: 140px 40px 60px 40px;
+                max-width: 650px;
+            }
+
+            .article-title {
+                font-size: 42px;
+            }
+
+            .article-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 60px 40px 80px;
+            }
+
+            .article-sidebar {
+                position: relative;
+                top: 0;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-divider {
+                display: none;
+            }
+
+            .nav-links {
+            display: none;
+        }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-nav-right { display: flex; }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-menu-overlay,
+            .mobile-menu {
+                display: block;
+            }
+
+            .logo img {
+                height: 38px;
+            }
+
+            .article-hero {
+                min-height: 50vh;
+            }
+
+            .hero-content {
+                padding: 120px 20px 40px;
+                max-width: 100%;
+            }
+
+            .article-title {
+                font-size: 32px;
+            }
+
+            .hero-overlay {
+                background: linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.7) 100%
+                );
+            }
+
+            .article-layout {
+                padding: 40px 20px 60px;
+            }
+
+            .article-content h2 {
+                font-size: 28px;
+            }
+
+            .article-content h3 {
+                font-size: 22px;
+            }
+
+            .article-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .also-read-box {
+                max-width: 100%;
+            }
+
+            .stat-number {
+                font-size: 42px;
+            }
+
+            footer {
+                padding: 60px 20px 0;
+            }
+
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+
+            .footer-subscribe {
+                max-width: 100%;
+            }
+
+            .footer-bottom p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+            </a>
+        </div>
+        <div class="nav-divider"></div>
+        <div class="nav-links">
+            <a href="about-us.html">About Us</a>
+            <div class="nav-dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="nav-dropdown">
+                <a href="#">Results</a>
+                <div class="dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html" class="active">Resources</a>
+            <a href="tel:0412345678" class="nav-phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                (04) 1234 5678
+            </a>
+        </div>
+        <a href="contact-us.html" class="nav-cta">Get Free Strategy Session</a>
+        <!-- Mobile Nav Right (Phone + Hamburger) -->
+        <div class="mobile-nav-right">
+            <a href="tel:0412345678" class="mobile-nav-phone" aria-label="Call us">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Panel -->
+    <nav class="mobile-menu">
+        <div class="mobile-menu-links">
+            <a href="about-us.html">About Us</a>
+            <div class="mobile-dropdown">
+                <a href="#">Services</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="google-ads.html">Google Ads</a>
+                    <a href="seo.html">SEO</a>
+                    <a href="cro.html">CRO</a>
+                    <a href="social-media-ads.html">Social Media Ads</a>
+                    <a href="email-marketing.html">Email Marketing</a>
+                </div>
+            </div>
+            <a href="pricing.html">Pricing</a>
+            <div class="mobile-dropdown">
+                <a href="#">Results</a>
+                <div class="mobile-dropdown-menu">
+                    <a href="case-studies.html">Case Studies</a>
+                    <a href="testimonial.html">Testimonials</a>
+                </div>
+            </div>
+            <a href="blog.html">Resources</a>
+        </div>
+        <a href="contact-us.html" class="mobile-menu-cta">Get Free Strategy Session</a>
+    </nav>
+
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="hero-image-container"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="article-eyebrow">SEO</p>
+            <h1 class="article-title">What is SEO? Common & Uncommon Terms Explained</h1>
+        </div>
+    </section>
+
+    <!-- Article Layout -->
+    <div class="article-layout">
+        <!-- Article Content -->
+        <article class="article-content">
+            <p>What is SEO? - It's a question most of us have asked at some point, especially in today's digital-first world. Basically, SEO (Search Engine Optimisation) is the art and science of making your website more visible to search engines like Google, Bing, and others. More than just attracting any audience, SEO helps you connect with the right people online - those genuinely interested in what you have to offer.</p>
+
+            <h2>Your Ultimate SEO Glossary</h2>
+
+            <p>SEO may seem filled with complex terms and rules, but it's more than just technical jargon - it's a new way of communication in the digital world. In fact, according to a report by BrightEdge, organic search drives 53% of website traffic!</p>
+
+            <div class="stat-highlight">
+                <div class="stat-number">53%</div>
+                <div class="stat-text">of website traffic is driven by organic search (BrightEdge)</div>
+            </div>
+
+            <p>From keywords and backlinks to understanding search algorithms, each SEO element is like a new grammar rule in this language. And like any language, SEO is dynamic and constantly evolving. It's a journey of ongoing learning and adaptation.</p>
+
+            <p>At JRNY Digital, we're passionate about making SEO as approachable as possible. Ready to understand it? Here's everything you need to know.</p>
+
+            <h2>Search Engine Basics</h2>
+
+            <div class="term-box">
+                <h4>Search Engines</h4>
+                <p>Google, Bing, Yahoo - these are the librarians of the internet world. They organise and deliver content based on your queries.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>SERP (Search Engine Results Page)</h4>
+                <p>SERP is the page you see after you enter a query into a search engine. It's a list of results the search engine thinks best matches your query. These results can include web pages, images, videos, local business listings, and other more specialised types of content.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Search Engine Algorithms</h4>
+                <p>These algorithms are complex systems search engines use to retrieve data and deliver the best possible results for a query. SEO strategies must align with these algorithms for optimal results.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Organic Results</h4>
+                <p>In SEO, organic means naturally occurring. Organic search results are the ones that come up naturally, without paid advertising.</p>
+            </div>
+
+            <h2>Keyword Research and Strategies</h2>
+
+            <div class="term-box">
+                <h4>Keywords</h4>
+                <p>Keywords are the cornerstone of SEO. They're the terms or phrases users enter into search engines and are crucial for effective SEO strategy.</p>
+            </div>
+
+            <div class="section-box">
+                <h3>Types of Keywords</h3>
+                <h4>Long Tail Keywords</h4>
+                <p>Specific, often longer phrases that are less common but super targeted - like "handmade vegan soap in Brooklyn."</p>
+                <h4>Broad Keywords</h4>
+                <p>General terms with high search volume but more competition, like "soap."</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Keyword Research</h4>
+                <p>This is a fundamental part of SEO strategy. It involves identifying the terms and phrases (keywords) potential customers use in search engines. The goal is to use this data to create content that aligns with what your audience is searching for, thus improving your visibility in search results.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Keyword Difficulty</h4>
+                <p>This assesses how challenging it would be to rank for specific keywords in search engine results. A higher keyword difficulty indicates more competition, making it harder to achieve a high ranking.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Keyword Targeting</h4>
+                <p>This is the practice of researching, selecting, and using specific keywords to drive qualified traffic from search engines to your website.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Keyword Frequency</h4>
+                <p>This refers to how often a specific keyword appears on a webpage. Keywords help search engines understand the topic, but overusing them can seem spammy. The right balance makes content both search-friendly and readable.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Keyword Stuffing</h4>
+                <p>This involves cramming a webpage with too many keywords to boost search rankings. This practice harms readability and is penalised by search engines. It's essential to focus on natural, relevant content instead.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>User Intent</h4>
+                <p>This is the goal behind a search engine query, like seeking information or wanting to buy something. Understanding this helps tailor content to meet users' needs. Aligning content with user intent improves relevance and search performance.</p>
+            </div>
+
+            <div class="section-box">
+                <h3>Types of User Intent</h3>
+                <h4>Informational Intent</h4>
+                <p>When people want to know something. For example, searching "how to tie a tie" means they want instructions or a guide.</p>
+                <h4>Navigational Intent</h4>
+                <p>When people want to go to a specific website. For example, "Facebook login" shows they're trying to get to the Facebook login page.</p>
+                <h4>Transactional Intent</h4>
+                <p>When people are ready to buy something. A search like "buy iPhone 13" indicates they want to make a purchase.</p>
+                <h4>Commercial Investigation</h4>
+                <p>When people are thinking about buying something soon and are looking at their options. Searching "best smartphones 2024" means they're in the market for a new phone.</p>
+            </div>
+
+            <h2>Content Marketing and Strategy</h2>
+
+            <p>Content marketing involves creating quality content that interests your audience, while SEO ensures this content ranks well in searches. Combining these strategies boosts site traffic and audience engagement.</p>
+
+            <div class="term-box">
+                <h4>Content Research</h4>
+                <p>Content research is about knowing what content your audience likes, including format, topics, and style. It's key for making content that's both search-friendly and engaging.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Content Strategy</h4>
+                <p>Content strategy is about understanding your audience's needs and planning content that meets these needs, including keyword and topic selection.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Relevancy and Intent</h4>
+                <p>SEO is about making content that matches search keywords and the searcher's intent, whether they're looking to buy something or just seeking information.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Content Creation and Optimisation</h4>
+                <p>Content creation means producing articles, videos, etc., optimised for search engines and users. This involves using the right keywords and making content engaging, accessible, and easy to navigate.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Content Distribution and Calendar Planning</h4>
+                <p>Effective content distribution involves choosing the right platforms and planning a content calendar for consistent and strategic publishing.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Evergreen Content</h4>
+                <p>Evergreen content remains valuable over time, continuing to draw traffic and engage audiences long after its publication.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Readability and Engagement</h4>
+                <p>Content should be readable, understandable, and engaging. Using visuals, interactive elements, and a conversational tone can enhance engagement.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Heading Structures</h4>
+                <p>Use headings (like H1, H2, H3) to organise content. They help both readers and search engines understand your content more effectively.</p>
+            </div>
+
+            <h2>Types of SEO</h2>
+
+            <p>SEO can be categorised into three main types: on-page, off-page, and technical SEO. Each plays a unique and crucial role in enhancing your website's visibility and performance online.</p>
+
+            <div class="seo-type-card">
+                <div class="seo-type-header">
+                    <div class="seo-type-number">1</div>
+                    <div class="seo-type-title">On-Page SEO</div>
+                </div>
+                <p class="seo-type-description">This type focuses on the content you see on your site - the words, images, and everything in between. It helps search engines understand what your site is about and find it when people search for topics you talk about.</p>
+
+                <div class="term-item">
+                    <h4>Page Titles</h4>
+                    <p>Page titles are like the headlines of your web pages. They tell search engines and visitors what the page is about and are usually the first thing people see in search results.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Meta Descriptions</h4>
+                    <p>These summaries of your web pages appear under the page titles in search results. They give potential visitors a sneak peek of what to expect on the page.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Metadata</h4>
+                    <p>Metadata is like a behind-the-scenes guide for search engines. It provides information about what's on your website, helping search engines understand your content better.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Alt Tags</h4>
+                    <p>Alt tags are descriptions for images on your site. They help search engines understand what the images are about and are super helpful for visually impaired users.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Internal Linking</h4>
+                    <p>Internal linking connects different pages of the same website, helping search engines understand site structure and improving user navigation. It distributes ranking power throughout the site.</p>
+                </div>
+            </div>
+
+            <div class="seo-type-card">
+                <div class="seo-type-header">
+                    <div class="seo-type-number">2</div>
+                    <div class="seo-type-title">Off-Page SEO</div>
+                </div>
+                <p class="seo-type-description">This type looks beyond your site. It's about building relationships and a good reputation in the digital space. It's like getting endorsements from others who say, "Hey, this site is trustworthy and valuable!"</p>
+
+                <div class="term-item">
+                    <h4>Backlinks</h4>
+                    <p>These are links from other websites to yours. Think of them as votes of confidence from the internet community, showing that others find your content valuable.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Follow/No-Follow Links</h4>
+                    <p>Follow links count as endorsements for your site, boosting your SEO. No-follow links are the opposite; they don't pass on SEO benefits but can still bring traffic to your site.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Guest Posts</h4>
+                    <p>When you write an article for another website, that's a guest post. It's a great way to share your expertise and reach a new audience while also potentially earning a backlink.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Citations</h4>
+                    <p>Citations are mentions of your business name and address on other websites. They're especially important for local SEO.</p>
+                </div>
+            </div>
+
+            <div class="seo-type-card">
+                <div class="seo-type-header">
+                    <div class="seo-type-number">3</div>
+                    <div class="seo-type-title">Technical SEO</div>
+                </div>
+                <p class="seo-type-description">Technical SEO is the behind-the-scenes hero, focusing on technical aspects to make your website easy for search engines to read. It involves optimising your site's backend, like speed, mobile-friendliness, indexing, crawlability, structure, structured data, and security.</p>
+
+                <div class="term-item">
+                    <h4>Site Indexing</h4>
+                    <p>Indexing is the process where search engines store and organise content found during crawling, which is essential for making your content discoverable.</p>
+                </div>
+                <div class="term-item">
+                    <h4>SERP Analysis</h4>
+                    <p>SERP Analysis involves studying top search results for specific queries to understand why they rank well. This includes examining content types, keyword usage, content quality, and backlinks.</p>
+                </div>
+                <div class="term-item">
+                    <h4>URL Slugs</h4>
+                    <p>A URL slug is the part of the URL that briefly describes the page's content. It's a mini-title that makes links more understandable and SEO-friendly.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Shortened URLs</h4>
+                    <p>Shortened URLs are compressed versions of longer URLs, which are easier to share on platforms like social media.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Page Speed</h4>
+                    <p>Page Speed refers to how quickly your web page loads, which is crucial for user satisfaction and favoured by search engines.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Mobile Friendliness</h4>
+                    <p>Mobile Friendliness ensures your website looks and functions well on mobile devices, which is vital due to the prevalence of mobile browsing.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Technical Audit</h4>
+                    <p>A Technical Audit is like a health check for your website, identifying issues affecting performance or search rankings.</p>
+                </div>
+                <div class="term-item">
+                    <h4>Broken Links</h4>
+                    <p>These are links that don't work anymore. They lead to pages that are no longer available, which can be frustrating for your visitors and harmful to your SEO.</p>
+                </div>
+            </div>
+
+            <h3>Core Website Vitals</h3>
+
+            <p>Core Web Vitals are specific factors that Google considers important in a webpage's overall user experience. These vitals are part of Google's "Page Experience" signals used to evaluate and rank web pages in search results, focusing on aspects that provide users a positive and efficient experience.</p>
+
+            <div class="section-box">
+                <h3>Core Web Vitals Metrics</h3>
+                <h4>LCP (Largest Contentful Paint)</h4>
+                <p>This measures how long it takes for the largest content element on your page (like a big image or text block) to load.</p>
+                <h4>FID (First Input Delay)</h4>
+                <p>FID measures the time from when a user first interacts with your page (like clicking a link) to when the browser responds.</p>
+                <h4>CLS (Cumulative Layout Shift)</h4>
+                <p>CLS measures how much your page's content moves around as it loads.</p>
+                <h4>INP (Interaction to Next Paint)</h4>
+                <p>This metric measures the responsiveness of a website by calculating the time between a user's interaction and the browser's response.</p>
+            </div>
+
+            <h2>SEO Tools and Technologies</h2>
+
+            <p>SEO tools are essential for analysing, monitoring, and improving the performance of websites in search engine results. They offer insights into keywords, backlinks, competition, and other aspects that influence SEO.</p>
+
+            <div class="tools-section">
+                <h3>Web Crawlers and Bots</h3>
+                <p>Web crawlers are automated bots that scan and index website content. They allow search engines to retrieve and display relevant web pages in search results.</p>
+                <div class="tool-item">
+                    <h4>Googlebot</h4>
+                    <p>This is Google's web crawling bot, used to gather information from websites to update Google Search index.</p>
+                </div>
+                <div class="tool-item">
+                    <h4>Bingbot</h4>
+                    <p>This is Bing's crawler that scans the internet to gather data for updating Bing's search index.</p>
+                </div>
+                <div class="tool-item">
+                    <h4>DuckDuckBot</h4>
+                    <p>DuckDuckGo's crawler gathers web content for the search engine, emphasising user privacy.</p>
+                </div>
+            </div>
+
+            <div class="tools-section">
+                <h3>SEO Tools</h3>
+                <p>Different SEO tools offer various functionalities to enhance your website's search engine performance.</p>
+                <div class="tool-item">
+                    <h4>Screaming Frog SEO Spider</h4>
+                    <p>A highly efficient web crawling tool for SEO audits. It can identify broken links, analyse metadata, discover duplicate content, and provide comprehensive SEO insights.</p>
+                </div>
+                <div class="tool-item">
+                    <h4>DeepCrawl</h4>
+                    <p>An enterprise-scale web crawling tool, DeepCrawl helps large websites monitor and improve their site architecture and SEO performance. It is beneficial for large-scale SEO campaigns.</p>
+                </div>
+                <div class="tool-item">
+                    <h4>Majestic SEO Site Explorer</h4>
+                    <p>While primarily a backlink checker, it also provides detailed information about how websites are linked, which is key information gathered by crawlers.</p>
+                </div>
+            </div>
+
+            <div class="term-box">
+                <h4>XML Sitemaps</h4>
+                <p>This is not a tool but a crucial file format for SEO. XML sitemaps help crawlers understand your website's structure and content, making it easier for search engines to index your pages.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Robots.txt</h4>
+                <p>This is a file website owners use to guide and restrict crawler access to certain parts of their website. It helps in managing the crawling process by search engine bots.</p>
+            </div>
+
+            <h2>Advanced SEO Concepts and Techniques</h2>
+
+            <div class="term-box">
+                <h4>Keyword Cannibalisation</h4>
+                <p>Keyword Cannibalisation occurs when multiple pages on the same website compete for the same or similar keywords. This can confuse search engines about which page to rank for a given query, potentially harming the site's SEO performance. It's important to strategically target different keywords on different pages to avoid this issue.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Schema Markup</h4>
+                <p>Schema Markup is a code you put on your website to help search engines return more informative results for users. It's like giving search engines a clearer roadmap of your site's content.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Rich Snippets</h4>
+                <p>Rich snippets enhance the appearance of your search results with extra visuals and information, like star ratings or product prices, making your listing more appealing.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Featured Snippets</h4>
+                <p>These special boxes at the top of search results highlight a piece of content from a website, often providing quick answers to users' questions.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>E-A-T (Expertise, Authoritativeness, Trustworthiness)</h4>
+                <p>This is about proving that your website is a trustworthy source, especially for serious topics. These factors determine the credibility of a website, especially for YMYL (Your Money or Your Life) pages.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Latent Semantic Indexing (LSI) Keywords</h4>
+                <p>LSI Keywords are terms related to the main keywords in content. They're not just synonyms but include related words and phrases. Using LSI keywords can make content more relevant and engaging, potentially improving search rankings.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Canonical Tag</h4>
+                <p>A canonical tag is an HTML element that helps avoid duplicate content issues in SEO. It indicates the preferred version of a webpage when multiple versions exist. This tag is vital for maintaining SEO integrity, ensuring search engines index the most relevant page.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Breadcrumb Navigation</h4>
+                <p>Breadcrumb navigation shows a page's location in the website hierarchy, enhancing user experience and site navigation. It's beneficial for SEO as it clarifies site structure for search engines and encourages users to explore more, reducing bounce rates.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>301 Redirect</h4>
+                <p>A 301 redirect is a permanent redirection from one URL to another. It's used when a site moves to a new domain or merges pages. It's crucial for maintaining a site's domain authority and search rankings.</p>
+            </div>
+
+            <h2>SEO Analytics and Performance Metrics</h2>
+
+            <div class="term-box">
+                <h4>SEO Tools and Analytics</h4>
+                <p>Tools like Google Analytics and SEMrush are invaluable for SEO. They provide insights into traffic, performance, and areas for improvement. Regular analysis of these metrics is key to a successful SEO strategy.</p>
+            </div>
+
+            <div class="metrics-box">
+                <h3>Key Performance Metrics</h3>
+                <div class="metric-item">
+                    <div class="metric-icon">📊</div>
+                    <div class="metric-content">
+                        <h4>Website Traffic</h4>
+                        <p>This refers to the number of people visiting your website. It's like foot traffic in a store - the more, the merrier!</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">🖱️</div>
+                    <div class="metric-content">
+                        <h4>CTR (Click-Through Rate)</h4>
+                        <p>This is the percentage of people who click on a link to your site after seeing it in search results or an ad. It's like measuring how many people stop to look at a shop window and then go inside.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">🎯</div>
+                    <div class="metric-content">
+                        <h4>Conversion Rate</h4>
+                        <p>This measures how often visitors to your site complete a desired action, like making a purchase or signing up for a newsletter. It's like tracking how many visitors turn into customers.</p>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-icon">💰</div>
+                    <div class="metric-content">
+                        <h4>ROI (Return on Investment)</h4>
+                        <p>In digital marketing, ROI calculates how much value you get from your marketing efforts compared to what you spend on them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Competitor Analysis in SEO</h3>
+
+            <p>Conducting a competitor analysis involves examining the SEO strategies of your top-performing competitors. This process includes analysing their website structure, content quality, keyword usage, backlink profile, and overall online presence.</p>
+
+            <div class="term-box">
+                <h4>Competitors</h4>
+                <p>These are other websites you're jostling with for the top spot in search results.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Keyword Gap Analysis</h4>
+                <p>Keyword Gap Analysis is a method to identify the keywords that your competitors rank for but your website does not. This analysis helps discover untapped opportunities to add valuable keywords to your content strategy.</p>
+            </div>
+
+            <h2>User Experience (UX) and Local SEO</h2>
+
+            <div class="term-box">
+                <h4>User Experience (UX)</h4>
+                <p>Creating a website that people love to use is not just good manners; it's good SEO. Happy visitors usually lead to happy search engine rankings. Search engines favour sites that provide a positive user experience.</p>
+            </div>
+
+            <div class="term-box">
+                <h4>Local SEO</h4>
+                <p>Local SEO is all about making your business shine in local searches. It's like putting up a digital billboard in your local community. You attract relevant searches when your online presence is optimised for the right audience.</p>
+            </div>
+
+            <h2>SEO Practices and Ethics</h2>
+
+            <div class="section-box">
+                <h3>Types of SEO Practices</h3>
+                <h4>Black Hat SEO</h4>
+                <p>Black Hat SEO refers to deceptive techniques that attempt to exploit search engine algorithms and can lead to website penalties. These practices are considered unethical and can significantly harm a site's long-term presence and credibility in search results.</p>
+                <h4>White Hat SEO</h4>
+                <p>White Hat SEO encompasses ethical techniques that adhere to search engine guidelines and prioritise the human audience. These practices aim to provide users quality content and a good user experience, leading to sustainable and reputable website growth.</p>
+                <h4>Grey Hat SEO</h4>
+                <p>Grey Hat SEO sits in the middle ground, involving tactics riskier than White Hat but not as manipulative as Black Hat. While these techniques may not be outright unethical, they tread a fine line and can carry some risk of penalties if not managed carefully.</p>
+            </div>
+
+            <h2>The Future of SEO</h2>
+
+            <p>Emerging trends like voice search and AI are shaping the future of SEO. The relationship between SEO and social media is also evolving, offering new avenues for optimisation.</p>
+
+            <div class="cta-box">
+                <h3>Get Ahead in Your SEO Journey</h3>
+                <p>SEO is an ever-evolving field. Staying updated with the latest trends and understanding both common and uncommon terms are key to maintaining an effective online presence.</p>
+                <p>Are you ready to navigate the ever-changing world of SEO and harness its full potential for your business? At JRNY Digital, we're dedicated to guiding you through each step of your SEO journey. Whether you're just starting out or looking to refine your existing strategies, our team of experts is here to provide tailored solutions that align with your unique goals.</p>
+                <a href="contact-us.html" class="btn">Visit JRNY Digital</a>
+            </div>
+
+            <!-- Also Read Box -->
+            <div class="also-read-box">
+                <h3 class="also-read-title">Also Read:</h3>
+                <a href="what-is-local-seo.html" class="also-read-link">What is Local SEO?</a>
+                <p class="also-read-description">Local SEO helps businesses get found by nearby customers. Learn what it is, why it matters, and how to dominate local search results.</p>
+                <a href="what-is-local-seo.html" class="also-read-btn">Read More</a>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <img src="https://ik.imagekit.io/2z8yysunx/JRNY/Logo_colour.jpg" alt="Author">
+                </div>
+                <div class="author-info">
+                    Written by: <span class="author-name">JRNY Digital</span>
+                </div>
+            </div>
+
+            <!-- Popular Tags -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Popular Tags</h3>
+                <div class="tags-list">
+                    <a href="#" class="tag-item">SEO</a>
+                    <a href="#" class="tag-item">SEO Glossary</a>
+                    <a href="#" class="tag-item">Digital Marketing</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://ik.imagekit.io/jrnydigital/JRNY%20DIGITAL/JRNY%20logo.png" alt="JRNY Digital">
+                    </div>
+                    <p>We're human, we're real we care about our clients. Honesty, Transparency and Results - that's our motto.</p>
+                    <div class="footer-subscribe">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button type="submit">Subscribe Us</button>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="social-media-ads.html">Social Media Ads</a></li>
+                        <li><a href="google-ads.html">Google Ads</a></li>
+                        <li><a href="email-marketing.html">Email Marketing</a></li>
+                        <li><a href="seo.html">SEO</a></li>
+                        <li><a href="cro.html">Conversion Rate Optimisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Portfolio</h4>
+                    <ul>
+                        <li><a href="blog.html" class="highlight">Blog</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © All Rights Reserved. JRNY DIGITAL Australia Pty Ltd. ABN 82 642 424 904</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+        const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+
+        if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            mobileMenuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Mobile dropdown toggles
+            mobileDropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                dropdownLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking a link (except dropdown toggles)
+            mobileMenu.querySelectorAll('a:not(.mobile-dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+    </script>
+</body>
